@@ -1,6 +1,6 @@
-package com.example.tfttierlist;
+package com.example.tfttierlist.View;
 
-public class ChampOrigin {
+public class ChampClass {
     private String Name;
     private String Description;
     private String DescriptionFirstLevel;
@@ -11,7 +11,7 @@ public class ChampOrigin {
     private int NumberOfChampsForThirdLevel;
     private String[] Champions;
 
-    public ChampOrigin(String name, String description, String descriptionFirstLevel, String descriptionSecondLevel,
+    public ChampClass(String name, String description, String descriptionFirstLevel, String descriptionSecondLevel,
                        String descriptionThirdLevel, int numberOfChampsForFirstLevel, int numberOfChampsForSecondLevel,
                        int numberOfChampsForThirdLevel, String[] champions) {
         Name = name;

@@ -1,8 +1,10 @@
-package com.example.tfttierlist;
+package com.example.tfttierlist.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.tfttierlist.R;
 
 public class MainActivity extends AppCompatActivity {
 

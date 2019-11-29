@@ -1,4 +1,4 @@
-package com.example.tfttierlist;
+package com.example.tfttierlist.View;
 
 public class Item {
     private String Name;
