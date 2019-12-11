@@ -2,33 +2,21 @@ package com.example.tfttierlist.Core;
 
 import android.content.Context;
 
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
+import android.util.Log;
 
 
 public class SqlIO extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "DM";
-    public static final int DATABASE_VERSION = 2;
+    public static String LOG_TAG = SqlIO.class.getSimpleName();
+    public static final String DATABASE_NAME = "Tft Tier List";
+    public static final int DATABASE_VERSION = 1;
 
 
     public SqlIO(Context context)
     {
         super( context, DATABASE_NAME, null, DATABASE_VERSION );
-    }
-
-    @Override
-    public void onOpen(SQLiteDatabase db)
-    {       /////// No se que hace esto
-       /* db.beginTransaction();
-         try {
-          db.execSQL( "DELETE FROM mortgages_banks WHERE bank IS NULL" );
-            db.setTransactionSuccessful();
-        } finally {
-            db.endTransaction();
-        }
-
-        return;*/
     }
 
     @Override
@@ -91,7 +79,9 @@ public class SqlIO extends SQLiteOpenHelper {
             db.execSQL(datosCampeon);
 
             db.setTransactionSuccessful();
-        } finally {
+        }catch (SQLException exc){
+            Log.e(LOG_TAG, "error creando tabla" + exc.getMessage());
+        }finally {
             db.endTransaction();
         }
     }
@@ -106,7 +96,9 @@ public class SqlIO extends SQLiteOpenHelper {
             db.execSQL( "DROP TABLE IF EXISTS origin" );
             db.execSQL( "DROP TABLE IF EXISTS origin" );
             db.setTransactionSuccessful();
-        } finally {
+        }catch (SQLException exc) {
+            Log.e(LOG_TAG, "error borrando la tabla" + exc.getMessage());
+        }finally {
             db.endTransaction();
         }
 

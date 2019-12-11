@@ -3,19 +3,17 @@ package com.example.tfttierlist.View;
 public class Item {
     private String Name;
     private String Description;
-    private String Recipe;
+    private Boolean Recipe;
     private String Tier;
 
-    public Item(String name, String description, String recipe, String tier) {
+    public Item(String name, String description, Boolean recipe, String tier) {
         Name = name;
         Description = description;
         Recipe = recipe;
         Tier = tier;
     }
 
-    public String getName() {
-        return Name;
-    }
+    public String getName() { return Name; }
 
     public void setName(String name) {
         Name = name;
@@ -29,11 +27,11 @@ public class Item {
         Description = description;
     }
 
-    public String getRecipe() {
+    public Boolean getRecipe() {
         return Recipe;
     }
 
-    public void setRecipe(String recipe) {
+    public void setRecipe(Boolean recipe) {
         Recipe = recipe;
     }
 

@@ -4,7 +4,8 @@ public class Champion {
     private String Name;
     private String Abilities;
     private String Origin;
-    private String ChampClass;
+    private String ChampClass1;
+    private String ChampClass2;
     private int Cost;
     private String Health;
     private int Mana;
@@ -16,14 +17,15 @@ public class Champion {
     private String CritRate;
     private int Range;
 
-    public Champion(String Name, String Abilities, String Origin, String ChampClass, int Cost,
+    public Champion(String Name, String Abilities, String Origin, String ChampClass1, String ChampClass2, int Cost,
                     String Health, int Mana, int Armor, int MR, String DPS,
                     String Damage, double AtkSpd, String CritRate, int Range) {
 
         this.Name = Name;
         this.Abilities = Abilities;
         this.Origin = Origin;
-        this.ChampClass = ChampClass;
+        this.ChampClass1 = ChampClass1;
+        this.ChampClass2 = ChampClass2;
         this.Cost = Cost;
         this.Health = Health;
         this.Mana = Mana;
@@ -36,6 +38,9 @@ public class Champion {
         this.Range = Range;
 
     }
+
+
+
 
     public String getName() {
         return Name;
@@ -61,13 +66,17 @@ public class Champion {
         Origin = origin;
     }
 
-    public String getChampClass() {
-        return ChampClass;
+    public String getChampClass1() {
+        return ChampClass1;
     }
 
-    public void setChampClass(String champClass) {
-        ChampClass = champClass;
+    public void setChampClass1(String champClass) {
+        ChampClass1 = champClass;
     }
+
+    public String getChampClass2() {  return ChampClass2; }
+
+    public void setChampClass2(String champClass2) { ChampClass2 = champClass2;  }
 
     public int getCost() {
         return Cost;
@@ -100,6 +109,10 @@ public class Champion {
     public void setArmor(int armor) {
         Armor = armor;
     }
+
+    public int getMR() { return MR; }
+
+    public void setMR(int MR) { this.MR = MR; }
 
     public String getDPS() {
         return DPS;
