@@ -1,14 +1,17 @@
 package com.example.tfttierlist.View;
 
 public class Champion {
+
     private String Name;
-    private String Abilities;
-    private String Origin;
-    private String ChampClass1;
-    private String ChampClass2;
+    private ChampOrigin Origin;
+    private ChampClass ChampClass;
+    private ChampClass OriginClass;
+    private String Description;
+    private char Tier;
     private int Cost;
     private String Health;
     private int Mana;
+    private int InicialMana;
     private int Armor;
     private int MR;
     private String DPS;
@@ -17,18 +20,20 @@ public class Champion {
     private String CritRate;
     private int Range;
 
-    public Champion(String Name, String Abilities, String Origin, String ChampClass1, String ChampClass2, int Cost,
-                    String Health, int Mana, int Armor, int MR, String DPS,
+    public Champion(String Name, ChampOrigin Origin, ChampClass ChampClass, ChampClass OriginClass,
+                    String Description, char Tier, int Cost, String Health, int Mana, int InicialMana, int Armor, int MR, String DPS,
                     String Damage, double AtkSpd, String CritRate, int Range) {
 
         this.Name = Name;
-        this.Abilities = Abilities;
         this.Origin = Origin;
-        this.ChampClass1 = ChampClass1;
-        this.ChampClass2 = ChampClass2;
+        this.ChampClass = ChampClass;
+        this.OriginClass = OriginClass;
+        this.Description = Description;
+        this.Tier = Tier;
         this.Cost = Cost;
         this.Health = Health;
         this.Mana = Mana;
+        this.InicialMana = Mana;
         this.Armor = Armor;
         this.MR = MR;
         this.DPS = DPS;
@@ -39,8 +44,53 @@ public class Champion {
 
     }
 
+    public ChampOrigin getOrigin() {
+        return Origin;
+    }
 
+    public void setOrigin(ChampOrigin origin) {
+        Origin = origin;
+    }
 
+    public com.example.tfttierlist.View.ChampClass getChampClass() {
+        return ChampClass;
+    }
+
+    public void setChampClass(com.example.tfttierlist.View.ChampClass champClass) {
+        ChampClass = champClass;
+    }
+
+    public com.example.tfttierlist.View.ChampClass getOriginClass() {
+        return OriginClass;
+    }
+
+    public void setOriginClass(com.example.tfttierlist.View.ChampClass originClass) {
+        OriginClass = originClass;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public char getTier() {
+        return Tier;
+    }
+
+    public void setTier(char tier) {
+        Tier = tier;
+    }
+
+    public int getInicialMana() {
+        return InicialMana;
+    }
+
+    public void setInicialMana(int inicialMana) {
+        InicialMana = inicialMana;
+    }
 
     public String getName() {
         return Name;
@@ -49,34 +99,6 @@ public class Champion {
     public void setName(String name) {
         Name = name;
     }
-
-    public String getAbilities() {
-        return Abilities;
-    }
-
-    public void setAbilities(String abilities) {
-        Abilities = abilities;
-    }
-
-    public String getOrigin() {
-        return Origin;
-    }
-
-    public void setOrigin(String origin) {
-        Origin = origin;
-    }
-
-    public String getChampClass1() {
-        return ChampClass1;
-    }
-
-    public void setChampClass1(String champClass) {
-        ChampClass1 = champClass;
-    }
-
-    public String getChampClass2() {  return ChampClass2; }
-
-    public void setChampClass2(String champClass2) { ChampClass2 = champClass2;  }
 
     public int getCost() {
         return Cost;

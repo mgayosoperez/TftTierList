@@ -66,7 +66,20 @@ public class SqlIO extends SQLiteOpenHelper {
                     + "imagen varchar(80)"
                     +")"  );
 
-            final String datosClase ="INSERT INTO `CLASE` (`nombre`, `descripcion`, `imagen`) VALUES  (`Asesino`, `-`, `-`),(`Invocador`, `-`, `-`);";
+            final String datosClase ="INSERT INTO `CLASE`(`nombre`, `descripcion`, `imagen`)" +
+                    " VALUES  ('Alchemist', 'Innate: Alchemists ignore collision and never stop moving.', '-')," +
+                    "('Avatar', 'An Avatars Origin Element is counted twice for Trait bonuses.', '-')," +
+                    "('Assassin', 'Innate: At the start of combat, Assassins leap to the farthest enemy. Assassins gain bonus Critical Strike Damage and Chance. +75%/+150% Critical Strike Damage & +10%/+20% Critical Strike Chance', '-')," +
+                    "('Mage', 'Mages have a chance on cast to instead Doublecast. 50%/100% Chance', '-')," +
+                    "('Mystic', 'All allies gain increased Magic Resistance. 40/120 Magic Resistance', '-')," +
+                    "('Predator', 'Predators instantly kill enemies they damage who are below 25% health.', '-')," +
+                    "('Berserker', 'Innate: At the start of combat, Berserkers leap to the nearest enemy. Berserkers have a 40% chance to hit all units in a cone in front of them with their attacks. 40%/100% Chance & +0/+25 Attack Damage', '-')," +
+                    "('Blademaster', 'Blademaster Basic Attacks have a 40% chance to trigger additional attacks against their target. These additional attacks deal damage like Basic Attacks and trigger on-hit effects. 1/2/3 Extra Attack', '-')," +
+                    "('Ranger', 'Every 3 seconds, Rangers have a chance to double their Attack Speed for 3 seconds. 35%/80%/100% Chance to x2/x2/x2.5 Attack Speed bonus', '-')," +
+                    "('Soulbound', 'The first Soulbound unit to die in a round will instead enter the Spirit Realm, becoming untargetable and continuing to fight as long as another Soulbound unit is alive.', '-')," +
+                    "('Summoner', 'Summoned units have increased health and duration. +30%/+120% increase', '-')," +
+                    "('Warden', 'Wardens gain increased total Armor. +150%/+300%/+450% Armor', '-')," +
+                    "('Druid', 'Druids regenerate 40 health each second.', '-');";
             db.execSQL(datosClase);
 
             final String datosOrigen ="INSERT INTO `ORIGEN` (`nombre`, `descripcion`, `imagen`) VALUES ('Electric', 'Electric champions shock nearby enemies whenever they deal or receive a critical strike. 100/300/500 dmg', '-')," +
