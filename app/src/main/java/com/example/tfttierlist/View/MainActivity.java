@@ -3,10 +3,13 @@ package com.example.tfttierlist.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
@@ -24,15 +27,20 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private GridView champGrid;
-    private SqlIO BaseDatos;
-    private List<Champion> ChampionList;
+    private Window window;
     private ArrayList<HashMap<String, Object>> maplist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ChampionList.addAll(this.BaseDatos.recuperaTodosLosCampeones());
+        //Set color to the status bar
+        this.window = getWindow();
+        //window.setStatusBarColor(Color.parseColor("5c007a"));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("43a047")));
+        window.setBackgroundDrawable(new ColorDrawable(Color.parseColor("757575")));
+        window.setNavigationBarColor(Color.parseColor("43a047"));
+
 
         champGrid = (GridView) findViewById(R.id.champsGrid);
         champGrid.setOnItemClickListener(new GridView.OnItemClickListener() {
@@ -42,17 +50,31 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-        for (Champion c : ChampionList) {
-            String aux = c.getName().toLowerCase();
-            if (aux.contains(" ")) {
-                aux = aux.replace(" ", "");
-            }
-            String imgName = "R.drawable." + aux;
-            HashMap<String, Object> mapAux = new HashMap<>();
-            mapAux.put("Name", c.getName());
-            mapAux.put("Img", imgName);
-            maplist.add(mapAux);
-        }
+            HashMap<String, Object> item1 = new HashMap<>();
+            item1.put("Name", "Aatrox");
+            item1.put("Img", R.drawable.aatrox);
+            maplist.add(item1);
+
+            HashMap<String, Object> item2 = new HashMap<>();
+            item2.put("Name", "Annie");
+            item2.put("Img", R.drawable.annie);
+            maplist.add(item2);
+
+            HashMap<String, Object> item3 = new HashMap<>();
+            item3.put("Name", "Zed");
+            item3.put("Img", R.drawable.zed);
+
+            maplist.add(item3);
+            HashMap<String, Object> item4 = new HashMap<>();
+            item4.put("Name", "Dr Mundo");
+            item4.put("Img", R.drawable.drmundo);
+
+            maplist.add(item4);
+            HashMap<String, Object> item5 = new HashMap<>();
+            item5.put("Name", "Master Yi");
+            item5.put("Img", R.drawable.masteryi);
+            maplist.add(item5);
+
         GridAdapter adapter = new GridAdapter(this);
         champGrid.setAdapter(adapter);
     }
