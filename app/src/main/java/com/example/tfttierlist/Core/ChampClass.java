@@ -1,4 +1,4 @@
-package com.example.tfttierlist.View;
+package com.example.tfttierlist.Core;
 
 public class ChampClass {
     private String Name;

@@ -2,10 +2,14 @@ package com.example.tfttierlist.Core;
 
 import android.content.Context;
 
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class SqlIO extends SQLiteOpenHelper {
@@ -49,7 +53,7 @@ public class SqlIO extends SQLiteOpenHelper {
                     + "mr int(5) NOT NULL,"
                     + "dps int(5) NOT NULL,"
                     + "daño int(5) NOT NULL,"
-                    + "vAtaque int(5) NOT NULL,"
+                    + "vAtaque varchar(15) NOT NULL,"
                     + "critico int(5) NOT NULL,"
                     + "alcance int(5) NOT NULL"
                     +")"  );
@@ -227,7 +231,7 @@ public class SqlIO extends SQLiteOpenHelper {
             db.execSQL( "DROP TABLE IF EXISTS item" );
             db.execSQL( "DROP TABLE IF EXISTS campeon" );
             db.execSQL( "DROP TABLE IF EXISTS origin" );
-            db.execSQL( "DROP TABLE IF EXISTS origin" );
+            db.execSQL( "DROP TABLE IF EXISTS clase" );
             db.setTransactionSuccessful();
         }catch (SQLException exc) {
             Log.e(LOG_TAG, "error borrando la tabla" + exc.getMessage());
@@ -238,5 +242,82 @@ public class SqlIO extends SQLiteOpenHelper {
         this.onCreate( db  );
     }
 
+    public List<Champion> recuperaTodosLosCampeones (){
+        final List<Champion> TORET = new ArrayList<>();
+        final SQLiteDatabase DB = this.getReadableDatabase();
+        final Cursor CURSOR = DB.query("campeon", null,null,null,null,null, null);
+        if(CURSOR.moveToFirst()){
+            do{
+                String Name = CURSOR.getString(CURSOR.getColumnIndexOrThrow("nombre"));
+                String Origin = CURSOR.getString(CURSOR.getColumnIndexOrThrow("origen"));
+                String ChampClass = CURSOR.getString(CURSOR.getColumnIndexOrThrow("clase"));
+                String OriginClass = CURSOR.getString(CURSOR.getColumnIndexOrThrow("claseOrigen"));
+                String Description = CURSOR.getString(CURSOR.getColumnIndexOrThrow("descripcion"));
+                char Tier = CURSOR.getString(CURSOR.getColumnIndexOrThrow("tier")).charAt(0);
+                int Cost = Integer.parseInt(CURSOR.getString(CURSOR.getColumnIndexOrThrow("coste")));
+                String Health = CURSOR.getString(CURSOR.getColumnIndexOrThrow("vida"));
+                int Mana = Integer.parseInt(CURSOR.getString(CURSOR.getColumnIndexOrThrow("mana")));
+                int InitialMana = Integer.parseInt(CURSOR.getString(CURSOR.getColumnIndexOrThrow("mana inicial")));
+                int Armor = Integer.parseInt(CURSOR.getString(CURSOR.getColumnIndexOrThrow("armadura")));
+                int MR = Integer.parseInt(CURSOR.getString(CURSOR.getColumnIndexOrThrow("mr")));
+                String DPS = CURSOR.getString(CURSOR.getColumnIndexOrThrow("dps"));
+                String Damage = CURSOR.getString(CURSOR.getColumnIndexOrThrow("daño"));
+                double AtkSpd = Double.parseDouble(CURSOR.getString(CURSOR.getColumnIndexOrThrow("vAtaque")));
+                String CritRate = CURSOR.getString(CURSOR.getColumnIndexOrThrow("critico"));
+                int Range = Integer.parseInt(CURSOR.getString(CURSOR.getColumnIndexOrThrow("alcance")));
+
+                TORET.add(new Champion(Name,Origin,ChampClass,OriginClass,Description,Tier,Cost,Health,Mana,InitialMana,Armor,MR,DPS,Damage,AtkSpd,CritRate,Range));
+            }while(CURSOR.moveToNext());
+        }
+
+        return TORET;
+    }
+
+    public List<Item> recuperaTodosLosObjetos(){
+        final List<Item> TORET = new ArrayList<>();
+        final SQLiteDatabase DB = this.getReadableDatabase();
+        final Cursor CURSOR = DB.query("item", null,null,null,null,null,null);
+        if(CURSOR.moveToFirst()){
+            do{
+                String Name = CURSOR.getString(CURSOR.getColumnIndexOrThrow("nombre"));
+                String Item1 = CURSOR.getString(CURSOR.getColumnIndexOrThrow("objeto1"));
+                String Item2 = CURSOR.getString(CURSOR.getColumnIndexOrThrow("objeto2"));
+                String Description = CURSOR.getString(CURSOR.getColumnIndexOrThrow("descripcion"));
+                String Tier = CURSOR.getString(CURSOR.getColumnIndexOrThrow("tier"));
+
+                TORET.add(new Item(Name,Item1,Item2,Description,Tier));
+            }while(CURSOR.moveToNext());
+        }
+        return TORET;
+    }
+
+    public List<ChampOrigin> recuperaTodosLosOrigenes(){
+        final List<ChampOrigin> TORET = new ArrayList<>();
+        final SQLiteDatabase DB = this.getReadableDatabase();
+        final Cursor CURSOR = DB.query("origen", null,null,null,null,null,null);
+        if(CURSOR.moveToFirst()){
+            do{
+                String Name = CURSOR.getString(CURSOR.getColumnIndexOrThrow("nombre"));
+                String Description = CURSOR.getString(CURSOR.getColumnIndexOrThrow("descripcion"));
+
+                TORET.add(new ChampOrigin(Name, Description));
+            }while(CURSOR.moveToNext());
+        }
+        return TORET;
+    }
+    public List<ChampClass> recuperaTodasLasClases(){
+        final List<ChampClass> TORET = new ArrayList<>();
+        final SQLiteDatabase DB = this.getReadableDatabase();
+        final Cursor CURSOR = DB.query("clase", null,null,null,null,null,null);
+        if(CURSOR.moveToFirst()){
+            do{
+                String Name = CURSOR.getString(CURSOR.getColumnIndexOrThrow("nombre"));
+                String Description = CURSOR.getString(CURSOR.getColumnIndexOrThrow("descripcion"));
+
+                TORET.add(new ChampClass(Name, Description));
+            }while(CURSOR.moveToNext());
+        }
+        return TORET;
+    }
 
 }
