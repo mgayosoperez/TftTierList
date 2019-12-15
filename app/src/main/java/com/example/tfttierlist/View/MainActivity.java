@@ -24,20 +24,21 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private GridView champGrid;
-    private SqlIO BD;
-    private List<Champion> ChampionList = BD.recuperaTodosLosCampeones();
+    private SqlIO BaseDatos;
+    private List<Champion> ChampionList;
     private ArrayList<HashMap<String, Object>> maplist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ChampionList.addAll(this.BaseDatos.recuperaTodosLosCampeones());
 
         champGrid = (GridView) findViewById(R.id.champsGrid);
         champGrid.setOnItemClickListener(new GridView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> p1, View p2, int p3, long p4) {
-                Toast.makeText(getApplicationContext(), maplist.get(p3).get("title").toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), maplist.get(p3).get("Name").toString(), Toast.LENGTH_LONG).show();
             }
 
         });

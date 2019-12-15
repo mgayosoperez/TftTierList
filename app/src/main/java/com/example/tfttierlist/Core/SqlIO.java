@@ -242,10 +242,10 @@ public class SqlIO extends SQLiteOpenHelper {
         this.onCreate( db  );
     }
 
-    public List<Champion> recuperaTodosLosCampeones (){
+    public List<Champion> recuperaTodosLosCampeones(){
         final List<Champion> TORET = new ArrayList<>();
         final SQLiteDatabase DB = this.getReadableDatabase();
-        final Cursor CURSOR = DB.query("campeon", null,null,null,null,null, null);
+        final Cursor CURSOR = DB.query("CAMPEON", null,null,null,null,null, null);
         if(CURSOR.moveToFirst()){
             do{
                 String Name = CURSOR.getString(CURSOR.getColumnIndexOrThrow("nombre"));
@@ -268,6 +268,7 @@ public class SqlIO extends SQLiteOpenHelper {
 
                 TORET.add(new Champion(Name,Origin,ChampClass,OriginClass,Description,Tier,Cost,Health,Mana,InitialMana,Armor,MR,DPS,Damage,AtkSpd,CritRate,Range));
             }while(CURSOR.moveToNext());
+
         }
 
         return TORET;
