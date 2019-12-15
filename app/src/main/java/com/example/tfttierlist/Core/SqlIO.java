@@ -31,8 +31,7 @@ public class SqlIO extends SQLiteOpenHelper {
                     + "objeto1 varchar(15),"
                     + "objeto2 varchar(15),"
                     + "descripcion varchar(500) NOT NULL,"
-                    + "tier char,"
-                    + "imagen varchar(80)"
+                    + "tier char"
                     +")"  );
 
             db.execSQL( "CREATE TABLE IF NOT EXISTS campeon("
@@ -57,101 +56,99 @@ public class SqlIO extends SQLiteOpenHelper {
 
             db.execSQL( "CREATE TABLE IF NOT EXISTS clase("
                     + "nombre varchar(15) PRIMARY KEY,"
-                    + "descripcion varchar(500) NOT NULL,"
-                    + "imagen varchar(80)"
+                    + "descripcion varchar(500) NOT NULL"
                     +")"  );
 
             db.execSQL( "CREATE TABLE IF NOT EXISTS origin("
                     + "nombre varchar(15) PRIMARY KEY,"
-                    + "descripcion varchar(500) NOT NULL,"
-                    + "imagen varchar(80)"
+                    + "descripcion varchar(500) NOT NULL"
                     +")"  );
 
-            final String datosClase ="INSERT INTO `CLASE`(`nombre`, `descripcion`, `imagen`)" +
-                    " VALUES  ('Alchemist', 'Innate: Alchemists ignore collision and never stop moving.', '-')," +
-                    "('Avatar', 'An Avatars Origin Element is counted twice for Trait bonuses.', '-')," +
-                    "('Assassin', 'Innate: At the start of combat, Assassins leap to the farthest enemy. Assassins gain bonus Critical Strike Damage and Chance. +75%/+150% Critical Strike Damage & +10%/+20% Critical Strike Chance', '-')," +
-                    "('Mage', 'Mages have a chance on cast to instead Doublecast. 50%/100% Chance', '-')," +
-                    "('Mystic', 'All allies gain increased Magic Resistance. 40/120 Magic Resistance', '-')," +
-                    "('Predator', 'Predators instantly kill enemies they damage who are below 25% health.', '-')," +
-                    "('Berserker', 'Innate: At the start of combat, Berserkers leap to the nearest enemy. Berserkers have a 40% chance to hit all units in a cone in front of them with their attacks. 40%/100% Chance & +0/+25 Attack Damage', '-')," +
-                    "('Blademaster', 'Blademaster Basic Attacks have a 40% chance to trigger additional attacks against their target. These additional attacks deal damage like Basic Attacks and trigger on-hit effects. 1/2/3 Extra Attack', '-')," +
-                    "('Ranger', 'Every 3 seconds, Rangers have a chance to double their Attack Speed for 3 seconds. 35%/80%/100% Chance to x2/x2/x2.5 Attack Speed bonus', '-')," +
-                    "('Soulbound', 'The first Soulbound unit to die in a round will instead enter the Spirit Realm, becoming untargetable and continuing to fight as long as another Soulbound unit is alive.', '-')," +
-                    "('Summoner', 'Summoned units have increased health and duration. +30%/+120% increase', '-')," +
-                    "('Warden', 'Wardens gain increased total Armor. +150%/+300%/+450% Armor', '-')," +
-                    "('Druid', 'Druids regenerate 40 health each second.', '-');";
+            final String datosClase ="INSERT INTO `CLASE`(`nombre`, `descripcion`)" +
+                    " VALUES  ('Alchemist', 'Innate: Alchemists ignore collision and never stop moving.')," +
+                    "('Avatar', 'An Avatars Origin Element is counted twice for Trait bonuses.')," +
+                    "('Assassin', 'Innate: At the start of combat, Assassins leap to the farthest enemy. Assassins gain bonus Critical Strike Damage and Chance. +75%/+150% Critical Strike Damage & +10%/+20% Critical Strike Chance')," +
+                    "('Mage', 'Mages have a chance on cast to instead Doublecast. 50%/100% Chance')," +
+                    "('Mystic', 'All allies gain increased Magic Resistance. 40/120 Magic Resistance')," +
+                    "('Predator', 'Predators instantly kill enemies they damage who are below 25% health.')," +
+                    "('Berserker', 'Innate: At the start of combat, Berserkers leap to the nearest enemy. Berserkers have a 40% chance to hit all units in a cone in front of them with their attacks. 40%/100% Chance & +0/+25 Attack Damage')," +
+                    "('Blademaster', 'Blademaster Basic Attacks have a 40% chance to trigger additional attacks against their target. These additional attacks deal damage like Basic Attacks and trigger on-hit effects. 1/2/3 Extra Attack')," +
+                    "('Ranger', 'Every 3 seconds, Rangers have a chance to double their Attack Speed for 3 seconds. 35%/80%/100% Chance to x2/x2/x2.5 Attack Speed bonus')," +
+                    "('Soulbound', 'The first Soulbound unit to die in a round will instead enter the Spirit Realm, becoming untargetable and continuing to fight as long as another Soulbound unit is alive.')," +
+                    "('Summoner', 'Summoned units have increased health and duration. +30%/+120% increase')," +
+                    "('Warden', 'Wardens gain increased total Armor. +150%/+300%/+450% Armor')," +
+                    "('Druid', 'Druids regenerate 40 health each second.');";
             db.execSQL(datosClase);
 
-            final String datosOrigen ="INSERT INTO `ORIGEN` (`nombre`, `descripcion`, `imagen`) VALUES ('Electric', 'Electric champions shock nearby enemies whenever they deal or receive a critical strike. 100/300/500 dmg', '-')," +
-                    "('Glacial','Basic Attacks from Glacials have a chance to stun their target for 1.5 seconds. 20/35/50 Chance to Stun.','-')," +
-                    "('Poison','Poison champions apply Neurotoxin when they deal damage, increasing the targets mana cost by 50%.','-')," +
-                    "('Ocean','All allies restore mana every 4 seconds. 15/30/60 +Mana','-')," +
-                    "('Shadow','Shadow units deal increased damage for 4 seconds at combat start, refreshed on takedown. +70% Increased Damage, Self Takedown +140% Increased Damage, Any Shadow Takedown','-')," +
-                    "('Cloud','All allies gain dodge chance. +20%/+25%/+35% Dodge Chance','-')," +
-                    "('Crystal','Crystal champions have a maximum amount of damage they can take from a single hit. 100/60 Max Damage','-')," +
-                    "('Inferno','Inferno spell damage burns the ground beneath the target, dealing a percent of that spells pre-mitigation damage as magic damage over 4 seconds. +70% Damage & 1 Hex/+120% Damage & 3 Hexes/+180% Damage & 5 Hexes','-')," +
-                    "('Light','When a Light champion dies, all other Light champions gain Attack Speed and are healed for 25% of the champions Maximum Health. +15%/+25%/+35% Attack Speed','-')," +
+            final String datosOrigen ="INSERT INTO `ORIGEN` (`nombre`, `descripcion`) VALUES ('Electric', 'Electric champions shock nearby enemies whenever they deal or receive a critical strike. 100/300/500 dmg')," +
+                    "('Glacial','Basic Attacks from Glacials have a chance to stun their target for 1.5 seconds. 20/35/50 Chance to Stun.')," +
+                    "('Poison','Poison champions apply Neurotoxin when they deal damage, increasing the targets mana cost by 50%.')," +
+                    "('Ocean','All allies restore mana every 4 seconds. 15/30/60 +Mana')," +
+                    "('Shadow','Shadow units deal increased damage for 4 seconds at combat start, refreshed on takedown. +70% Increased Damage, Self Takedown +140% Increased Damage, Any Shadow Takedown')," +
+                    "('Cloud','All allies gain dodge chance. +20%/+25%/+35% Dodge Chance')," +
+                    "('Crystal','Crystal champions have a maximum amount of damage they can take from a single hit. 100/60 Max Damage')," +
+                    "('Inferno','Inferno spell damage burns the ground beneath the target, dealing a percent of that spells pre-mitigation damage as magic damage over 4 seconds. +70% Damage & 1 Hex/+120% Damage & 3 Hexes/+180% Damage & 5 Hexes')," +
+                    "('Light','When a Light champion dies, all other Light champions gain Attack Speed and are healed for 25% of the champions Maximum Health. +15%/+25%/+35% Attack Speed')," +
                     "('Steel','Steel champions gain damage immunity for a few seconds when they are reduced below 50% health. 2/3/4 Seconds of Immunity2 Seconds of Immunity','')," +
                     "('Woodland','At the start of combat, a random Woodland champion makes a copy of themselves.','')," +
                     "('Desert','Reduces each enemys armor.','')," +
                     "('Mountain','At the start of combat, a random ally gains a 1500 Stoneshield.','');";
             db.execSQL(datosOrigen);
 
-            final String datosItem ="INSERT INTO `ITEM` (`nombre`, `objeto1`, `objeto2`, `descripcion`, `tier`, `imagen`) VALUES ('Spatula', '', '', 'It must do something...', 'S', '-')," +
-                    "('Needlessly Large Rod', '', '', '+20% Spell Damage.', 'A', '-')," +
-                    "('Tear of the Goddess','','','+20 Mana.','A','-')," +
-                    "('B.F. Sword','','','+15 Attack Damage.','B','-')," +
-                    "('Recurve Bow','','','+15% Attack Speed','B','-')," +
-                    "('Giants Belt','','','+200 Health.','C','-')," +
-                    "('Negatron Cloak','','','+25 Magic Resist.','C','-')," +
-                    "('Sparring Gloves','','','+10% Critical Strike Chance. +10% Dodge Chance','C','-')," +
-                    "('Chain Vest','','','+20 Armor.','D','-')," +
-                    "('Force of Nature','Spatula','Spatula','Wearers team gains +1 maximum team size.','S','-')," +
-                    "('Berserker Axe','Spatula','Sparring Gloves','Wearer is also a Berserker.','?','-')," +
-                    "('Blade of the Ruined King','Spatula','Recurve Bow','Wearer is also a Blademaster.','?','-')," +
-                    "('Frozen Mallet','Spatula','Giants Belt','Wearer is also a Glacial.','?','-')," +
-                    "('Inferno Cinder','Spatula','Needlessly Large Rod','Wearer is also an Inferno.','?','-')," +
-                    "('Mages Cap','Spatula','Tear of the Goddess','Wearer is also a Mage.','?','-')," +
-                    "('Talisman of Light','Spatula','Negatron Cloak','Wearer is also a Light.','?','-')," +
-                    "('Wardens Mail','Spatula','Chain Vest','Wearer is also a Warden.','?','-')," +
-                    "('Youmuus Ghostblade','Spatula','B.F. Sword','Wearer is also an Assassin.','?','-')," +
-                    "('Guinsoo Rageblade','Needlessly Large Rod','Recurve Bow','Basic Attacks grant the wearer +4% bonus Attack Speed for the rest of combat. This effect can stack any number of times.','S','-')," +
-                    "('Morellonomicon','Needlessly Large Rod','Giants Belt','When the wearer deals damage with their spell, they burn the target, dealing 20% of the targets Maximum Health as true damage over 10 seconds and reducing healing by 80% for the duration of the burn. A champion can only have one burn effect at a time, preferring the strongest.','S','-')," +
-                    "('Hand of Justice','Tear of the Goddess','Sparring Gloves','At the beginning of each planning phase, the wearer gains one of the following: Basic Attacks and Spells deal +50% Damage or Basic Attacks heal 50 Health on-hit.','S','-')," +
-                    "('Iceborne Gauntlet','Chain Vest','Sparring Gloves','When the wearer dodges, they create a zone of ice. Enemies inside the zone have their Attack Speed reduced by 35%.','S','-')," +
-                    "('Infinity Edge','B.F. Sword','Sparring Gloves','The wearer gains +125% Critical Strike Damage.','S','-')," +
-                    "('Phantom Dancer','Chain Vest','Recurve Bow','Wearer dodges all Critical Strikes.','S','-')," +
-                    "('Seraphs Embrace','Tear of the Goddess','Tear of the Goddess','After casting their spell, the wearer restores 20 Mana.','S','-')," +
-                    "('Spear of Shojin','Tear of the Goddess','B.F. Sword','After casting their spell, the wearers Basic Attacks restore 18% of their Maximum Mana.','S','-')," +
-                    "('Bloodthirster','B.F. Sword','Negatron Cloak','Basic Attacks heal the wearer for 40% of the damage dealt.','A','-')," +
-                    "('Deathblade','B.F. Sword','B.F. Sword','Whenever the wearer kills or participates in killing an enemy, gain +15 Attack Damage for the remainder of combat. This effect can stack any number of times.','A','-')," +
-                    "('Hush','Negatron Cloak','Tear of the Goddess','Basic Attacks have a 33% chance to silence the target on-hit, prevent the enemy from gaining mana for 4 seconds.','A','-')," +
-                    "('Ludens Echo','Tear of the Goddess','Needlessly Large Rod','When the wearer deals damage with their spell, the first target hit and up to 3 nearby enemies are dealt an additional 180 magic damage.','A','-')," +
-                    "('Rabadons Deathcap','Needlessly Large Rod','Needlessly Large Rod','Wearer gains +50% Spell Power Amplification. (All sources of Spell Power are 50% more effective)','A','-')," +
-                    "('Runaans Hurricane','Negatron Cloak','Recurve Bow','Basic Attacks fire an additional missile at another nearby enemy, dealing 60% of the wearers Attack damage and applying on-hit effects.','A','-')," +
-                    "('Sword Breaker','Negatron Cloak','Chain Vest','Wearers Basic Attacks have a 33% chance to disarm the target for 3 seconds, preventing that enemy from Basic Attacking.','A','-')," +
-                    "('Thiefs Gloves','Sparring Gloves','Sparring Gloves','At the beginning of each planning phase, the wearer equips 2 temporary items. Temporary items increase in power based on your player level.','A','-')," +
-                    "('Zephyr','Negatron Cloak','Giants Belt','When combat begins, the wearer summons a whirlwind on the opposite side of the arena that removes the closest enemy from combat for 6 seconds.','A','-')," +
-                    "('Giant Slayer','B.F. Sword','Recurve Bow','The wearers basic attacks deal an additional 9% of the targets Maximum Health as true damage.','B','-')," +
-                    "('Guardian Angel','B.F. Sword','Chain Vest','When the wearer dies, they cleanse negative effects and revive with up to 500 Health after a 2 second delay. This effect can trigger once per combat.','B','-')," +
-                    "('Ionic Spark','Negatron Cloak','Needlessly Large Rod','Whenever an enemy casts a spell, the wearer deals 125 true damage to the caster.','B','-')," +
-                    "('Jeweled Gauntlet','Needlessly Large Rod','Sparring Gloves','The wearers spells can critically strike.','B','-')," +
-                    "('Red Buff','Giants Belt','Chain Vest','Wearers Basic Attacks burn the target on-hit, dealing 20% of the targets Maximum Health as true damage over 10 seconds and reducing healing by 80% for the duration of the burn. A champion can only have one burn effect at a time, preferring the strongest.','B','-')," +
-                    "('Statikk Shiv','Recurve Bow','Tear of the Goddess','Every third Basic Attack from the wearer deals 100 magical damage to 3 enemies.','B','-')," +
-                    "('Warmogs Armor','Giants Belt','Giants Belt','Wearer regenerates 6% of their missing Health per second.','B','-')," +
-                    "('Zekes Herald','Giants Belt','B.F. Sword','When combat begins, the wearer and all allies within 2 hexes in the same row gain +15% Attack Speed for the rest of combat.','B','-')," +
-                    "('Dragons Claw','Negatron Cloak','Negatron Cloak','Wearer gains 50% resistance to magic damage.','C','-')," +
-                    "('Frozen Heart','Chain Vest','Tear of the Goddess','Reduce the Attack Speed of adjacent enemies by 35% for 1 second.','C','-')," +
-                    "('Hextech Gunblade','B.F. Sword','Needlessly Large Rod','Basic Attacks and spells heal the wearer for 25% of the damage dealt.','C','-')," +
-                    "('Locket of the Iron Solari','Needlessly Large Rod','Chain Vest','When combat begins, the wearer and all allies within 2 hexes in the same row gain a shield that blocks 300 damage for 8 seconds.','C','-')," +
-                    "('Rapid Firecannon','Recurve Bow','Recurve Bow','Wearer gains +100% Attack Range.','C','-')," +
-                    "('Redemption','Giants Belt','Tear of the Goddess','When the wearer falls below 30% Health, nearby allies are healed for 1200 Health after a 2.5 second delay. This effect can trigger once per combat.','C','-')," +
-                    "('Trap Claw','Giants Belt','Sparring Gloves','At the beginning of combat, the wearer gains a shield that blocks the first enemy spell that hits them. The enemy that breaks the shield is stunned for 4 seconds.','C','-')," +
-                    "('Quicksilver','Sparring Gloves','Negatron Cloak','The wearer gains a shield that prevents the next crowd control effect from applying. This shield refreshes after 3 seconds','D','-')," +
-                    "('Repeating Crossbow','Sparring Gloves','Recurve Bow','When the wearer dies, Repeating Crossbow is re-equipped to a new ally. Each time Repeating Crossbow is re-equipped, it grants additional +30% Attack Speed and +30% Critical Strike Chance for the remainder of combat. This effect can stack any number of times.','D','-')," +
-                    "('Thornmail','Chain Vest','Chain Vest','When the wearer is hit by a Basic Attack, they reflect 100% of the mitigated damage as magic damage.','D','-')," +
-                    "('Titanic Hydra','Recurve Bow','Giants Belt','Basic Attacks deal an additional 3% of the wearers Maximum Health as magic damage to the target and adjacent enemies behind them.','D','-');";
+            final String datosItem ="INSERT INTO `ITEM` (`nombre`, `objeto1`, `objeto2`, `descripcion`, `tier`) VALUES ('Spatula', '', '', 'It must do something...', 'S')," +
+                    "('Needlessly Large Rod', '', '', '+20% Spell Damage.', 'A')," +
+                    "('Tear of the Goddess','','','+20 Mana.','A')," +
+                    "('B.F. Sword','','','+15 Attack Damage.','B')," +
+                    "('Recurve Bow','','','+15% Attack Speed','B')," +
+                    "('Giants Belt','','','+200 Health.','C')," +
+                    "('Negatron Cloak','','','+25 Magic Resist.','C')," +
+                    "('Sparring Gloves','','','+10% Critical Strike Chance. +10% Dodge Chance','C')," +
+                    "('Chain Vest','','','+20 Armor.','D')," +
+                    "('Force of Nature','Spatula','Spatula','Wearers team gains +1 maximum team size.','S')," +
+                    "('Berserker Axe','Spatula','Sparring Gloves','Wearer is also a Berserker.','?')," +
+                    "('Blade of the Ruined King','Spatula','Recurve Bow','Wearer is also a Blademaster.','?')," +
+                    "('Frozen Mallet','Spatula','Giants Belt','Wearer is also a Glacial.','?')," +
+                    "('Inferno Cinder','Spatula','Needlessly Large Rod','Wearer is also an Inferno.','?')," +
+                    "('Mages Cap','Spatula','Tear of the Goddess','Wearer is also a Mage.','?')," +
+                    "('Talisman of Light','Spatula','Negatron Cloak','Wearer is also a Light.','?')," +
+                    "('Wardens Mail','Spatula','Chain Vest','Wearer is also a Warden.','?')," +
+                    "('Youmuus Ghostblade','Spatula','B.F. Sword','Wearer is also an Assassin.','?')," +
+                    "('Guinsoo Rageblade','Needlessly Large Rod','Recurve Bow','Basic Attacks grant the wearer +4% bonus Attack Speed for the rest of combat. This effect can stack any number of times.','S')," +
+                    "('Morellonomicon','Needlessly Large Rod','Giants Belt','When the wearer deals damage with their spell, they burn the target, dealing 20% of the targets Maximum Health as true damage over 10 seconds and reducing healing by 80% for the duration of the burn. A champion can only have one burn effect at a time, preferring the strongest.','S')," +
+                    "('Hand of Justice','Tear of the Goddess','Sparring Gloves','At the beginning of each planning phase, the wearer gains one of the following: Basic Attacks and Spells deal +50% Damage or Basic Attacks heal 50 Health on-hit.','S')," +
+                    "('Iceborne Gauntlet','Chain Vest','Sparring Gloves','When the wearer dodges, they create a zone of ice. Enemies inside the zone have their Attack Speed reduced by 35%.','S')," +
+                    "('Infinity Edge','B.F. Sword','Sparring Gloves','The wearer gains +125% Critical Strike Damage.','S')," +
+                    "('Phantom Dancer','Chain Vest','Recurve Bow','Wearer dodges all Critical Strikes.','S')," +
+                    "('Seraphs Embrace','Tear of the Goddess','Tear of the Goddess','After casting their spell, the wearer restores 20 Mana.','S')," +
+                    "('Spear of Shojin','Tear of the Goddess','B.F. Sword','After casting their spell, the wearers Basic Attacks restore 18% of their Maximum Mana.','S')," +
+                    "('Bloodthirster','B.F. Sword','Negatron Cloak','Basic Attacks heal the wearer for 40% of the damage dealt.','A')," +
+                    "('Deathblade','B.F. Sword','B.F. Sword','Whenever the wearer kills or participates in killing an enemy, gain +15 Attack Damage for the remainder of combat. This effect can stack any number of times.','A')," +
+                    "('Hush','Negatron Cloak','Tear of the Goddess','Basic Attacks have a 33% chance to silence the target on-hit, prevent the enemy from gaining mana for 4 seconds.','A')," +
+                    "('Ludens Echo','Tear of the Goddess','Needlessly Large Rod','When the wearer deals damage with their spell, the first target hit and up to 3 nearby enemies are dealt an additional 180 magic damage.','A')," +
+                    "('Rabadons Deathcap','Needlessly Large Rod','Needlessly Large Rod','Wearer gains +50% Spell Power Amplification. (All sources of Spell Power are 50% more effective)','A')," +
+                    "('Runaans Hurricane','Negatron Cloak','Recurve Bow','Basic Attacks fire an additional missile at another nearby enemy, dealing 60% of the wearers Attack damage and applying on-hit effects.','A')," +
+                    "('Sword Breaker','Negatron Cloak','Chain Vest','Wearers Basic Attacks have a 33% chance to disarm the target for 3 seconds, preventing that enemy from Basic Attacking.','A')," +
+                    "('Thiefs Gloves','Sparring Gloves','Sparring Gloves','At the beginning of each planning phase, the wearer equips 2 temporary items. Temporary items increase in power based on your player level.','A')," +
+                    "('Zephyr','Negatron Cloak','Giants Belt','When combat begins, the wearer summons a whirlwind on the opposite side of the arena that removes the closest enemy from combat for 6 seconds.','A')," +
+                    "('Giant Slayer','B.F. Sword','Recurve Bow','The wearers basic attacks deal an additional 9% of the targets Maximum Health as true damage.','B')," +
+                    "('Guardian Angel','B.F. Sword','Chain Vest','When the wearer dies, they cleanse negative effects and revive with up to 500 Health after a 2 second delay. This effect can trigger once per combat.','B')," +
+                    "('Ionic Spark','Negatron Cloak','Needlessly Large Rod','Whenever an enemy casts a spell, the wearer deals 125 true damage to the caster.','B')," +
+                    "('Jeweled Gauntlet','Needlessly Large Rod','Sparring Gloves','The wearers spells can critically strike.','B')," +
+                    "('Red Buff','Giants Belt','Chain Vest','Wearers Basic Attacks burn the target on-hit, dealing 20% of the targets Maximum Health as true damage over 10 seconds and reducing healing by 80% for the duration of the burn. A champion can only have one burn effect at a time, preferring the strongest.','B')," +
+                    "('Statikk Shiv','Recurve Bow','Tear of the Goddess','Every third Basic Attack from the wearer deals 100 magical damage to 3 enemies.','B')," +
+                    "('Warmogs Armor','Giants Belt','Giants Belt','Wearer regenerates 6% of their missing Health per second.','B')," +
+                    "('Zekes Herald','Giants Belt','B.F. Sword','When combat begins, the wearer and all allies within 2 hexes in the same row gain +15% Attack Speed for the rest of combat.','B')," +
+                    "('Dragons Claw','Negatron Cloak','Negatron Cloak','Wearer gains 50% resistance to magic damage.','C')," +
+                    "('Frozen Heart','Chain Vest','Tear of the Goddess','Reduce the Attack Speed of adjacent enemies by 35% for 1 second.','C')," +
+                    "('Hextech Gunblade','B.F. Sword','Needlessly Large Rod','Basic Attacks and spells heal the wearer for 25% of the damage dealt.','C')," +
+                    "('Locket of the Iron Solari','Needlessly Large Rod','Chain Vest','When combat begins, the wearer and all allies within 2 hexes in the same row gain a shield that blocks 300 damage for 8 seconds.','C')," +
+                    "('Rapid Firecannon','Recurve Bow','Recurve Bow','Wearer gains +100% Attack Range.','C')," +
+                    "('Redemption','Giants Belt','Tear of the Goddess','When the wearer falls below 30% Health, nearby allies are healed for 1200 Health after a 2.5 second delay. This effect can trigger once per combat.','C')," +
+                    "('Trap Claw','Giants Belt','Sparring Gloves','At the beginning of combat, the wearer gains a shield that blocks the first enemy spell that hits them. The enemy that breaks the shield is stunned for 4 seconds.','C')," +
+                    "('Quicksilver','Sparring Gloves','Negatron Cloak','The wearer gains a shield that prevents the next crowd control effect from applying. This shield refreshes after 3 seconds','D')," +
+                    "('Repeating Crossbow','Sparring Gloves','Recurve Bow','When the wearer dies, Repeating Crossbow is re-equipped to a new ally. Each time Repeating Crossbow is re-equipped, it grants additional +30% Attack Speed and +30% Critical Strike Chance for the remainder of combat. This effect can stack any number of times.','D')," +
+                    "('Thornmail','Chain Vest','Chain Vest','When the wearer is hit by a Basic Attack, they reflect 100% of the mitigated damage as magic damage.','D')," +
+                    "('Titanic Hydra','Recurve Bow','Giants Belt','Basic Attacks deal an additional 3% of the wearers Maximum Health as magic damage to the target and adjacent enemies behind them.','D');";
 
             db.execSQL(datosItem);
 
