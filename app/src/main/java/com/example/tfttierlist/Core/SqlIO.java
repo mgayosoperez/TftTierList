@@ -99,7 +99,7 @@ public class SqlIO extends SQLiteOpenHelper {
                     "('Needlessly Large Rod', '', '', '+20% Spell Damage.', 'A')," +
                     "('Tear of the Goddess','','','+20 Mana.','A')," +
                     "('B.F. Sword','','','+15 Attack Damage.','B')," +
-                    "('Recurve Bow','','','+15% Attack Speed','B')," +
+                    "('Recurve Bow','','','+15% Attack Speed.','B')," +
                     "('Giants Belt','','','+200 Health.','C')," +
                     "('Negatron Cloak','','','+25 Magic Resist.','C')," +
                     "('Sparring Gloves','','','+10% Critical Strike Chance. +10% Dodge Chance','C')," +
