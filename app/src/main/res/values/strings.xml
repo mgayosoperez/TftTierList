@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TftTierList</string>
+    <string name="title_activity_champ__info_">Champ_Info_Activity</string>
 </resources>

@@ -44,6 +44,14 @@ public class Champion {
 
     }
 
+    public String getChampClass() {
+        return ChampClass;
+    }
+
+    public String getOriginClass() {
+        return OriginClass;
+    }
+
     public String getOrigin() {
         return Origin;
     }
