@@ -18,7 +18,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="3">
+                android:layout_weight="0.3"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/imageView"
@@ -28,48 +29,54 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:layout_width="277dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <EditText
+                <TextView
                     android:id="@+id/twChampName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text=" "
-                    android:textSize="20dp"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginLeft="25dp"
-                    />
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/twOrigin"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAlignment="center"
                     android:text="Origin"
-                    android:layout_marginLeft="10dp"/>
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:textSize="14sp" />
+
+                <TextView
                     android:id="@+id/etOrigin"
-                    android:textSize="20dp"
-                    android:layout_marginRight="50dp"></EditText>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textSize="12sp"></TextView>
 
                 <TextView
                     android:id="@+id/twClass"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
+                    android:gravity="center"
+                    android:textAlignment="center"
                     android:text="Class"
 
-                    />
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:textSize="14sp" />
+
+                <TextView
                     android:id="@+id/etClass"
-                    android:textSize="20dp"
-                    ></EditText>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textSize="12sp"></TextView>
             </LinearLayout>
 
         </LinearLayout>
@@ -77,9 +84,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
+            android:layout_marginRight="15dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -94,18 +101,18 @@
                     android:layout_height="wrap_content"
                     android:text="Description" />
 
-                <EditText
+                <TextView
                     android:id="@+id/etDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="50dp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginRight="20dp">
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -116,9 +123,10 @@
                         android:id="@+id/twCost"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
                         android:text="Cost" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/etCost"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -135,13 +143,14 @@
                         android:id="@+id/twHealth"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Health" />
+                        android:text="Health"
+                        android:layout_marginRight="15dp"/>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/etHealth"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="10dp" />
+                        />
                 </LinearLayout>
 
                 <LinearLayout
@@ -154,9 +163,10 @@
                         android:id="@+id/twMana"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
                         android:text="Mana" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/etMana"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -172,9 +182,10 @@
                         android:id="@+id/twArmor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
                         android:text="Armor" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/etArmor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -190,9 +201,10 @@
                         android:id="@+id/twMR"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
                         android:text="MR" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/etMR"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -208,9 +220,10 @@
                         android:id="@+id/twDPS"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
                         android:text="DPS" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/etDPS"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -226,9 +239,10 @@
                         android:id="@+id/twDamage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
                         android:text="Damage" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/etDamage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -244,9 +258,10 @@
                         android:id="@+id/twAtkSpd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
                         android:text="Atk Spd" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/etAtkSpd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -262,9 +277,10 @@
                         android:id="@+id/twCritRate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
                         android:text="Crit Rate" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/etCritRate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -280,9 +296,10 @@
                         android:id="@+id/twRange"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
                         android:text="Range" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/etRange"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />

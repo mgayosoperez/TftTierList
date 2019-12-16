@@ -14,7 +14,9 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Champ_Info_Activity extends AppCompatActivity {
@@ -32,22 +34,22 @@ public class Champ_Info_Activity extends AppCompatActivity {
     Champion m = new Champion("Ashe", "Crystal", "Ranger", "-", "Rangers Focus. For 5 seconds, Ashe gains 50% Attack Speed, and her basic attacks fire a flurry of arrows dealing physical damage. Attack Speed Bonus: 50% / 75% / 250%. Damage Per Arrow: 25% / 30% / 35%", 'B', 4, "550 / 990 / 1980", 35, 0, 20 ,20 ,"48 / 86 / 173" ,"60 / 108 / 216" ,0.8 ,"25%", 4);
     Champion n = new Champion("Master Yi", "Shadow", "Blademaster", "Mystic", "Meditate. Master Yi meditates, becoming untargetable for 1 second and healing over the duration. After Master Yi finishes meditating, he gains 100% Attack Speed and deal bonus magic damage on hit for 6 seconds. Bonus Damage: 50 / 75 / 500", 'A', 5, "850 / 1530 / 3060", 150, 100, 30 ,20 ,"70 / 126 / 252" ,"70 / 126 / 252" ,1 ,"25%", 1);
 
-    List<Champion> ChampList;
+    List<Champion> ChampList = new ArrayList<>();
 
-    EditText etChampName;
-    EditText etOrigin;
-    EditText etClass;
-    EditText etDescription;
-    EditText etCost;
-    EditText etHealth;
-    EditText etMana;
-    EditText etArmor;
-    EditText etMR;
-    EditText etDPS;
-    EditText etDamage;
-    EditText etAtkSpd;
-    EditText etCritRate;
-    EditText etRange;
+    TextView etChampName;
+    TextView etOrigin;
+    TextView etClass;
+    TextView etDescription;
+    TextView etCost;
+    TextView etHealth;
+    TextView etMana;
+    TextView etArmor;
+    TextView etMR;
+    TextView etDPS;
+    TextView etDamage;
+    TextView etAtkSpd;
+    TextView etCritRate;
+    TextView etRange;
 
     ImageView image;
 
@@ -71,6 +73,7 @@ public class Champ_Info_Activity extends AppCompatActivity {
         ChampList.add(m);
         ChampList.add(n);
 
+
         //Inicializar las variables
         etChampName = findViewById(R.id.twChampName);
         etDescription = findViewById(R.id.etDescription);
@@ -87,42 +90,71 @@ public class Champ_Info_Activity extends AppCompatActivity {
         etCritRate = findViewById(R.id.etCritRate);
         etRange = findViewById(R.id.etRange);
         image = findViewById(R.id.imageView);
-    }
 
-    public void mostrarDatosCampeon(String Name){
-        boolean encontrado = false;
-        Champion aux = new Champion("Master Yi","Shadow", "Blademaster", "Mystic", "Meditate. Master Yi meditates, becoming untargetable for 1 second and healing over the duration. After Master Yi finishes meditating, he gains 100% Attack Speed and deal bonus magic damage on hit for 6 seconds. Bonus Damage: 50 / 75 / 500", 'A', 5, "850 / 1530 / 3060", 150, 100, 30 ,20 ,"70 / 126 / 252" ,"70 / 126 / 252" ,1 ,"25%", 1);
+        Champion aux = new Champion();
 
-
-        for (Champion champ : ChampList){
-            if(champ.getName() == Name ){
-                encontrado = true;
+        for(Champion champ : ChampList){
+            if (champ.getName() == "Ashe"){
                 aux = champ;
             }
         }
-        if (encontrado){
-            imagenCampeon(aux.getName());
-            etDescription.setText(aux.getDescription());
-            etChampName.setText(aux.getName());
-            etOrigin.setText(aux.getOrigin());
-            etClass.setText(aux.getChampClass());
-            etCost.setText(aux.getCost());
-            etHealth.setText(aux.getHealth());
-            etMana.setText(aux.getMana());
-            etArmor.setText(aux.getArmor());
-            etMR.setText(aux.getMR());
-            etDPS.setText(aux.getMR());
-            etDamage.setText(aux.getDamage());
-            etAtkSpd.setText(Double.toString(aux.getAtkSpd()));
-            etCritRate.setText(aux.getCritRate());
-            etRange.setText(aux.getRange());
-        }
 
-
+        imagenCampeon("Ashe");
+        etDescription.setText(aux.getDescription());
+        etChampName.setText(aux.getName());
+        etOrigin.setText(aux.getOrigin());
+        etClass.setText(aux.getChampClass());
+        etCost.setText(Integer.toString(aux.getCost()));
+        etHealth.setText(aux.getHealth());
+        etMana.setText(Integer.toString(aux.getMana()));
+        etArmor.setText(Integer.toString(aux.getArmor()));
+        etMR.setText(Integer.toString(aux.getMR()));
+        etDPS.setText(Integer.toString(aux.getMR()));
+        etDamage.setText(aux.getDamage());
+        etAtkSpd.setText(Double.toString(aux.getAtkSpd()));
+        etCritRate.setText(aux.getCritRate());
+        etRange.setText(Integer.toString(aux.getRange()));
+/*
+        Bundle datos = this.getIntent().getExtras();
+        String NombreCampeon = datos.getString("Name");
+        if (NombreCampeon == null) {
+            mostrarDatosCampeon("Ashe");
+        }else {
+            mostrarDatosCampeon(NombreCampeon);
+        }*/
     }
 
-    public void imagenCampeon (String Name) {
-        switch (Name) {
+    public void mostrarDatosCampeon(String Name){
+        Champion aux = new Champion();
+
+        for(Champion champ : ChampList){
+            if (champ.getName() == Name){
+                aux = champ;
+            }
+        }
+
+        imagenCampeon(Name);
+        etDescription.setText(aux.getDescription());
+        etChampName.setText(aux.getName());
+        etOrigin.setText(aux.getOrigin());
+        etClass.setText(aux.getChampClass());
+        etCost.setText(Integer.toString(aux.getCost()));
+        etHealth.setText(aux.getHealth());
+        etMana.setText(Integer.toString(aux.getMana()));
+        etArmor.setText(Integer.toString(aux.getArmor()));
+        etMR.setText(Integer.toString(aux.getMR()));
+        etDPS.setText(Integer.toString(aux.getMR()));
+        etDamage.setText(aux.getDamage());
+        etAtkSpd.setText(Double.toString(aux.getAtkSpd()));
+        etCritRate.setText(aux.getCritRate());
+        etRange.setText(Integer.toString(aux.getRange()));
+    }
+
+    public boolean imagenCampeon (String Name) {
+        if (Name == null){
+            return false;
+        }
+        switch(Name) {
             case "Singed":
                 image.setImageResource(R.drawable.singed);
                 break;
@@ -159,7 +191,10 @@ public class Champ_Info_Activity extends AppCompatActivity {
             case "Master Yi":
                 image.setImageResource(R.drawable.masteryi);
                 break;
+            default:
+                image.setImageResource(R.drawable.ashe);
         }
+        return true;
     }
 
 }

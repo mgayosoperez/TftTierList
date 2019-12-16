@@ -20,6 +20,9 @@ public class Champion {
     private String CritRate;
     private int Range;
 
+    public Champion() {
+    }
+
     public Champion(String Name, String Origin, String ChampClass, String OriginClass,
                     String Description, char Tier, int Cost, String Health, int Mana, int InicialMana, int Armor, int MR, String DPS,
                     String Damage, double AtkSpd, String CritRate, int Range) {
