@@ -99,7 +99,7 @@ public class SqlIO extends SQLiteOpenHelper {
                     "('Needlessly Large Rod', '', '', '+20% Spell Damage.', 'A')," +
                     "('Tear of the Goddess','','','+20 Mana.','A')," +
                     "('B.F. Sword','','','+15 Attack Damage.','B')," +
-                    "('Recurve Bow','','','+15% Attack Speed','B')," +
+                    "('Recurve Bow','','','+15% Attack Speed.','B')," +
                     "('Giants Belt','','','+200 Health.','C')," +
                     "('Negatron Cloak','','','+25 Magic Resist.','C')," +
                     "('Sparring Gloves','','','+10% Critical Strike Chance. +10% Dodge Chance','C')," +
@@ -153,7 +153,7 @@ public class SqlIO extends SQLiteOpenHelper {
             db.execSQL(datosItem);
 
             final String datosCampeon ="INSERT INTO `CAMPEON` (`nombre`, `origen`, `clase`, `claseOrigen`, `descripcion`, `tier`, `coste`, `vida`, `mana`,`manaInicial`, `armadura`, `mr`, `dps`, `daño`, `vAtaque`, `critico`, `alcance`) VALUES" +
-                    "                      ('Zed', 'Eléctrico', 'Asesino', 'Invocador', '-', 'S', '-', '5', '850/1530/3060', '150', '0', '30', '20' ,'80/144/288' ,'80/144/288' ,'1' ,'25%' ,'1')," +
+                    "                      ('Zed', 'Eléctrico', 'Asesino', 'Invocador', '-', 'S', '5', '850/1530/3060', '150', '0', '30', '20' ,'80/144/288' ,'80/144/288' ,'1' ,'25%' ,'1')," +
                     "('Singed', 'Poison', 'Alchemist', '-', 'Singed leaves a poison cloud behind him damaging enemies in the area over 4 seconds.', 'S', '5', '950 / 1710 / 3420', '0', '0', '50', '20' ,'0/0/0' ,'0/0/0' ,'0' ,'25%' ,'0')," +
                     "('Olaf', 'Glacial', 'Berserker', '-', 'Olaf gains attack speed, lifesteal based on missing health, and immunity to crowd control for the rest of combat. Attack Speed Bonus: 100% / 150% / 300%. Lifesteal: 50%.', 'S', '4', '750 / 1350 / 2700', '90', '0', '35', '20' ,'60 / 107 / 214' ,'70 / 126 / 252' ,'0.85' ,'25%' ,'1')," +
                     "('Nocturne', 'Steel', 'Assassin', '-', 'Every third attack, Nocturne deals additional damage to enemies around him and heals for a portion of the damage. Heal Amount: 40% / 60% / 80%', 'S','3', '650 / 1170 / 2340', '0', '0', '25', '20', '45 / 81 / 162', '60 / 108 / 216' ,'0.75' ,'25%' ,'1' )," +
