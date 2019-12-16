@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <GridView
         android:layout_width="match_parent"
@@ -13,6 +14,7 @@
         android:columnWidth="100dp"
         android:gravity="center"
         android:numColumns="auto_fit"
-        android:id="@+id/champsGrid"/>
+        android:id="@+id/champsGrid"
+        android:background="#000000"/>
 
 </LinearLayout>
