@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
         Champion b = new Champion("Olaf", "Glacial", "Berserker", "-", "Olaf gains attack speed, lifesteal based on missing health, and immunity to crowd control for the rest of combat. Attack Speed Bonus: 100% / 150% / 300%. Lifesteal: 50%.", 'S', 4, "750 / 1350 / 2700", 90, 0, 35, 20 ,"60 / 107 / 214" ,"70 / 126 / 252" ,0.85 ,"25%" ,1);
         Champion c = new Champion("Nocturne", "Steel", "Assassin", "-", "Every third attack, Nocturne deals additional damage to enemies around him and heals for a portion of the damage. Heal Amount: 40% / 60% / 80%", 'S',3, "650 / 1170 / 2340", 0, 0, 25, 20, "45 / 81 / 162", "60 / 108 / 216" ,0.75 ,"25%" ,1 );
         Champion d = new Champion("Nami", "Ocean", "Mystic", "-", "Nami sends a massive wave toward a random enemy, damaging and knocking up enemies it passes through and granting allies it passes through bonus magic damage on hit. Damage: 150 / 250 / 350 Stun Duration: 1.5 / 2 / 2.5 Bonus Damage: 25 / 50 / 300", 'S', 5, "750 / 1350 / 2700", 125, 50, 25 ,20 ,"38 / 68 / 135" ,"50 / 90 / 180" ,0.75 ,"25%", 4);
-        Champion e = new Champion("Lux", "x", "Avatar", "-", "Final Spark. Lux fires a straight beam of light at enemies. If at least one enemy is killed, she restores 50 mana. Damage: 600 / 900 / 9999", 'S', 7, "850 / 1530 / 3060", 80, 0, 25 ,20 ,"55 / 99 / 199" ,"65 / 117 / 234" ,0.85 ,"25%", 4);
+        Champion e = new Champion("Zed", "Eléctrico", "Asesino", "Invocador", "-", 'S', 5, "850/1530/3060", 150, 0, 30, 20 ,"80/144/288" ,"80/144/288" ,1 ,"25%" ,1);
         Champion f = new Champion("Vladimir", "Ocean", "Mage", "-", "Drain. Vladimir damages a target enemy, healing himself for the damage dealt. Damage: 200 / 325 / 450", 'C', 1, "550 / 990 / 1980", 75, 0, 35 ,20 ,"26 / 47 / 94" ,"40 / 72 / 144" ,0.65 ,"25%", 2);
-        Champion g = new Champion("Amumu", "Inferno", "Warden", "-", "Curse of the Sad Mummy. Amumus rage explodes, dealing magic damage to enemies in an area around him, and stunning them for 1.5 seconds. Damage: 250 / 500 / 1337. Range: 2 / 3 / 4", 'B', 5, "900 / 1620 / 3240", 150, 50, 150 ,20 ,"41 / 74 / 149" ,"55 / 99 / 198" ,0.75 ,"25%", 1);
+        Champion g = new Champion("Annie", "Inferno", "Summoner", "-", "Summon Tibbers. Annie summons Tibbers to fight alongside her dealing damage to enemies in the area. Initial Damage: 100 / 200 / 300. Tibbers Damage: 150 / 300 / 1000. Tibbers Health: 2000. Tibbers Armor: 30", 'S', 4, "700 / 1260 / 2520", 75, 0, 20 ,20 ,"31 / 57 / 113" ,"45 / 81 / 162" ,0.7 ,"25%", 3);
         Champion h = new Champion("Yasuo", "Cloud", "Blademaster", "-", "Last Breath. Yasuo blinks to the enemy with the most items and knocks them up, holding them airborn for 1 second and hitting them, dealing basic attack damage and applying on-hit effects. Hits: 4 / 5 / 6", 'B', 2, "600 / 1080 / 2160", 100, 0, 30 ,20 ,"42 / 76 / 151" ,"60 / 108 / 216" ,0.7 ,"25%", 1);
         Champion i = new Champion("Sivir", "Desert", "Blademaster", "-", "Ricochet. For the next 5 seconds, Sivirs attacks will bounce up to 10 times to nearby enemies, dealing damage and applying on-hit effects. Damage: 100% / 125% / 150%", 'B', 3, "600 / 1080 / 2160", 65, 0, 25 ,20 ,"39 / 69 / 139" ,"55 / 99 / 198" ,0.7 ,"25%", 3);
         Champion j = new Champion("Nautilus", "Ocean", "Warden", "-", "Depth Charge. Nautilus sends out a depth charge that seeks out the furthest enemy champion, knocking them up and stunning them. It also deals damage to all enemies it passes. Damage: 100 / 200 / 400. Stun Duration: 3 / 4 / 6", 'B', 3, "850 / 1530 / 3060", 125, 50, 40 ,20 ,"33 / 59 / 119" ,"55 / 99 / 198" ,0.6 ,"25%", 1);
@@ -155,8 +155,8 @@ public class MainActivity extends AppCompatActivity {
 
         });
             HashMap<String, Object> item1 = new HashMap<>();
-            item1.put("Name", "Aatrox");
-            item1.put("Img", R.drawable.aatrox);
+            item1.put("Name", "Ashe");
+            item1.put("Img", R.drawable.ashe);
             maplist.add(item1);
 
             HashMap<String, Object> item2 = new HashMap<>();
@@ -165,8 +165,8 @@ public class MainActivity extends AppCompatActivity {
             maplist.add(item2);
 
             HashMap<String, Object> item3 = new HashMap<>();
-            item3.put("Name", "Zed");
-            item3.put("Img", R.drawable.zed);
+            item3.put("Name", "Master Yi");
+            item3.put("Img", R.drawable.masteryi);
 
             maplist.add(item3);
             HashMap<String, Object> item4 = new HashMap<>();
@@ -214,7 +214,173 @@ public class MainActivity extends AppCompatActivity {
                 return v;
             }
         }
-
+    public  void alfabetico(){
+        maplist.clear();
+        HashMap<String, Object> item1 = new HashMap<>();
+        item1.put("Name", "Ashe");
+        item1.put("Img", R.drawable.ashe);
+        maplist.add(item1);
+        HashMap<String, Object> item2 = new HashMap<>();
+        item2.put("Name", "Annie");
+        item2.put("Img", R.drawable.annie);
+        maplist.add(item2);
+        HashMap<String, Object> item3 = new HashMap<>();
+        item3.put("Name", "Master Yi");
+        item3.put("Img", R.drawable.masteryi);
+        maplist.add(item3);
+        HashMap<String, Object> item12 = new HashMap<>();
+        item12.put("Name", "Maokai");
+        item12.put("Img", R.drawable.maokai);
+        maplist.add(item12);
+        HashMap<String, Object> item4 = new HashMap<>();
+        item4.put("Name", "Nami");
+        item4.put("Img", R.drawable.nami);
+        maplist.add(item4);
+        HashMap<String, Object> item5 = new HashMap<>();
+        item5.put("Name", "Nautilus");
+        item5.put("Img", R.drawable.nautilus);
+        maplist.add(item5);
+        HashMap<String, Object> item6 = new HashMap<>();
+        item6.put("Name", "Nocturne");
+        item6.put("Img", R.drawable.nocturne);
+        maplist.add(item6);
+        HashMap<String, Object> item7 = new HashMap<>();
+        item7.put("Name", "Olaf");
+        item7.put("Img", R.drawable.olaf);
+        maplist.add(item7);
+        HashMap<String, Object> item8 = new HashMap<>();
+        item8.put("Name", "Singed");
+        item8.put("Img", R.drawable.singed);
+        maplist.add(item8);
+        HashMap<String, Object> item9 = new HashMap<>();
+        item9.put("Name", "Sivir");
+        item9.put("Img", R.drawable.sivir);
+        maplist.add(item9);
+        HashMap<String, Object> item10 = new HashMap<>();
+        item10.put("Name", "Vladimir");
+        item10.put("Img", R.drawable.vladimir);
+        maplist.add(item10);
+        HashMap<String, Object> item11 = new HashMap<>();
+        item11.put("Name", "Yasuo");
+        item11.put("Img", R.drawable.yasuo);
+        maplist.add(item11);
+        HashMap<String, Object> item13 = new HashMap<>();
+        item13.put("Name", "Zed");
+        item13.put("Img", R.drawable.zed);
+        maplist.add(item13);
+    }
+    public void tier(){
+        maplist.clear();
+        HashMap<String, Object> item1 = new HashMap<>();
+        item1.put("Name", "Ashe");
+        item1.put("Img", R.drawable.ashe);
+        HashMap<String, Object> item2 = new HashMap<>();
+        item2.put("Name", "Annie");
+        item2.put("Img", R.drawable.annie);
+        HashMap<String, Object> item3 = new HashMap<>();
+        item3.put("Name", "Master Yi");
+        item3.put("Img", R.drawable.masteryi);
+        HashMap<String, Object> item12 = new HashMap<>();
+        item12.put("Name", "Maokai");
+        item12.put("Img", R.drawable.maokai);
+        HashMap<String, Object> item4 = new HashMap<>();
+        item4.put("Name", "Nami");
+        item4.put("Img", R.drawable.nami);
+        HashMap<String, Object> item5 = new HashMap<>();
+        item5.put("Name", "Nautilus");
+        item5.put("Img", R.drawable.nautilus);
+        HashMap<String, Object> item6 = new HashMap<>();
+        item6.put("Name", "Nocturne");
+        item6.put("Img", R.drawable.nocturne);
+        HashMap<String, Object> item7 = new HashMap<>();
+        item7.put("Name", "Olaf");
+        item7.put("Img", R.drawable.olaf);
+        HashMap<String, Object> item8 = new HashMap<>();
+        item8.put("Name", "Singed");
+        item8.put("Img", R.drawable.singed);
+        HashMap<String, Object> item9 = new HashMap<>();
+        item9.put("Name", "Sivir");
+        item9.put("Img", R.drawable.sivir);
+        HashMap<String, Object> item10 = new HashMap<>();
+        item10.put("Name", "Vladimir");
+        item10.put("Img", R.drawable.vladimir);
+        HashMap<String, Object> item11 = new HashMap<>();
+        item11.put("Name", "Yasuo");
+        item11.put("Img", R.drawable.yasuo);
+        HashMap<String, Object> item13 = new HashMap<>();
+        item13.put("Name", "Zed");
+        item13.put("Img", R.drawable.zed);
+        maplist.add(item2);
+        maplist.add(item4);
+        maplist.add(item6);
+        maplist.add(item7);
+        maplist.add(item8);
+        maplist.add(item13);
+        maplist.add(item3);
+        maplist.add(item1);
+        maplist.add(item12);
+        maplist.add(item5);
+        maplist.add(item11);
+        maplist.add(item9);
+        maplist.add(item10);
+    }
+    public  void coste(){
+        maplist.clear();
+        HashMap<String, Object> item1 = new HashMap<>();
+        item1.put("Name", "Ashe");
+        item1.put("Img", R.drawable.ashe);
+        HashMap<String, Object> item2 = new HashMap<>();
+        item2.put("Name", "Annie");
+        item2.put("Img", R.drawable.annie);
+        HashMap<String, Object> item3 = new HashMap<>();
+        item3.put("Name", "Master Yi");
+        item3.put("Img", R.drawable.masteryi);
+        HashMap<String, Object> item12 = new HashMap<>();
+        item12.put("Name", "Maokai");
+        item12.put("Img", R.drawable.maokai);
+        HashMap<String, Object> item4 = new HashMap<>();
+        item4.put("Name", "Nami");
+        item4.put("Img", R.drawable.nami);
+        HashMap<String, Object> item5 = new HashMap<>();
+        item5.put("Name", "Nautilus");
+        item5.put("Img", R.drawable.nautilus);
+        HashMap<String, Object> item6 = new HashMap<>();
+        item6.put("Name", "Nocturne");
+        item6.put("Img", R.drawable.nocturne);
+        HashMap<String, Object> item7 = new HashMap<>();
+        item7.put("Name", "Olaf");
+        item7.put("Img", R.drawable.olaf);
+        HashMap<String, Object> item8 = new HashMap<>();
+        item8.put("Name", "Singed");
+        item8.put("Img", R.drawable.singed);
+        HashMap<String, Object> item9 = new HashMap<>();
+        item9.put("Name", "Sivir");
+        item9.put("Img", R.drawable.sivir);
+        HashMap<String, Object> item10 = new HashMap<>();
+        item10.put("Name", "Vladimir");
+        item10.put("Img", R.drawable.vladimir);
+        HashMap<String, Object> item11 = new HashMap<>();
+        item11.put("Name", "Yasuo");
+        item11.put("Img", R.drawable.yasuo);
+        HashMap<String, Object> item13 = new HashMap<>();
+        item13.put("Name", "Zed");
+        item13.put("Img", R.drawable.zed);
+        maplist.add(item3);
+        maplist.add(item5);
+        maplist.add(item8);
+        maplist.add(item13);
+        maplist.add(item1);
+        maplist.add(item2);
+        maplist.add(item7);
+        maplist.add(item5);
+        maplist.add(item6);
+        maplist.add(item9);
+        maplist.add(item11);
+        maplist.add(item12);
+        maplist.add(item10);
+    }
 
     }
+
+
 
