@@ -1,18 +1,14 @@
 package com.example.tfttierlist.View;
 
-import android.media.Image;
 import android.os.Bundle;
 
 import com.example.tfttierlist.Core.Champion;
+import com.example.tfttierlist.Core.Sqlito;
 import com.example.tfttierlist.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
-import android.widget.EditText;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,6 +32,8 @@ public class Champ_Info_Activity extends AppCompatActivity {
 
     List<Champion> ChampList = new ArrayList<>();
 
+    private Sqlito BaseDatos;
+
     TextView etChampName;
     TextView etOrigin;
     TextView etClass;
@@ -53,13 +51,15 @@ public class Champ_Info_Activity extends AppCompatActivity {
 
     ImageView image;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_champ__info_);
 
         //Inicializar lista de campeones
-        ChampList.add(a);
+       /* ChampList.add(a);
         ChampList.add(b);
         ChampList.add(c);
         ChampList.add(d);
@@ -72,6 +72,11 @@ public class Champ_Info_Activity extends AppCompatActivity {
         ChampList.add(k);
         ChampList.add(m);
         ChampList.add(n);
+
+        */
+        this.BaseDatos = new Sqlito( this.getApplicationContext() );
+        Log.d("STATE","nepe1");
+        ChampList = BaseDatos.recuperaTodo();
 
 
         //Inicializar las variables
@@ -92,36 +97,36 @@ public class Champ_Info_Activity extends AppCompatActivity {
         image = findViewById(R.id.imageView);
 
         Champion aux = new Champion();
+        Bundle datos = this.getIntent().getExtras();
+        String NombreCampeon = datos.getString("Name");
+
 
         for(Champion champ : ChampList){
-            if (champ.getName() == "Ashe"){
-                aux = champ;
+            Log.d("STATE",champ.getName());
+            if (champ.getName().equals(NombreCampeon)){
+                Log.d("STATE",champ.getName());
+                imagenCampeon(NombreCampeon);
+                etDescription.setText(champ.getDescription());
+                Log.d("STATE",champ.getDescription());
+                etChampName.setText(champ.getName());
+                etOrigin.setText(champ.getOrigin());
+                etClass.setText(champ.getChampClass());
+                etCost.setText(Integer.toString(champ.getCost()));
+                etHealth.setText(champ.getHealth());
+                etMana.setText(Integer.toString(champ.getMana()));
+                etArmor.setText(Integer.toString(champ.getArmor()));
+                etMR.setText(Integer.toString(champ.getMR()));
+                etDPS.setText(Integer.toString(champ.getMR()));
+                etDamage.setText(champ.getDamage());
+                etAtkSpd.setText(Double.toString(champ.getAtkSpd()));
+                etCritRate.setText(champ.getCritRate());
+                etRange.setText(Integer.toString(champ.getRange()));
+
             }
         }
 
-        imagenCampeon("Ashe");
-        etDescription.setText(aux.getDescription());
-        etChampName.setText(aux.getName());
-        etOrigin.setText(aux.getOrigin());
-        etClass.setText(aux.getChampClass());
-        etCost.setText(Integer.toString(aux.getCost()));
-        etHealth.setText(aux.getHealth());
-        etMana.setText(Integer.toString(aux.getMana()));
-        etArmor.setText(Integer.toString(aux.getArmor()));
-        etMR.setText(Integer.toString(aux.getMR()));
-        etDPS.setText(Integer.toString(aux.getMR()));
-        etDamage.setText(aux.getDamage());
-        etAtkSpd.setText(Double.toString(aux.getAtkSpd()));
-        etCritRate.setText(aux.getCritRate());
-        etRange.setText(Integer.toString(aux.getRange()));
-/*
-        Bundle datos = this.getIntent().getExtras();
-        String NombreCampeon = datos.getString("Name");
-        if (NombreCampeon == null) {
-            mostrarDatosCampeon("Ashe");
-        }else {
-            mostrarDatosCampeon(NombreCampeon);
-        }*/
+
+
     }
 
     public void mostrarDatosCampeon(String Name){
@@ -191,8 +196,7 @@ public class Champ_Info_Activity extends AppCompatActivity {
             case "Master Yi":
                 image.setImageResource(R.drawable.masteryi);
                 break;
-            default:
-                image.setImageResource(R.drawable.ashe);
+
         }
         return true;
     }
