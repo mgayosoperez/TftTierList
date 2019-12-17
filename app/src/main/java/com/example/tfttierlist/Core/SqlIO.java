@@ -151,8 +151,9 @@ public class SqlIO extends SQLiteOpenHelper {
                     "('Titanic Hydra','Recurve Bow','Giants Belt','Basic Attacks deal an additional 3% of the wearers Maximum Health as magic damage to the target and adjacent enemies behind them.','D');";
 
             db.execSQL(datosItem);
+            db.execSQL("INSERT INTO CAMPEON (nombre, origen, clase, claseOrigen, descripcion, tier, coste, vida, mana,manaInicial, armadura, mr, dps, daño, vAtaque, critico, alcance) VALUES ('Zed', 'Eléctrico', 'Asesino', 'Invocador', 'soy zed', 'S', '5', '850/1530/3060', '150', '0', '30', '20' ,'80/144/288' ,'80/144/288' ,'1' ,'25%' ,'1') ");
 
-            final String datosCampeon ="INSERT INTO `CAMPEON` (`nombre`, `origen`, `clase`, `claseOrigen`, `descripcion`, `tier`, `coste`, `vida`, `mana`,`manaInicial`, `armadura`, `mr`, `dps`, `daño`, `vAtaque`, `critico`, `alcance`) VALUES" +
+            /*final String datosCampeon ="INSERT INTO `CAMPEON` (`nombre`, `origen`, `clase`, `claseOrigen`, `descripcion`, `tier`, `coste`, `vida`, `mana`,`manaInicial`, `armadura`, `mr`, `dps`, `daño`, `vAtaque`, `critico`, `alcance`) VALUES" +
                     "                      ('Zed', 'Eléctrico', 'Asesino', 'Invocador', '-', 'S', '5', '850/1530/3060', '150', '0', '30', '20' ,'80/144/288' ,'80/144/288' ,'1' ,'25%' ,'1')," +
                     "('Singed', 'Poison', 'Alchemist', '-', 'Singed leaves a poison cloud behind him damaging enemies in the area over 4 seconds.', 'S', '5', '950 / 1710 / 3420', '0', '0', '50', '20' ,'0/0/0' ,'0/0/0' ,'0' ,'25%' ,'0')," +
                     "('Olaf', 'Glacial', 'Berserker', '-', 'Olaf gains attack speed, lifesteal based on missing health, and immunity to crowd control for the rest of combat. Attack Speed Bonus: 100% / 150% / 300%. Lifesteal: 50%.', 'S', '4', '750 / 1350 / 2700', '90', '0', '35', '20' ,'60 / 107 / 214' ,'70 / 126 / 252' ,'0.85' ,'25%' ,'1')," +
@@ -208,6 +209,8 @@ public class SqlIO extends SQLiteOpenHelper {
                     "('Warwick', 'Glacial', 'Predator', '-', 'Infinite Duress. Warwick pounces onto the lowest health enemy, stunning, damaging, and applying on-hit effects while healing himself. Damage: 150 / 225 / 300. Hits: 3. Duration: 1.5', 'D', '1', '650 / 1170 / 2340', '150', '50', '30', '20' ,'30 / 54 / 108' ,'50 / 90 / 180' ,'0.6' ,'25%' ,'1')," +
                     "('Taliyah', 'Mountain', 'Mage', '-', 'Seismic Shove. Taliyah causes the ground to rise under the enemy with the most Mana, dealing damage and either pushing or pulling them toward her. Damage: 150 / 350 / 550. Stun Duration: 2', 'E', '1', '500 / 900 / 1800', '80', '50', '20', '20' ,'26 / 47 / 94' ,'40 / 72 / 144' ,'0.65' ,'25%' ,'3');";
             db.execSQL(datosCampeon);
+
+            */
 
             db.setTransactionSuccessful();
         }catch (SQLException exc){
