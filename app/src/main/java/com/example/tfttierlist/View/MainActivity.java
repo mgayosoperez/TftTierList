@@ -2,11 +2,10 @@ package com.example.tfttierlist.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -22,10 +21,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.tfttierlist.Core.ChampClass;
-import com.example.tfttierlist.Core.ChampOrigin;
 import com.example.tfttierlist.Core.Champion;
-import com.example.tfttierlist.Core.Item;
 import com.example.tfttierlist.Core.Sqlito;
 import com.example.tfttierlist.R;
 
@@ -64,8 +60,9 @@ public class MainActivity extends AppCompatActivity {
 
         for (Champion champ : ChampionList) {
             HashMap<String, Object> item1 = new HashMap<>();
+            Log.d("STATUS",champ.getName());
             item1.put("Name", champ.getName());
-            int id = idImagen("Pepe");
+            int id = idImagen(champ.getName());
             item1.put("Img", id);
             maplist.add(item1);
         }
@@ -123,20 +120,10 @@ public class MainActivity extends AppCompatActivity {
         boolean toret = false;
         switch (item.getItemId()) {
 
-            case R.id.alphOrder:
+            case R.id.verObjetos:
                 this.alfabetico();
                 GridAdapter adapter = new GridAdapter(this);
                 champGrid.setAdapter(adapter);
-                break;
-            case R.id.costOrder:
-                this.coste();
-                GridAdapter adapter1 = new GridAdapter(this);
-                champGrid.setAdapter(adapter1);
-                break;
-            case R.id.tierOrder:
-                this.tier();
-                GridAdapter adapter2 = new GridAdapter(this);
-                champGrid.setAdapter(adapter2);
                 break;
         }
         return toret;
@@ -232,9 +219,52 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public int idImagen(String Name){
-       return R.drawable.aatrox;
+    public int idImagen(String Name) {
 
+
+        switch(Name) {
+            case "Singed":
+                return R.drawable.singed;
+
+            case "Olaf":
+                return R.drawable.olaf;
+
+            case "Nocturne":
+                return R.drawable.nocturne;
+
+            case "Nami":
+                return R.drawable.nami;
+
+            case "Lux":
+                return R.drawable.lux;
+
+            case "Vladimir":
+                return R.drawable.vladimir;
+
+            case "Yasuo":
+                return R.drawable.yasuo;
+
+            case "Sivir":
+                return R.drawable.sivir;
+
+            case "Nautilus":
+                return R.drawable.nautilus;
+
+            case "Maokai":
+                return R.drawable.maokai;
+
+            case "Ashe":
+                return R.drawable.ashe;
+
+            case "Master Yi":
+                return R.drawable.masteryi;
+
+            case "Zed":
+                return R.drawable.zed;
+
+            default:
+                return R.drawable.zed;
+        }
     }
 
 }

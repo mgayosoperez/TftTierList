@@ -2,12 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/alphOrder"
-        android:title="Ordenar Alfabéticamente" />
-    <item
-        android:id="@+id/tierOrder"
-        android:title="Ordenar por Tier" />
-    <item
-        android:id="@+id/costOrder"
-        android:title="Ordenar por Coste" />
+        android:id="@+id/verObjetos"
+        android:title="Ver Objetos" />
 </menu>
