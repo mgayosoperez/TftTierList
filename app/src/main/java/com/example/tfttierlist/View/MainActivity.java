@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -60,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         for (Champion champ : ChampionList) {
             HashMap<String, Object> item1 = new HashMap<>();
-            Log.d("STATUS",champ.getName());
+
             item1.put("Name", champ.getName());
             int id = idImagen(champ.getName());
             item1.put("Img", id);
@@ -121,10 +119,8 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.verObjetos:
-                this.alfabetico();
-                GridAdapter adapter = new GridAdapter(this);
-                champGrid.setAdapter(adapter);
-                break;
+                Intent intent = new Intent(this, Item_List_Activity.class);
+                this.startActivityForResult(intent, 11);
         }
         return toret;
     }
@@ -163,9 +159,8 @@ public class MainActivity extends AppCompatActivity {
             String currentItem = maplist.get(position).get("Name").toString();
             // Set the text and image for current item using data from map list
             txtview.setText(currentItem);
-            String mierda = maplist.get(position).get("Img").toString();
-            Log.d("STATUS",mierda);
-            imgview.setImageResource(Integer.parseInt(mierda));
+            String calidad = maplist.get(position).get("Img").toString();
+            imgview.setImageResource(Integer.parseInt(calidad));
 
             return v;
         }
