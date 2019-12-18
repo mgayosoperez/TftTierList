@@ -199,7 +199,118 @@ public class Champ_Info_Activity extends AppCompatActivity {
                 break;
             case "Zed":
                 image.setImageResource(R.drawable.zed);
-
+                break;
+            case "Annie":
+                image.setImageResource(R.drawable.annie);
+                break;
+            case "Brand":
+                image.setImageResource(R.drawable.brand);
+                break;
+            case "Janna":
+                image.setImageResource(R.drawable.janna);
+                break;
+            case "Kindred":
+                image.setImageResource(R.drawable.kindred);
+                break;
+            case "Malphite":
+                image.setImageResource(R.drawable.malphite);
+                break;
+            case "Qiyana":
+                image.setImageResource(R.drawable.qiyana);
+                break;
+            case "Taric":
+                image.setImageResource(R.drawable.taric);
+                break;
+            case "Skarner":
+                image.setImageResource(R.drawable.skarner);
+                break;
+            case "Volibear":
+                image.setImageResource(R.drawable.volibear);
+                break;
+            case "Yorick":
+                image.setImageResource(R.drawable.yorick);
+                break;
+            case "Senna":
+                image.setImageResource(R.drawable.senna);
+                break;
+            case "Lucian":
+                image.setImageResource(R.drawable.lucian);
+                break;
+            case "Dr Mundo":
+                image.setImageResource(R.drawable.drmundo);
+                break;
+            case "Ezreal":
+                image.setImageResource(R.drawable.ezreal);
+                break;
+            case "KogMaw":
+                image.setImageResource(R.drawable.kogmaw);
+                break;
+            case "LeBlanc":
+                image.setImageResource(R.drawable.leblanc);
+                break;
+            case "Malzahar":
+                image.setImageResource(R.drawable.malzahar);
+                break;
+            case "RekSai":
+                image.setImageResource(R.drawable.reksai);
+                break;
+            case "Soraka":
+                image.setImageResource(R.drawable.soraka);
+                break;
+            case "Syndra":
+                image.setImageResource(R.drawable.syndra);
+                break;
+            case "Thresh":
+                image.setImageResource(R.drawable.thresh);
+                break;
+            case "Twitch":
+                image.setImageResource(R.drawable.twitch);
+                break;
+            case "Zyra":
+                image.setImageResource(R.drawable.zyra);
+                break;
+            case "Amumu":
+                image.setImageResource(R.drawable.ammumu);
+                break;
+            case "Aatrox":
+                image.setImageResource(R.drawable.aatrox);
+                break;
+            case "Azir":
+                image.setImageResource(R.drawable.azir);
+                break;
+            case "Diana":
+                image.setImageResource(R.drawable.diana);
+                break;
+            case "Ivern":
+                image.setImageResource(R.drawable.ivern);
+                break;
+            case "Sion":
+                image.setImageResource(R.drawable.sion);
+                break;
+            case "Varus":
+                image.setImageResource(R.drawable.varus);
+                break;
+            case "Braum":
+                image.setImageResource(R.drawable.braum);
+                break;
+            case "Jax":
+                image.setImageResource(R.drawable.jax);
+                break;
+            case "Nasus":
+                image.setImageResource(R.drawable.nasus);
+                break;
+            case "Neeko":
+                image.setImageResource(R.drawable.neeko);
+                break;
+            case "Vayne":
+                image.setImageResource(R.drawable.vayne);
+                break;
+            case "Warwick":
+                image.setImageResource(R.drawable.warwick);
+                break;
+            case "Taliyah":
+                image.setImageResource(R.drawable.taliyah);
+                break;
         }
         return true;
     }
