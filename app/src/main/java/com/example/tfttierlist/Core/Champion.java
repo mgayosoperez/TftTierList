@@ -1,31 +1,52 @@
 package com.example.tfttierlist.Core;
 
+
+import android.content.ContentValues;
+
 public class Champion {
+    private static final String CHAMP_TABLE = "champ";
+    private static final String NAME = "name";
+    private static final String ORIGIN = "origin";
+    private static final String CHAMPCLASS = "champclass";
+    private static final String ORIGINCLASS = "originclass";
+    private static final String DESCRIPTION = "description";
+    private static final String TIER = "tier";
+    private static final String COST = "coste";
+    private static final String HEALTH = "health";
+    private static final String MANA = "mana";
+    private static final String INITIALMANA = "initialmana";
+    private static final String ARMOR = "armor";
+    private static final String MR = "mr";
+    private static final String DPS = "dps";
+    private static final String DAMAGE = "damage";
+    private static final String ATKSPD = "atkspd";
+    private static final String CRITRATE = "critrate";
+    private static final String RANGE = "range";
 
     private String Name;
     private String Origin;
     private String ChampClass;
     private String OriginClass;
     private String Description;
-    private char Tier;
-    private int Cost;
+    private String Tier;
+    private String Cost;
     private String Health;
-    private int Mana;
-    private int InicialMana;
-    private int Armor;
-    private int MR;
-    private String DPS;
+    private String Mana;
+    private String InicialMana;
+    private String Armor;
+    private String Mr;
+    private String Dps;
     private String Damage;
-    private double AtkSpd;
+    private String AtkSpd;
     private String CritRate;
-    private int Range;
+    private String Range;
 
     public Champion() {
     }
 
     public Champion(String Name, String Origin, String ChampClass, String OriginClass,
-                    String Description, char Tier, int Cost, String Health, int Mana, int InicialMana, int Armor, int MR, String DPS,
-                    String Damage, double AtkSpd, String CritRate, int Range) {
+                    String Description, String Tier, String Cost, String Health, String Mana, String InicialMana, String Armor, String MR, String DPS,
+                    String Damage, String AtkSpd, String CritRate, String Range) {
 
         this.Name = Name;
         this.Origin = Origin;
@@ -38,8 +59,8 @@ public class Champion {
         this.Mana = Mana;
         this.InicialMana = Mana;
         this.Armor = Armor;
-        this.MR = MR;
-        this.DPS = DPS;
+        this.Mr = MR;
+        this.Dps = DPS;
         this.Damage = Damage;
         this.AtkSpd = AtkSpd;
         this.CritRate = CritRate;
@@ -81,19 +102,19 @@ public class Champion {
         Description = description;
     }
 
-    public char getTier() {
+    public String getTier() {
         return Tier;
     }
 
-    public void setTier(char tier) {
+    public void setTier(String tier) {
         Tier = tier;
     }
 
-    public int getInicialMana() {
+    public String getInicialMana() {
         return InicialMana;
     }
 
-    public void setInicialMana(int inicialMana) {
+    public void setInicialMana(String inicialMana) {
         InicialMana = inicialMana;
     }
 
@@ -105,11 +126,11 @@ public class Champion {
         Name = name;
     }
 
-    public int getCost() {
+    public String getCost() {
         return Cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(String cost) {
         Cost = cost;
     }
 
@@ -121,32 +142,32 @@ public class Champion {
         Health = health;
     }
 
-    public int getMana() {
+    public String getMana() {
         return Mana;
     }
 
-    public void setMana(int mana) {
+    public void setMana(String mana) {
         Mana = mana;
     }
 
-    public int getArmor() {
+    public String getArmor() {
         return Armor;
     }
 
-    public void setArmor(int armor) {
+    public void setArmor(String armor) {
         Armor = armor;
     }
 
-    public int getMR() { return MR; }
+    public String getMR() { return Mr; }
 
-    public void setMR(int MR) { this.MR = MR; }
+    public void setMR(String MR) { this.Mr = MR; }
 
     public String getDPS() {
-        return DPS;
+        return Dps;
     }
 
     public void setDPS(String DPS) {
-        this.DPS = DPS;
+        this.Dps = DPS;
     }
 
     public String getDamage() {
@@ -157,11 +178,11 @@ public class Champion {
         Damage = damage;
     }
 
-    public double getAtkSpd() {
+    public String getAtkSpd() {
         return AtkSpd;
     }
 
-    public void setAtkSpd(double atkSpd) {
+    public void setAtkSpd(String atkSpd) {
         AtkSpd = atkSpd;
     }
 
@@ -173,11 +194,34 @@ public class Champion {
         CritRate = critRate;
     }
 
-    public int getRange() {
+    public String getRange() {
         return Range;
     }
 
-    public void setRange(int range) {
+    public void setRange(String range) {
         Range = range;
     }
+    public ContentValues toContentValues(){
+        ContentValues values = new ContentValues();
+        values.put(NAME,Name);
+        values.put(ORIGIN,Origin);
+        values.put(CHAMPCLASS,ChampClass);
+        values.put(ORIGINCLASS,OriginClass);
+        values.put(DESCRIPTION,Description);
+        values.put(TIER,Tier);
+        values.put(COST,Cost);
+        values.put(HEALTH,Health);
+        values.put(MANA,Mana);
+        values.put(INITIALMANA,InicialMana);
+        values.put(ARMOR,Armor);
+        values.put(MR,Mr);
+        values.put(DPS,Dps);
+        values.put(DAMAGE,Damage);
+        values.put(ATKSPD,AtkSpd);
+        values.put(CRITRATE,CritRate);
+        values.put(RANGE,Range);
+
+        return values;
+    }
+
 }
