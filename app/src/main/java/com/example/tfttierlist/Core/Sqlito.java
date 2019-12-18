@@ -16,7 +16,7 @@ public class Sqlito extends SQLiteOpenHelper{
     private static String NOMBRE = "TFTierList";
     private static int VERSION = 1;
 
-    private static final String CHAMP_TABLE = "champ";
+    private static final String CHAMP_TABLE = "champion";
     private static final String NAME = "name";
     private static final String ORIGIN = "origin";
     private static final String CHAMPCLASS = "champclass";
@@ -46,36 +46,35 @@ public class Sqlito extends SQLiteOpenHelper{
             db.beginTransaction();
 
             db.execSQL( "CREATE TABLE " + CHAMP_TABLE + "("
-                    + NAME + "TEXT PRIMARY KEY,"
-                    + ORIGIN + "TEXT NOT NULL,"
-                    + CHAMPCLASS + "TEXT NOT NULL,"
-                    + ORIGINCLASS + "TEXT NOT NULL,"
-                    + DESCRIPTION + "TEXT NOT NULL,"
-                    + TIER + "TEXT NOT NULL,"
-                    + COST + "TEXT NOT NULL,"
-                    + HEALTH + "TEXT NOT NULL,"
-                    + MANA + "TEXT NOT NULL,"
-                    + INITIALMANA + "TEXT NOT NULL,"
-                    + ARMOR + "TEXT NOT NULL,"
-                    + MR + "TEXT NOT NULL,"
-                    + DPS + "TEXT NOT NULL,"
-                    + DAMAGE + "TEXT NOT NULL,"
-                    + ATKSPD + "TEXT NOT NULL,"
-                    + CRITRATE + "TEXT NOT NULL,"
-                    + RANGE + "TEXT NOT NULL,"
+                    + NAME + " TEXT PRIMARY KEY,"
+                    + ORIGIN + " TEXT NOT NULL,"
+                    + CHAMPCLASS + " TEXT NOT NULL,"
+                    + ORIGINCLASS + " TEXT NOT NULL,"
+                    + DESCRIPTION + " TEXT NOT NULL,"
+                    + TIER + " TEXT NOT NULL,"
+                    + COST + " TEXT NOT NULL,"
+                    + HEALTH + " TEXT NOT NULL,"
+                    + MANA + " TEXT NOT NULL,"
+                    + INITIALMANA + " TEXT NOT NULL,"
+                    + ARMOR + " TEXT NOT NULL,"
+                    + MR + " TEXT NOT NULL,"
+                    + DPS + " TEXT NOT NULL,"
+                    + DAMAGE + " TEXT NOT NULL,"
+                    + ATKSPD + " TEXT NOT NULL,"
+                    + CRITRATE + " TEXT NOT NULL,"
+                    + RANGE + " TEXT NOT NULL,"
                     + "UNIQUE (" + NAME + "))");
 
-            db.setTransactionSuccessful();
-            mockData(db);
 
-        }
-        catch(SQLException exc) {
-            Log.e( LOG_TAG, "creando base de datos: " + exc.getMessage() );
+            db.setTransactionSuccessful();
+        } catch(SQLException exc) {
+            Log.e(LOG_TAG, "ERROR al crear la base de datos: " + exc.getMessage() );
         } finally {
             db.endTransaction();
         }
 
-        return;
+
+        mockData(db);
     }
 
     @Override
@@ -84,7 +83,7 @@ public class Sqlito extends SQLiteOpenHelper{
         try {
             db.beginTransaction();
 
-            db.execSQL( "DROP TABLE IF EXISTS " + "CAMPEON" );
+            db.execSQL( "DROP TABLE IF EXISTS " + CHAMP_TABLE );
 
             db.setTransactionSuccessful();
         } catch(SQLException exc) {
@@ -102,14 +101,10 @@ public class Sqlito extends SQLiteOpenHelper{
     }
 
     public void mockData(SQLiteDatabase sqLiteDatabase){
-        mockChamp(sqLiteDatabase, new Champion("Zed", "Eléctrico", "Asesino", "Invocador", "-", "S", "5", "850/1530/3060", "150", "0", "30", "20" ,"80/144/288" ,"80/144/288" ,"1" ,"25%" ,"1"));
-        mockChamp(sqLiteDatabase, new Champion("Singed", "Poison", "Alchemist", "-", "Singed leaves a poison cloud behind him damaging enemies in the area over 4 seconds.", "S", "5", "950 / 1710 / 3420", "0", "0", "50", "20" ,"0/0/0" ,"0/0/0" ,"0" ,"25%" ,"0"));
-        mockChamp(sqLiteDatabase, new Champion("Olaf", "Glacial", "Berserker", "-", "Olaf gains attack speed, lifesteal based on missing health, and immunity to crowd control for the rest of combat. Attack Speed Bonus: 100% / 150% / 300%. Lifesteal: 50%.", "S", "4", "750 / 1350 / 2700", "90", "0", "35", "20" ,"60 / 107 / 214" ,"70 / 126 / 252" ,"0.85" ,"25%" ,"1"));
-        mockChamp(sqLiteDatabase, new Champion("Nocturne", "Steel", "Assassin", "-", "Every third attack, Nocturne deals additional damage to enemies around him and heals for a portion of the damage. Heal Amount: 40% / 60% / 80%", "S","3", "650 / 1170 / 2340", "0", "0", "25", "20", "45 / 81 / 162", "60 / 108 / 216" ,"0.75" ,"25%" ,"1" ));
-        mockChamp(sqLiteDatabase, new Champion("Nami", "Ocean", "Mystic", "-", "Nami sends a massive wave toward a random enemy, damaging and knocking up enemies it passes through and granting allies it passes through bonus magic damage on hit. Damage: 150 / 250 / 350 Stun Duration: 1.5 / 2 / 2.5 Bonus Damage: 25 / 50 / 300", "S", "5", "750 / 1350 / 2700", "125", "50", "25" ,"20" ,"38 / 68 / 135" ,"50 / 90 / 180" ,"0.75" ,"25%", "4"));
-
-
-
+        mockChamp(sqLiteDatabase, new Champion("Zed", "Eléctrico", "Asesino", "Invocador", "-", "1", "5", "850/1530/3060", "150", "0", "30", "20" ,"80/144/288" ,"80/144/288" ,"1" ,"25%" ,"1"));
+        mockChamp(sqLiteDatabase, new Champion("Singed", "Poison", "Alchemist", "-", "Singed leaves a poison cloud behind him damaging enemies in the area over 4 seconds.", "A", "5", "950 / 1710 / 3420", "0", "0", "50", "20" ,"0/0/0" ,"0/0/0" ,"0" ,"25%" ,"0"));
+        mockChamp(sqLiteDatabase, new Champion("Olaf", "Glacial", "Berserker", "-", "Olaf gains attack speed, lifesteal based on missing health, and immunity to crowd control for the rest of combat. Attack Speed Bonus: 100% / 150% / 300%. Lifesteal: 50%.", "B", "4", "750 / 1350 / 2700", "90", "0", "35", "20" ,"60 / 107 / 214" ,"70 / 126 / 252" ,"0.85" ,"25%" ,"1"));
+        mockChamp(sqLiteDatabase, new Champion("Nocturne", "Steel", "Assassin", "-", "Every third attack, Nocturne deals additional damage to enemies around him and heals for a portion of the damage. Heal Amount: 40% / 60% / 80%", "C","3", "650 / 1170 / 2340", "0", "0", "25", "20", "45 / 81 / 162", "60 / 108 / 216" ,"0.75" ,"25%" ,"1" ));
     }
 
     public long mockChamp (SQLiteDatabase db, Champion champ){
@@ -120,24 +115,42 @@ public class Sqlito extends SQLiteOpenHelper{
     {
         final List<Champion> TORET = new ArrayList<>();
         final SQLiteDatabase DB = this.getReadableDatabase();
-        Cursor cursor = DB.query( "CAMPEON",
+        Cursor CURSOR = DB.query( CHAMP_TABLE,
                 null,
                 null,
                 null,
                 null,
                 null,
-                null );
+                "1" );
 
-        if ( cursor.moveToFirst() ) {
+        if ( CURSOR.moveToFirst() ) {
             do {
 
+                String Name = CURSOR.getString(CURSOR.getColumnIndexOrThrow(NAME));
+                String Origin = CURSOR.getString(CURSOR.getColumnIndexOrThrow(ORIGIN));
+                String ChampClass = CURSOR.getString(CURSOR.getColumnIndexOrThrow(CHAMPCLASS));
+                String OriginClass = CURSOR.getString(CURSOR.getColumnIndexOrThrow(ORIGINCLASS));
+                String Description = CURSOR.getString(CURSOR.getColumnIndexOrThrow(DESCRIPTION));
+                String Tier = CURSOR.getString(CURSOR.getColumnIndexOrThrow(TIER));
+                String Cost = CURSOR.getString(CURSOR.getColumnIndexOrThrow(COST));
+                String Health = CURSOR.getString(CURSOR.getColumnIndexOrThrow(HEALTH));
+                String Mana = CURSOR.getString(CURSOR.getColumnIndexOrThrow(MANA));
+                String InitialMana = CURSOR.getString(CURSOR.getColumnIndexOrThrow(INITIALMANA));
+                String Armor = CURSOR.getString(CURSOR.getColumnIndexOrThrow(ARMOR));
+                String Mr = CURSOR.getString(CURSOR.getColumnIndexOrThrow(MR));
+                String Dps = CURSOR.getString(CURSOR.getColumnIndexOrThrow(DPS));
+                String Damage = CURSOR.getString(CURSOR.getColumnIndexOrThrow(DAMAGE));
+                String AtkSpd =CURSOR.getString(CURSOR.getColumnIndexOrThrow(ATKSPD));
+                String CritRate = CURSOR.getString(CURSOR.getColumnIndexOrThrow(CRITRATE));
+                String Range = CURSOR.getString(CURSOR.getColumnIndexOrThrow(RANGE));
+
+                TORET.add(new Champion(Name,Origin,ChampClass,OriginClass,Description,Tier,Cost,Health,Mana,InitialMana,Armor,Mr,Dps,Damage,AtkSpd,CritRate,Range));
 
 
-
-            } while( cursor.moveToNext() );
+            } while( CURSOR.moveToNext() );
         }
 
-        cursor.close();
+        CURSOR.close();
         return TORET;
     }
 }

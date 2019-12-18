@@ -2,9 +2,11 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/CtxLblOpc1"
+    <item android:id="@+id/OrdenarAlfa"
         android:title="OpcEtiqueta1"></item>
-    <item android:id="@+id/CtxLblOpc2"
+    <item android:id="@+id/OrdenarPorTier"
         android:title="OpcEtiqueta2"></item>
+    <item android:id="@+id/OrdenarPorCoste"
+        android:title="OpcEtiqueta3"></item>
 
 </menu>

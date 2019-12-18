@@ -74,6 +74,7 @@ public class Champ_Info_Activity extends AppCompatActivity {
         ChampList.add(n);
 
         */
+
         this.BaseDatos = new Sqlito( this.getApplicationContext() );
         Log.d("STATE","nepe1");
         ChampList = BaseDatos.recuperaTodo();
@@ -102,12 +103,12 @@ public class Champ_Info_Activity extends AppCompatActivity {
 
 
         for(Champion champ : ChampList){
-            Log.d("STATE",champ.getName());
+
             if (champ.getName().equals(NombreCampeon)){
-                Log.d("STATE",champ.getName());
+
                 imagenCampeon(NombreCampeon);
                 etDescription.setText(champ.getDescription());
-                Log.d("STATE",champ.getDescription());
+
                 etChampName.setText(champ.getName());
                 etOrigin.setText(champ.getOrigin());
                 etClass.setText(champ.getChampClass());
@@ -134,10 +135,8 @@ public class Champ_Info_Activity extends AppCompatActivity {
 
         for(Champion champ : ChampList){
             if (champ.getName().equals(Name)){
-                Log.d("STATE",champ.getName());
                 imagenCampeon(Name);
                 etDescription.setText(champ.getDescription());
-                Log.d("STATE",champ.getDescription());
                 etChampName.setText(champ.getName());
                 etOrigin.setText(champ.getOrigin());
                 etClass.setText(champ.getChampClass());
@@ -162,7 +161,8 @@ public class Champ_Info_Activity extends AppCompatActivity {
         }
         switch(Name) {
             case "Singed":
-                image.setImageResource(R.drawable.singed);
+                int id = R.drawable.singed;
+                image.setImageResource(id);
                 break;
             case "Olaf":
                 image.setImageResource(R.drawable.olaf);
@@ -197,6 +197,8 @@ public class Champ_Info_Activity extends AppCompatActivity {
             case "Master Yi":
                 image.setImageResource(R.drawable.masteryi);
                 break;
+            case "Zed":
+                image.setImageResource(R.drawable.zed);
 
         }
         return true;
