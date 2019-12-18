@@ -33,9 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private GridView champGrid;
     private ArrayList<HashMap<String, Object>> maplist = new ArrayList<>();
 
-
-    private ImageView contextImage;
-
 /*
     Champion a = new Champion("Singed", "Poison", "Alchemist", "-", "Singed leaves a poison cloud behind him damaging enemies in the area over 4 seconds.", 'S', '5', "950 / 1710 / 3420", '0', '0', 50, 20 ,"0/0/0" ,"0/0/0" ,'0' ,"0,25" ,'0');
     Champion b = new Champion("Olaf", "Glacial", "Berserker", "-", "Olaf gains attack speed, lifesteal based on missing health, and immunity to crowd control for the rest of combat. Attack Speed Bonus: 100% / 150% / 300%. Lifesteal: 50%.", 'S', 4, "750 / 1350 / 2700", 90, 0, 35, 20 ,"60 / 107 / 214" ,"70 / 126 / 252" ,0.85 ,"25%" ,1);
@@ -142,8 +139,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        contextImage = (ImageView)findViewById(R.id.listChampImageView);
-        registerForContextMenu(contextImage);
 
         champGrid = (GridView) findViewById(R.id.champsGrid);
 
@@ -157,6 +152,9 @@ public class MainActivity extends AppCompatActivity {
         alfabetico();
         GridAdapter adapter = new GridAdapter(this);
         champGrid.setAdapter(adapter);
+
+
+        this.registerForContextMenu(champGrid);
     }
 
 
@@ -171,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onContextItemSelected(MenuItem item) {
-                return super.onContextItemSelected(item);
+        return super.onContextItemSelected(item);
     }
 
     @Override
