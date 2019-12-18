@@ -77,7 +77,7 @@ public class Champ_Info_Activity extends AppCompatActivity {
 
         this.BaseDatos = new Sqlito( this.getApplicationContext() );
         Log.d("STATE","nepe1");
-        ChampList = BaseDatos.recuperaTodo();
+        ChampList = BaseDatos.recuperaTodoAlfabetico();
 
 
         //Inicializar las variables

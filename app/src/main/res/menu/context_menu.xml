@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/OrdenarAlfa"
-        android:title="OpcEtiqueta1"></item>
+        android:title="Ordenar alfabéticamente"></item>
     <item android:id="@+id/OrdenarPorTier"
-        android:title="OpcEtiqueta2"></item>
+        android:title="Ordenar por Tier"></item>
     <item android:id="@+id/OrdenarPorCoste"
-        android:title="OpcEtiqueta3"></item>
+        android:title="Odenar por Coste"></item>
 
 </menu>

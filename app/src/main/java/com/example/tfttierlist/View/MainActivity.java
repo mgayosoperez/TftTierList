@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         this.BaseDatos = new Sqlito(this.getApplicationContext());
-        ChampionList = BaseDatos.recuperaTodo();
+        ChampionList = BaseDatos.recuperaTodoAlfabetico();
 
         maplist.clear();
 
@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
             HashMap<String, Object> item1 = new HashMap<>();
             item1.put("Name", champ.getName());
             int id = idImagen("Pepe");
-            String mierda = Integer.toString(id);
             item1.put("Img", id);
             maplist.add(item1);
         }
@@ -192,15 +191,45 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void alfabetico() {
+        ChampionList = BaseDatos.recuperaTodoAlfabetico();
 
+        maplist.clear();
+
+        for (Champion champ : ChampionList) {
+            HashMap<String, Object> item1 = new HashMap<>();
+            item1.put("Name", champ.getName());
+            int id = idImagen("Pepe");
+            item1.put("Img", id);
+            maplist.add(item1);
+        }
     }
 
     public void tier() {
+        ChampionList = BaseDatos.recuperaTodoTier();
 
+        maplist.clear();
+
+        for (Champion champ : ChampionList) {
+            HashMap<String, Object> item1 = new HashMap<>();
+            item1.put("Name", champ.getName());
+            int id = idImagen("Pepe");
+            item1.put("Img", id);
+            maplist.add(item1);
+        }
     }
 
     public void coste() {
+        ChampionList = BaseDatos.recuperaTodoCoste();
 
+        maplist.clear();
+
+        for (Champion champ : ChampionList) {
+            HashMap<String, Object> item1 = new HashMap<>();
+            item1.put("Name", champ.getName());
+            int id = idImagen("Pepe");
+            item1.put("Img", id);
+            maplist.add(item1);
+        }
     }
 
     public int idImagen(String Name){

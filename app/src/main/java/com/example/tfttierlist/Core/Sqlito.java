@@ -111,7 +111,7 @@ public class Sqlito extends SQLiteOpenHelper{
         return db.insert(CHAMP_TABLE, null, champ.toContentValues());
     }
 
-    public List<Champion> recuperaTodo()
+    public List<Champion> recuperaTodoAlfabetico()
     {
         final List<Champion> TORET = new ArrayList<>();
         final SQLiteDatabase DB = this.getReadableDatabase();
@@ -122,6 +122,90 @@ public class Sqlito extends SQLiteOpenHelper{
                 null,
                 null,
                 "1" );
+
+        if ( CURSOR.moveToFirst() ) {
+            do {
+
+                String Name = CURSOR.getString(CURSOR.getColumnIndexOrThrow(NAME));
+                String Origin = CURSOR.getString(CURSOR.getColumnIndexOrThrow(ORIGIN));
+                String ChampClass = CURSOR.getString(CURSOR.getColumnIndexOrThrow(CHAMPCLASS));
+                String OriginClass = CURSOR.getString(CURSOR.getColumnIndexOrThrow(ORIGINCLASS));
+                String Description = CURSOR.getString(CURSOR.getColumnIndexOrThrow(DESCRIPTION));
+                String Tier = CURSOR.getString(CURSOR.getColumnIndexOrThrow(TIER));
+                String Cost = CURSOR.getString(CURSOR.getColumnIndexOrThrow(COST));
+                String Health = CURSOR.getString(CURSOR.getColumnIndexOrThrow(HEALTH));
+                String Mana = CURSOR.getString(CURSOR.getColumnIndexOrThrow(MANA));
+                String InitialMana = CURSOR.getString(CURSOR.getColumnIndexOrThrow(INITIALMANA));
+                String Armor = CURSOR.getString(CURSOR.getColumnIndexOrThrow(ARMOR));
+                String Mr = CURSOR.getString(CURSOR.getColumnIndexOrThrow(MR));
+                String Dps = CURSOR.getString(CURSOR.getColumnIndexOrThrow(DPS));
+                String Damage = CURSOR.getString(CURSOR.getColumnIndexOrThrow(DAMAGE));
+                String AtkSpd =CURSOR.getString(CURSOR.getColumnIndexOrThrow(ATKSPD));
+                String CritRate = CURSOR.getString(CURSOR.getColumnIndexOrThrow(CRITRATE));
+                String Range = CURSOR.getString(CURSOR.getColumnIndexOrThrow(RANGE));
+
+                TORET.add(new Champion(Name,Origin,ChampClass,OriginClass,Description,Tier,Cost,Health,Mana,InitialMana,Armor,Mr,Dps,Damage,AtkSpd,CritRate,Range));
+
+
+            } while( CURSOR.moveToNext() );
+        }
+
+        CURSOR.close();
+        return TORET;
+    }
+    public List<Champion> recuperaTodoCoste()
+    {
+        final List<Champion> TORET = new ArrayList<>();
+        final SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor CURSOR = DB.query( CHAMP_TABLE,
+                null,
+                null,
+                null,
+                null,
+                null,
+                "7 DESC" );
+
+        if ( CURSOR.moveToFirst() ) {
+            do {
+
+                String Name = CURSOR.getString(CURSOR.getColumnIndexOrThrow(NAME));
+                String Origin = CURSOR.getString(CURSOR.getColumnIndexOrThrow(ORIGIN));
+                String ChampClass = CURSOR.getString(CURSOR.getColumnIndexOrThrow(CHAMPCLASS));
+                String OriginClass = CURSOR.getString(CURSOR.getColumnIndexOrThrow(ORIGINCLASS));
+                String Description = CURSOR.getString(CURSOR.getColumnIndexOrThrow(DESCRIPTION));
+                String Tier = CURSOR.getString(CURSOR.getColumnIndexOrThrow(TIER));
+                String Cost = CURSOR.getString(CURSOR.getColumnIndexOrThrow(COST));
+                String Health = CURSOR.getString(CURSOR.getColumnIndexOrThrow(HEALTH));
+                String Mana = CURSOR.getString(CURSOR.getColumnIndexOrThrow(MANA));
+                String InitialMana = CURSOR.getString(CURSOR.getColumnIndexOrThrow(INITIALMANA));
+                String Armor = CURSOR.getString(CURSOR.getColumnIndexOrThrow(ARMOR));
+                String Mr = CURSOR.getString(CURSOR.getColumnIndexOrThrow(MR));
+                String Dps = CURSOR.getString(CURSOR.getColumnIndexOrThrow(DPS));
+                String Damage = CURSOR.getString(CURSOR.getColumnIndexOrThrow(DAMAGE));
+                String AtkSpd =CURSOR.getString(CURSOR.getColumnIndexOrThrow(ATKSPD));
+                String CritRate = CURSOR.getString(CURSOR.getColumnIndexOrThrow(CRITRATE));
+                String Range = CURSOR.getString(CURSOR.getColumnIndexOrThrow(RANGE));
+
+                TORET.add(new Champion(Name,Origin,ChampClass,OriginClass,Description,Tier,Cost,Health,Mana,InitialMana,Armor,Mr,Dps,Damage,AtkSpd,CritRate,Range));
+
+
+            } while( CURSOR.moveToNext() );
+        }
+
+        CURSOR.close();
+        return TORET;
+    }
+    public List<Champion> recuperaTodoTier()
+    {
+        final List<Champion> TORET = new ArrayList<>();
+        final SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor CURSOR = DB.query( CHAMP_TABLE,
+                null,
+                null,
+                null,
+                null,
+                null,
+                "6" );
 
         if ( CURSOR.moveToFirst() ) {
             do {
