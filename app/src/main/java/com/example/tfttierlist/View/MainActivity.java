@@ -220,43 +220,104 @@ public class MainActivity extends AppCompatActivity {
         switch(Name) {
             case "Singed":
                 return R.drawable.singed;
-
             case "Olaf":
                 return R.drawable.olaf;
-
             case "Nocturne":
                 return R.drawable.nocturne;
-
             case "Nami":
                 return R.drawable.nami;
-
             case "Lux":
                 return R.drawable.lux;
-
             case "Vladimir":
                 return R.drawable.vladimir;
-
             case "Yasuo":
                 return R.drawable.yasuo;
-
             case "Sivir":
                 return R.drawable.sivir;
-
             case "Nautilus":
                 return R.drawable.nautilus;
-
             case "Maokai":
                 return R.drawable.maokai;
-
             case "Ashe":
                 return R.drawable.ashe;
-
             case "Master Yi":
                 return R.drawable.masteryi;
-
             case "Zed":
                 return R.drawable.zed;
-
+            case "Annie":
+                return R.drawable.annie;
+            case "Brand":
+                return R.drawable.brand;
+            case "Janna":
+                return R.drawable.janna;
+            case "Kindred":
+                return R.drawable.kindred;
+            case "Malphite":
+                return R.drawable.malphite;
+            case "Qiyana":
+                return R.drawable.qiyana;
+            case "Taric":
+                return R.drawable.taric;
+            case "Skarner":
+                return R.drawable.skarner;
+            case "Volibear":
+                return R.drawable.volibear;
+            case "Yorick":
+                return R.drawable.yorick;
+            case "Senna":
+                return R.drawable.senna;
+            case "Lucian":
+                return R.drawable.lucian;
+            case "Dr Mundo":
+                return R.drawable.drmundo;
+            case "Ezreal":
+                return R.drawable.ezreal;
+            case "KogMaw":
+                return R.drawable.kogmaw;
+            case "LeBlanc":
+                return R.drawable.leblanc;
+            case "Malzahar":
+                return R.drawable.malzahar;
+            case "RekSai":
+                return R.drawable.reksai;
+            case "Soraka":
+                return R.drawable.soraka;
+            case "Syndra":
+                return R.drawable.syndra;
+            case "Thresh":
+                return R.drawable.thresh;
+            case "Twitch":
+                return R.drawable.twitch;
+            case "Zyra":
+                return R.drawable.zyra;
+            case "Amumu":
+                return R.drawable.ammumu;
+            case "Aatrox":
+                return R.drawable.aatrox;
+            case "Azir":
+                return R.drawable.azir;
+            case "Diana":
+                return R.drawable.diana;
+            case "Ivern":
+                return R.drawable.ivern;
+            case "Sion":
+                return R.drawable.sion;
+            case "Varus":
+                return R.drawable.varus;
+            case "Braum":
+                return R.drawable.braum;
+            case "Jax":
+                return R.drawable.jax;
+            case "Nasus":
+                return R.drawable.nasus;
+            case "Neeko":
+                return R.drawable.neeko;
+            case "Vayne":
+                return R.drawable.vayne;
+            case "Warwick":
+                return R.drawable.warwick;
+            case "Taliyah":
+                return R.drawable.taliyah;
             default:
                 return R.drawable.zed;
         }
