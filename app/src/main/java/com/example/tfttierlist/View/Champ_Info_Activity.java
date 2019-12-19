@@ -44,7 +44,6 @@ public class Champ_Info_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_champ__info_);
         this.BaseDatos = new Sqlito( this.getApplicationContext() );
-        Log.d("STATE","nepe1");
         ChampList = BaseDatos.recuperaTodoAlfabetico();
 
 

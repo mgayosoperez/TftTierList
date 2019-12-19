@@ -59,7 +59,7 @@ public class Item_List_Activity extends AppCompatActivity {
             HashMap<String, Object> item1 = new HashMap<>();
             Log.d("STATUS",item.getName());
             item1.put("Name", item.getName());
-            int id = idImagen("Pepe");
+            int id = idImagen(item.getName());
             item1.put("Img", id);
             maplist.add(item1);
         }
@@ -271,6 +271,8 @@ public class Item_List_Activity extends AppCompatActivity {
                 return R.drawable.thornmail;
             case "Titanic Hydra":
                 return R.drawable.titanichydra;
+            case "Mages Cap":
+                return R.drawable.magescap;
             default:
                 return R.drawable.aatrox;
         }
