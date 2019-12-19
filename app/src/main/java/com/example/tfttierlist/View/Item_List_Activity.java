@@ -6,12 +6,9 @@ import android.os.Bundle;
 
 import com.example.tfttierlist.Core.Champion;
 import com.example.tfttierlist.Core.Sqlito;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
 import android.view.ContextMenu;
@@ -33,19 +30,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Item_Info_Activity extends AppCompatActivity {
+public class Item_List_Activity extends AppCompatActivity {
     private GridView itemsGrid;
     private ArrayList<HashMap<String, Object>> maplist = new ArrayList<>();
     private Sqlito BaseDatos;
     private List<Champion> ChampionList;
-    private ImageView img;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.item_list_layout);
 
 
         itemsGrid = (GridView) findViewById(R.id.itemsGrid);
@@ -53,7 +48,7 @@ public class Item_Info_Activity extends AppCompatActivity {
         itemsGrid.setOnItemClickListener(new GridView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                nuevoCampeon(maplist.get(position).get("Name").toString());
+                verItem(maplist.get(position).get("Name").toString());
             }
         });
 
@@ -71,7 +66,7 @@ public class Item_Info_Activity extends AppCompatActivity {
             maplist.add(item1);
         }
 
-        Item_Info_Activity.GridAdapter adapter = new Item_Info_Activity.GridAdapter(this);
+        Item_List_Activity.GridAdapter adapter = new Item_List_Activity.GridAdapter(this);
         itemsGrid.setAdapter(adapter);
 
 
@@ -94,17 +89,17 @@ public class Item_Info_Activity extends AppCompatActivity {
 
             case R.id.OrdenarAlfa:
                 this.alfabetico();
-                Item_Info_Activity.GridAdapter adapter = new Item_Info_Activity.GridAdapter(this);
+                Item_List_Activity.GridAdapter adapter = new Item_List_Activity.GridAdapter(this);
                 itemsGrid.setAdapter(adapter);
                 break;
             case R.id.OrdenarPorCoste:
                 this.coste();
-                Item_Info_Activity.GridAdapter adapter1 = new Item_Info_Activity.GridAdapter(this);
+                Item_List_Activity.GridAdapter adapter1 = new Item_List_Activity.GridAdapter(this);
                 itemsGrid.setAdapter(adapter1);
                 break;
             case R.id.OrdenarPorTier:
                 this.tier();
-                Item_Info_Activity.GridAdapter adapter2 = new Item_Info_Activity.GridAdapter(this);
+                Item_List_Activity.GridAdapter adapter2 = new Item_List_Activity.GridAdapter(this);
                 itemsGrid.setAdapter(adapter2);
                 break;
         }
@@ -126,7 +121,7 @@ public class Item_Info_Activity extends AppCompatActivity {
 
             case R.id.verObjetos:
                 this.alfabetico();
-                Item_Info_Activity.GridAdapter adapter = new Item_Info_Activity.GridAdapter(this);
+                Item_List_Activity.GridAdapter adapter = new Item_List_Activity.GridAdapter(this);
                 itemsGrid.setAdapter(adapter);
                 break;
         }
@@ -157,25 +152,24 @@ public class Item_Info_Activity extends AppCompatActivity {
             // Inflate the layout for each list item
             LayoutInflater _inflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             if (v == null) {
-                v = _inflater.inflate(R.layout.list_champs, null);
+                v = _inflater.inflate(R.layout.list_items, null);
             }
             // Get the TextView and ImageView from CustomView for displaying item
-            TextView txtview = (TextView) v.findViewById(R.id.listChampTextView);
-            ImageView imgview = (ImageView)v.findViewById(R.id.listChampImageView);
+            TextView txtview = (TextView) v.findViewById(R.id.listItemTextView);
+            ImageView imgview = (ImageView)v.findViewById(R.id.listItemsImageView);
 
 
             String currentItem = maplist.get(position).get("Name").toString();
             // Set the text and image for current item using data from map list
             txtview.setText(currentItem);
-            String mierda = maplist.get(position).get("Img").toString();
-            Log.d("STATUS",mierda);
-            imgview.setImageResource(Integer.parseInt(mierda));
+            String calidad = maplist.get(position).get("Img").toString();
+            imgview.setImageResource(Integer.parseInt(calidad));
 
             return v;
         }
     }
 
-    public void nuevoCampeon(String Name) {
+    public void verItem(String Name) {
         Intent intent = new Intent(this, Champ_Info_Activity.class);
         intent.putExtra("Name", Name);
         this.startActivityForResult(intent, 11);
@@ -195,7 +189,6 @@ public class Item_Info_Activity extends AppCompatActivity {
 
     public int idImagen(String Name){
         return R.drawable.aatrox;
-
     }
 
 }
