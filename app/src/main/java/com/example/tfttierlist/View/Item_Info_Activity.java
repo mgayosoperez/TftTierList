@@ -37,7 +37,7 @@ public class Item_Info_Activity extends AppCompatActivity {
         ItemList = BaseDatos.recuperaItems();
 
         //Inicializar variables
-        tvDescription = findViewById(R.id.tvItemDescription);
+        tvDescription = findViewById(R.id.tvItemDescripcion);
         imgObjetoPpal = findViewById(R.id.imageViewItem);
         imgObjetoReceta1 = findViewById(R.id.imageViewItemRecipe1);
         imgObjetoReceta2 = findViewById(R.id.imageViewItemRecipe2);
@@ -52,15 +52,25 @@ public class Item_Info_Activity extends AppCompatActivity {
 
         for(Item itemsito : ItemList){
             if (itemsito.getName().equals(Name)){
-                imagenItem(Name);
+                imagenItem1(itemsito.getName());
+                imagenItem2(itemsito.getItem1());
+                imagenItem3(itemsito.getItem2());
                 tvDescription.setText(itemsito.getDescription());
             }
         }
     }
 
-    public void imagenItem (String Name){
+    public void imagenItem1 (String Name){
         imgObjetoPpal.setImageResource(R.drawable.bfsword);
+
+    }
+    public void imagenItem2 (String Name){
+
         imgObjetoReceta1.setImageResource(R.drawable.lanada);
+
+    }
+    public void imagenItem3 (String Name){
+
         imgObjetoReceta2.setImageResource(R.drawable.lanada);
     }
 
