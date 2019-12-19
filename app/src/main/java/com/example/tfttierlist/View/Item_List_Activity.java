@@ -68,8 +68,6 @@ public class Item_List_Activity extends AppCompatActivity {
 
         Item_List_Activity.GridAdapter adapter = new Item_List_Activity.GridAdapter(this);
         itemsGrid.setAdapter(adapter);
-
-
         this.registerForContextMenu(itemsGrid);
     }
 
@@ -87,17 +85,17 @@ public class Item_List_Activity extends AppCompatActivity {
         boolean toret = false;
         switch (item.getItemId()) {
 
-            case R.id.OrdenarAlfa:
+            case R.id.OrdenarObjetoAlfa:
                 this.alfabetico();
                 Item_List_Activity.GridAdapter adapter = new Item_List_Activity.GridAdapter(this);
                 itemsGrid.setAdapter(adapter);
                 break;
-            case R.id.OrdenarPorCoste:
+            case R.id.OrdenarObjetoCoste:
                 this.coste();
                 Item_List_Activity.GridAdapter adapter1 = new Item_List_Activity.GridAdapter(this);
                 itemsGrid.setAdapter(adapter1);
                 break;
-            case R.id.OrdenarPorTier:
+            case R.id.OrdenarObjetoTier:
                 this.tier();
                 Item_List_Activity.GridAdapter adapter2 = new Item_List_Activity.GridAdapter(this);
                 itemsGrid.setAdapter(adapter2);
@@ -107,26 +105,6 @@ public class Item_List_Activity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        this.getMenuInflater().inflate(R.menu.actions_menu, menu);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        boolean toret = false;
-        switch (item.getItemId()) {
-
-            case R.id.verObjetos:
-                this.alfabetico();
-                Item_List_Activity.GridAdapter adapter = new Item_List_Activity.GridAdapter(this);
-                itemsGrid.setAdapter(adapter);
-                break;
-        }
-        return toret;
-    }
 
     public class GridAdapter extends BaseAdapter {
         private Context mContext;
@@ -170,7 +148,7 @@ public class Item_List_Activity extends AppCompatActivity {
     }
 
     public void verItem(String Name) {
-        Intent intent = new Intent(this, Champ_Info_Activity.class);
+        Intent intent = new Intent(this, Item_info_activity.class);
         intent.putExtra("Name", Name);
         this.startActivityForResult(intent, 11);
     }

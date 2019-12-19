@@ -63,36 +63,12 @@ public class Champ_Info_Activity extends AppCompatActivity {
         etAtkSpd = findViewById(R.id.etAtkSpd);
         etCritRate = findViewById(R.id.etCritRate);
         etRange = findViewById(R.id.etRange);
-        image = findViewById(R.id.imageView);
+        image = findViewById(R.id.imageViewItem);
 
         Champion aux = new Champion();
         Bundle datos = this.getIntent().getExtras();
         String NombreCampeon = datos.getString("Name");
-
-
-        for(Champion champ : ChampList){
-
-            if (champ.getName().equals(NombreCampeon)){
-
-                imagenCampeon(NombreCampeon);
-                etDescription.setText(champ.getDescription());
-
-                etChampName.setText(champ.getName());
-                etOrigin.setText(champ.getOrigin());
-                etClass.setText(champ.getChampClass());
-                etCost.setText(champ.getCost());
-                etHealth.setText(champ.getHealth());
-                etMana.setText(champ.getMana());
-                etArmor.setText(champ.getArmor());
-                etMR.setText(champ.getMR());
-                etDPS.setText(champ.getMR());
-                etDamage.setText(champ.getDamage());
-                etAtkSpd.setText(champ.getAtkSpd());
-                etCritRate.setText(champ.getCritRate());
-                etRange.setText(champ.getRange());
-
-            }
-        }
+        mostrarDatosCampeon(NombreCampeon);
 
     }
 
@@ -232,7 +208,7 @@ public class Champ_Info_Activity extends AppCompatActivity {
                 image.setImageResource(R.drawable.zyra);
                 break;
             case "Amumu":
-                image.setImageResource(R.drawable.ammumu);
+                image.setImageResource(R.drawable.amumu);
                 break;
             case "Aatrox":
                 image.setImageResource(R.drawable.aatrox);
@@ -273,6 +249,8 @@ public class Champ_Info_Activity extends AppCompatActivity {
             case "Taliyah":
                 image.setImageResource(R.drawable.taliyah);
                 break;
+            case "Veigar":
+                image.setImageResource(R.drawable.veigar);
         }
         return true;
     }

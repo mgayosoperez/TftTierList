@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
         for (Champion champ : ChampionList) {
             HashMap<String, Object> item1 = new HashMap<>();
             item1.put("Name", champ.getName());
-            int id = idImagen("Pepe");
+            int id = idImagen(champ.getName());
             item1.put("Img", id);
             maplist.add(item1);
         }
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
         for (Champion champ : ChampionList) {
             HashMap<String, Object> item1 = new HashMap<>();
             item1.put("Name", champ.getName());
-            int id = idImagen("Pepe");
+            int id = idImagen(champ.getName());
             item1.put("Img", id);
             maplist.add(item1);
         }
@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
         for (Champion champ : ChampionList) {
             HashMap<String, Object> item1 = new HashMap<>();
             item1.put("Name", champ.getName());
-            int id = idImagen("Pepe");
+            int id = idImagen(champ.getName());
             item1.put("Img", id);
             maplist.add(item1);
         }
@@ -291,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
             case "Zyra":
                 return R.drawable.zyra;
             case "Amumu":
-                return R.drawable.ammumu;
+                return R.drawable.amumu;
             case "Aatrox":
                 return R.drawable.aatrox;
             case "Azir":
@@ -318,6 +318,14 @@ public class MainActivity extends AppCompatActivity {
                 return R.drawable.warwick;
             case "Taliyah":
                 return R.drawable.taliyah;
+            case "Veigar":
+                return R.drawable.veigar;
+            case "Khazix":
+                return R.drawable.khazix;
+            case "Renekton":
+                return R.drawable.renekton;
+            case "Ornn":
+                return R.drawable.ornn;
             default:
                 return R.drawable.zed;
         }
