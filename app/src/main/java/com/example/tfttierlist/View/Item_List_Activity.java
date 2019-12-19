@@ -164,7 +164,116 @@ public class Item_List_Activity extends AppCompatActivity {
     }
 
     public int idImagen(String Name){
-        return R.drawable.aatrox;
+        switch(Name) {
+            case "Spatula":
+                return R.drawable.spatula;
+            case "Needlessly Large Rod":
+                return R.drawable.needlesslylargerod;
+            case "Tear of the Goddess":
+                return R.drawable.tearofthegoddess;
+            case "B.F. Sword":
+                return R.drawable.bfsword;
+            case "Recurve Bow":
+                return R.drawable.recurvebow;
+            case "Giants Belt":
+                return R.drawable.giantsbelt;
+            case "Negatron Cloak":
+                return R.drawable.negatroncloak;
+            case "Sparring Gloves":
+                return R.drawable.sparringgloves;
+            case "Chain Vest":
+                return R.drawable.chainvest;
+            case "Force of Nature":
+                return R.drawable.forceofnature;
+            case "Berserker Axe":
+                return R.drawable.berserkeraxe;
+            case "Blade of the Ruined King":
+                return R.drawable.bladeoftheruinedking;
+            case "Frozen Mallet":
+                return R.drawable.frozenmallet;
+            case "Inferno Cinder":
+                return R.drawable.infernocinder;
+            case "Talisman of Light":
+                return R.drawable.talismanoflight;
+            case "Wardens Mail":
+                return R.drawable.wardensmail;
+            case "Youmuus Ghostblade":
+                return R.drawable.youmuusghostblade;
+            case "Guinsoo Rageblade":
+                return R.drawable.guinsoosrageblade;
+            case "Morellonomicon":
+                return R.drawable.morellonomicon;
+            case "Hand of Justice":
+                return R.drawable.handofjustice;
+            case "Iceborne Gauntlet":
+                return R.drawable.icebornegauntlet;
+            case "Infinity Edge":
+                return R.drawable.infinityedge;
+            case "Phantom Dancer":
+                return R.drawable.phantomdancer;
+            case "Seraphs Embrace":
+                return R.drawable.seraphsembrace;
+            case "Spear of Shojin":
+                return R.drawable.spearofshojin;
+            case "Bloodthirster":
+                return R.drawable.bloodthirster;
+            case "Deathblade":
+                return R.drawable.deathblade;
+            case "Hush":
+                return R.drawable.hush;
+            case "Ludens Echo":
+                return R.drawable.ludensecho;
+            case "Rabadons Deathcap":
+                return R.drawable.rabadonsdeathcap;
+            case "Runaans Hurricane":
+                return R.drawable.runaanshurricane;
+            case "Sword Breaker":
+                return R.drawable.swordbreaker;
+            case "Thiefs Gloves":
+                return R.drawable.thiefsgloves;
+            case "Zephyr":
+                return R.drawable.zephyr;
+            case "Giant Slayer":
+                return R.drawable.giantslayer;
+            case "Guardian Angel":
+                return R.drawable.guardianangel;
+            case "Ionic Spark":
+                return R.drawable.ionicspark;
+            case "Jeweled Gauntlet":
+                return R.drawable.jeweledgauntlet;
+            case "Red Buff":
+                return R.drawable.redbuff;
+            case "Statikk Shiv":
+                return R.drawable.statikkshiv;
+            case "Warmogs Armor":
+                return R.drawable.warmogsarmor;
+            case "Zekes Herald":
+                return R.drawable.zekesherald;
+            case "Dragons Claw":
+                return R.drawable.dragonsclaw;
+            case "Frozen Heart":
+                return R.drawable.frozenheart;
+            case "Hextech Gunblade":
+                return R.drawable.hextechgunblade;
+            case "Locket of the Iron Solari":
+                return R.drawable.locketoftheironsolari;
+            case "Rapid Firecannon":
+                return R.drawable.rapidfirecannon;
+            case "Redemption":
+                return R.drawable.redemption;
+            case "Trap Claw":
+                return R.drawable.trapclaw;
+            case "Quicksilver":
+                return R.drawable.quicksilver;
+            case "Repeating Crossbow":
+                return R.drawable.repeatingcrossbow;
+            case "Thornmail":
+                return R.drawable.thornmail;
+            case "Titanic Hydra":
+                return R.drawable.titanichydra;
+            default:
+                return R.drawable.aatrox;
+        }
     }
 
 }
