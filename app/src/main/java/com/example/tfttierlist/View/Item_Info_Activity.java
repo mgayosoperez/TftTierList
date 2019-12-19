@@ -12,7 +12,7 @@ import android.view.View;
 
 import com.example.tfttierlist.R;
 
-public class Item_info_activity extends AppCompatActivity {
+public class Item_Info_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class Champ_List_Activity extends AppCompatActivity {
     private GridView champGrid;
     private ArrayList<HashMap<String, Object>> maplist = new ArrayList<>();
     private Sqlito BaseDatos;

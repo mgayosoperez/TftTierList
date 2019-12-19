@@ -17,7 +17,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="wrap_content"
         android:text="Medium Text"
+        android:textSize="12sp"
         android:textColor="#FEFEFE"
-        android:id="@+id/listItemTextView"/>
+        android:id="@+id/listItemTextView"
+        android:layout_marginBottom="10dp"/>
 
 </LinearLayout>

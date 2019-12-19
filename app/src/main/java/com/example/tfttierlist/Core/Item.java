@@ -3,6 +3,7 @@ package com.example.tfttierlist.Core;
 import android.content.ContentValues;
 
 public class Item {
+    private static final String NAMEO = "name";
     private static final String ITEM_TABLE = "item";
     private static final String OBJETO_PRI = "objeto1";
     private static final String OBJETO_SEC = "objeto2";
@@ -63,7 +64,7 @@ public class Item {
 
     public ContentValues toContentValues(){
         ContentValues values = new ContentValues();
-        values.put(ITEM_TABLE,Name);
+        values.put(NAMEO,Name);
         values.put(OBJETO_PRI,Item1);
         values.put(OBJETO_SEC,Item2);
         values.put(DESCRICION,Description);

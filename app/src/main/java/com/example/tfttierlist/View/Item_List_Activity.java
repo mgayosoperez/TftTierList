@@ -4,16 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.tfttierlist.Core.Champion;
+import com.example.tfttierlist.Core.Item;
 import com.example.tfttierlist.Core.Sqlito;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,7 +32,7 @@ public class Item_List_Activity extends AppCompatActivity {
     private GridView itemsGrid;
     private ArrayList<HashMap<String, Object>> maplist = new ArrayList<>();
     private Sqlito BaseDatos;
-    private List<Champion> ChampionList;
+    private List<Item> ItemList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +51,14 @@ public class Item_List_Activity extends AppCompatActivity {
         });
 
         this.BaseDatos = new Sqlito(this.getApplicationContext());
-        ChampionList = BaseDatos.recuperaTodoAlfabetico();
+        ItemList = BaseDatos.recuperaItems();
 
         maplist.clear();
 
-        for (Champion champ : ChampionList) {
+        for (Item item : ItemList) {
             HashMap<String, Object> item1 = new HashMap<>();
-            Log.d("STATUS",champ.getName());
-            item1.put("Name", champ.getName());
+            Log.d("STATUS",item.getName());
+            item1.put("Name", item.getName());
             int id = idImagen("Pepe");
             item1.put("Img", id);
             maplist.add(item1);
@@ -148,7 +146,7 @@ public class Item_List_Activity extends AppCompatActivity {
     }
 
     public void verItem(String Name) {
-        Intent intent = new Intent(this, Item_info_activity.class);
+        Intent intent = new Intent(this, Item_Info_Activity.class);
         intent.putExtra("Name", Name);
         this.startActivityForResult(intent, 11);
     }

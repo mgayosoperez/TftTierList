@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".View.Item_info_activity"
+            android:name=".View.Item_Info_Activity"
             android:label="@string/title_activity_item_info_activity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
@@ -21,7 +21,7 @@
             android:name=".View.Champ_Info_Activity"
             android:label="@string/title_activity_champ__info_"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".View.MainActivity">
+        <activity android:name=".View.Champ_List_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -73,12 +73,13 @@ public class Sqlito extends SQLiteOpenHelper{
                     + CRITRATE + " TEXT NOT NULL,"
                     + RANGE + " TEXT NOT NULL,"
                     + "UNIQUE (" + NAME + "))");
+
             db.execSQL("CREATE TABLE " + ITEM_TABLE + "("
-                    + NAMEO + "TEXT PRIMARY KEY,"
-                    + OBJETO_PRI + "TEXT,"
-                    + OBJETO_SEC +"TEXT,"
-                    + DESCRICION +"TEXT NOT NULL,"
-                    + TIERO +"TEXT)");
+                    + NAMEO + " TEXT PRIMARY KEY,"
+                    + OBJETO_PRI + " TEXT NOT NULL,"
+                    + OBJETO_SEC +" TEXT NOT NULL,"
+                    + DESCRICION +" TEXT NOT NULL,"
+                    + TIERO +" TEXT NOT NULL)");
 
             db.setTransactionSuccessful();
         } catch(SQLException exc) {
@@ -86,7 +87,6 @@ public class Sqlito extends SQLiteOpenHelper{
         } finally {
             db.endTransaction();
         }
-
 
         mockData(db);
     }
@@ -98,6 +98,7 @@ public class Sqlito extends SQLiteOpenHelper{
             db.beginTransaction();
 
             db.execSQL( "DROP TABLE IF EXISTS " + CHAMP_TABLE );
+            db.execSQL("DROP TABLE IF EXISTS " + ITEM_TABLE);
 
             db.setTransactionSuccessful();
         } catch(SQLException exc) {
@@ -232,14 +233,14 @@ public class Sqlito extends SQLiteOpenHelper{
         return db.insert(CHAMP_TABLE, null, champ.toContentValues());
     }
 
-    public long mockItem (SQLiteDatabase db, Item champ){
-        return db.insert(ITEM_TABLE, null, champ.toContentValues());
+    public long mockItem (SQLiteDatabase db, Item item){
+        return db.insert(ITEM_TABLE, null, item.toContentValues());
     }
 
     public List<Item> recuperaItems(){
         final List<Item> TORET = new ArrayList<>();
         final SQLiteDatabase DB = this.getReadableDatabase();
-        Cursor CURSOR = DB.query( ITEM_TABLE,
+        Cursor CURSOR = DB.query(ITEM_TABLE,
                 null,
                 null,
                 null,
