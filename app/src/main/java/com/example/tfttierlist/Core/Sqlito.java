@@ -16,6 +16,7 @@ public class Sqlito extends SQLiteOpenHelper{
     private static String NOMBRE = "TFTierList";
     private static int VERSION = 1;
 
+    //Tags for Champ Table
     private static final String CHAMP_TABLE = "champion";
     private static final String NAME = "name";
     private static final String ORIGIN = "origin";
@@ -35,7 +36,7 @@ public class Sqlito extends SQLiteOpenHelper{
     private static final String CRITRATE = "critrate";
     private static final String RANGE = "range";
 
-
+    //Tags for Item Table
     private static final String NAMEO = "name";
     private static final String ITEM_TABLE = "item";
     private static final String OBJETO_PRI = "objeto1";
@@ -48,6 +49,7 @@ public class Sqlito extends SQLiteOpenHelper{
         super( c, NOMBRE, null, VERSION );
     }
 
+    //Create Tables
     @Override
     public void onCreate(SQLiteDatabase db)
     {
@@ -91,6 +93,7 @@ public class Sqlito extends SQLiteOpenHelper{
         mockData(db);
     }
 
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
@@ -110,9 +113,12 @@ public class Sqlito extends SQLiteOpenHelper{
         this.onCreate( db );
     }
 
-    public long saveChamp (Champion Champ){
-        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        return sqLiteDatabase.insert(CHAMP_TABLE,null,Champ.toContentValues());
+    public long mockChamp (SQLiteDatabase db, Champion champ){
+        return db.insert(CHAMP_TABLE, null, champ.toContentValues());
+    }
+
+    public long mockItem (SQLiteDatabase db, Item item){
+        return db.insert(ITEM_TABLE, null, item.toContentValues());
     }
 
     public void mockData(SQLiteDatabase sqLiteDatabase){
@@ -171,7 +177,7 @@ public class Sqlito extends SQLiteOpenHelper{
         mockChamp(sqLiteDatabase,new Champion("Warwick", "Glacial", "Predator", "-", "Infinite Duress. Warwick pounces onto the lowest health enemy, stunning, damaging, and applying on-hit effects while healing himself. Damage: 150 / 225 / 300. Hits: 3. Duration: 1.5", "D", "1", "650 / 1170 / 2340", "150", "50", "30", "20" ,"30 / 54 / 108" ,"50 / 90 / 180" ,"0.6" ,"25%" ,"1"));
         mockChamp(sqLiteDatabase,new Champion("Taliyah", "Mountain", "Mage", "-", "Seismic Shove. Taliyah causes the ground to rise under the enemy with the most Mana, dealing damage and either pushing or pulling them toward her. Damage: 150 / 350 / 550. Stun Duration: 2", "E", "1", "500 / 900 / 1800", "80", "50", "20", "20" ,"26 / 47 / 94" ,"40 / 72 / 144" ,"0.65" ,"25%" ,"3"));
 
-        mockItem(sqLiteDatabase, new Item("Spatula", "", "", "It must do something...", "S"));
+        mockItem(sqLiteDatabase, new Item("Spatula", "", "", "It must do something...", "1"));
         mockItem(sqLiteDatabase, new Item("Needlessly Large Rod", "", "", "+20% Spell Damage.", "A"));
         mockItem(sqLiteDatabase, new Item("Tear of the Goddess","","","+20 Mana.","A"));
         mockItem(sqLiteDatabase, new Item("B.F. Sword","","","+15 Attack Damage.","B"));
@@ -180,7 +186,7 @@ public class Sqlito extends SQLiteOpenHelper{
         mockItem(sqLiteDatabase, new Item("Negatron Cloak","","","+25 Magic Resist.","C"));
         mockItem(sqLiteDatabase, new Item("Sparring Gloves","","","+10% Critical Strike Chance. +10% Dodge Chance","C"));
         mockItem(sqLiteDatabase, new Item("Chain Vest","","","+20 Armor.","D"));
-        mockItem(sqLiteDatabase, new Item("Force of Nature","Spatula","Spatula","Wearers team gains +1 maximum team size.","S"));
+        mockItem(sqLiteDatabase, new Item("Force of Nature","Spatula","Spatula","Wearers team gains +1 maximum team size.","1"));
         mockItem(sqLiteDatabase, new Item("Berserker Axe","Spatula","Sparring Gloves","Wearer is also a Berserker.","?"));
         mockItem(sqLiteDatabase, new Item("Blade of the Ruined King","Spatula","Recurve Bow","Wearer is also a Blademaster.","?"));
         mockItem(sqLiteDatabase, new Item("Frozen Mallet","Spatula","Giants Belt","Wearer is also a Glacial.","?"));
@@ -189,14 +195,14 @@ public class Sqlito extends SQLiteOpenHelper{
         mockItem(sqLiteDatabase, new Item("Talisman of Light","Spatula","Negatron Cloak","Wearer is also a Light.","?"));
         mockItem(sqLiteDatabase, new Item("Wardens Mail","Spatula","Chain Vest","Wearer is also a Warden.","?"));
         mockItem(sqLiteDatabase, new Item("Youmuus Ghostblade","Spatula","B.F. Sword","Wearer is also an Assassin.","?"));
-        mockItem(sqLiteDatabase, new Item("Guinsoo Rageblade","Needlessly Large Rod","Recurve Bow","Basic Attacks grant the wearer +4% bonus Attack Speed for the rest of combat. This effect can stack any number of times.","S"));
-        mockItem(sqLiteDatabase, new Item("Morellonomicon","Needlessly Large Rod","Giants Belt","When the wearer deals damage with their spell, they burn the target, dealing 20% of the targets Maximum Health as true damage over 10 seconds and reducing healing by 80% for the duration of the burn. A champion can only have one burn effect at a time, preferring the strongest.","S"));
-        mockItem(sqLiteDatabase, new Item("Hand of Justice","Tear of the Goddess","Sparring Gloves","At the beginning of each planning phase, the wearer gains one of the following: Basic Attacks and Spells deal +50% Damage or Basic Attacks heal 50 Health on-hit.","S"));
-        mockItem(sqLiteDatabase, new Item("Iceborne Gauntlet","Chain Vest","Sparring Gloves","When the wearer dodges, they create a zone of ice. Enemies inside the zone have their Attack Speed reduced by 35%.","S"));
-        mockItem(sqLiteDatabase, new Item("Infinity Edge","B.F. Sword","Sparring Gloves","The wearer gains +125% Critical Strike Damage.","S"));
-        mockItem(sqLiteDatabase, new Item("Phantom Dancer","Chain Vest","Recurve Bow","Wearer dodges all Critical Strikes.","S"));
-        mockItem(sqLiteDatabase, new Item("Seraphs Embrace","Tear of the Goddess","Tear of the Goddess","After casting their spell, the wearer restores 20 Mana.","S"));
-        mockItem(sqLiteDatabase, new Item("Spear of Shojin","Tear of the Goddess","B.F. Sword","After casting their spell, the wearers Basic Attacks restore 18% of their Maximum Mana.","S"));
+        mockItem(sqLiteDatabase, new Item("Guinsoo Rageblade","Needlessly Large Rod","Recurve Bow","Basic Attacks grant the wearer +4% bonus Attack Speed for the rest of combat. This effect can stack any number of times.","1"));
+        mockItem(sqLiteDatabase, new Item("Morellonomicon","Needlessly Large Rod","Giants Belt","When the wearer deals damage with their spell, they burn the target, dealing 20% of the targets Maximum Health as true damage over 10 seconds and reducing healing by 80% for the duration of the burn. A champion can only have one burn effect at a time, preferring the strongest.","1"));
+        mockItem(sqLiteDatabase, new Item("Hand of Justice","Tear of the Goddess","Sparring Gloves","At the beginning of each planning phase, the wearer gains one of the following: Basic Attacks and Spells deal +50% Damage or Basic Attacks heal 50 Health on-hit.","1"));
+        mockItem(sqLiteDatabase, new Item("Iceborne Gauntlet","Chain Vest","Sparring Gloves","When the wearer dodges, they create a zone of ice. Enemies inside the zone have their Attack Speed reduced by 35%.","1"));
+        mockItem(sqLiteDatabase, new Item("Infinity Edge","B.F. Sword","Sparring Gloves","The wearer gains +125% Critical Strike Damage.","1"));
+        mockItem(sqLiteDatabase, new Item("Phantom Dancer","Chain Vest","Recurve Bow","Wearer dodges all Critical Strikes.","1"));
+        mockItem(sqLiteDatabase, new Item("Seraphs Embrace","Tear of the Goddess","Tear of the Goddess","After casting their spell, the wearer restores 20 Mana.","1"));
+        mockItem(sqLiteDatabase, new Item("Spear of Shojin","Tear of the Goddess","B.F. Sword","After casting their spell, the wearers Basic Attacks restore 18% of their Maximum Mana.","1"));
         mockItem(sqLiteDatabase, new Item("Bloodthirster","B.F. Sword","Negatron Cloak","Basic Attacks heal the wearer for 40% of the damage dealt.","A"));
         mockItem(sqLiteDatabase, new Item("Deathblade","B.F. Sword","B.F. Sword","Whenever the wearer kills or participates in killing an enemy, gain +15 Attack Damage for the remainder of combat. This effect can stack any number of times.","A"));
         mockItem(sqLiteDatabase, new Item("Hush","Negatron Cloak","Tear of the Goddess","Basic Attacks have a 33% chance to silence the target on-hit, prevent the enemy from gaining mana for 4 seconds.","A"));
@@ -229,15 +235,7 @@ public class Sqlito extends SQLiteOpenHelper{
 
     }
 
-    public long mockChamp (SQLiteDatabase db, Champion champ){
-        return db.insert(CHAMP_TABLE, null, champ.toContentValues());
-    }
-
-    public long mockItem (SQLiteDatabase db, Item item){
-        return db.insert(ITEM_TABLE, null, item.toContentValues());
-    }
-
-    public List<Item> recuperaItems(){
+    public List<Item> recuperaItemsAlfabeticamente(){
         final List<Item> TORET = new ArrayList<>();
         final SQLiteDatabase DB = this.getReadableDatabase();
         Cursor CURSOR = DB.query(ITEM_TABLE,
@@ -247,6 +245,36 @@ public class Sqlito extends SQLiteOpenHelper{
                 null,
                 null,
                 "1" );
+
+        if ( CURSOR.moveToFirst() ) {
+            do {
+
+                String name = CURSOR.getString(CURSOR.getColumnIndexOrThrow(NAMEO));
+                String obj1 = CURSOR.getString(CURSOR.getColumnIndexOrThrow(OBJETO_PRI));
+                String obj2 = CURSOR.getString(CURSOR.getColumnIndexOrThrow(OBJETO_SEC));
+                String description = CURSOR.getString(CURSOR.getColumnIndexOrThrow(DESCRICION));
+                String tier = CURSOR.getString(CURSOR.getColumnIndexOrThrow(TIERO));
+
+
+                TORET.add(new Item(name,obj1,obj2,description,tier));
+
+
+            } while( CURSOR.moveToNext() );
+        }
+
+        CURSOR.close();
+        return TORET;
+    }
+    public List<Item> recuperaItemsTier(){
+        final List<Item> TORET = new ArrayList<>();
+        final SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor CURSOR = DB.query(ITEM_TABLE,
+                null,
+                null,
+                null,
+                null,
+                null,
+                "5" );
 
         if ( CURSOR.moveToFirst() ) {
             do {

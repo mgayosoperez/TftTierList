@@ -8,7 +8,6 @@ import com.example.tfttierlist.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,7 +42,7 @@ public class Champ_Info_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_champ__info_);
+        setContentView(R.layout.champ_info_layout);
         this.BaseDatos = new Sqlito( this.getApplicationContext() );
         ChampList = BaseDatos.recuperaTodoAlfabetico();
 

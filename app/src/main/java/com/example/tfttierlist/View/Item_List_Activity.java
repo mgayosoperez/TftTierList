@@ -50,23 +50,11 @@ public class Item_List_Activity extends AppCompatActivity {
             }
         });
 
+
         this.BaseDatos = new Sqlito(this.getApplicationContext());
-        ItemList = BaseDatos.recuperaItems();
-
-        maplist.clear();
-
-        for (Item item : ItemList) {
-            HashMap<String, Object> item1 = new HashMap<>();
-            Log.d("STATUS",item.getName());
-            item1.put("Name", item.getName());
-            int id = idImagen(item.getName());
-            item1.put("Img", id);
-            maplist.add(item1);
-        }
-
-        Item_List_Activity.GridAdapter adapter = new Item_List_Activity.GridAdapter(this);
-        itemsGrid.setAdapter(adapter);
+        alfabetico();
         this.registerForContextMenu(itemsGrid);
+
     }
 
 
@@ -76,7 +64,7 @@ public class Item_List_Activity extends AppCompatActivity {
         super.onCreateContextMenu(menu, v, menuInfo);
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.context_menu, menu);
+        inflater.inflate(R.menu.item_context_menu, menu);
     }
 
     public boolean onContextItemSelected(MenuItem item) {
@@ -85,18 +73,9 @@ public class Item_List_Activity extends AppCompatActivity {
 
             case R.id.OrdenarObjetoAlfa:
                 this.alfabetico();
-                Item_List_Activity.GridAdapter adapter = new Item_List_Activity.GridAdapter(this);
-                itemsGrid.setAdapter(adapter);
-                break;
-            case R.id.OrdenarObjetoCoste:
-                this.coste();
-                Item_List_Activity.GridAdapter adapter1 = new Item_List_Activity.GridAdapter(this);
-                itemsGrid.setAdapter(adapter1);
                 break;
             case R.id.OrdenarObjetoTier:
                 this.tier();
-                Item_List_Activity.GridAdapter adapter2 = new Item_List_Activity.GridAdapter(this);
-                itemsGrid.setAdapter(adapter2);
                 break;
         }
         return toret;
@@ -152,16 +131,41 @@ public class Item_List_Activity extends AppCompatActivity {
     }
 
     public void alfabetico() {
+        ItemList = BaseDatos.recuperaItemsAlfabeticamente();
+
+        maplist.clear();
+
+        for (Item item : ItemList) {
+            HashMap<String, Object> item1 = new HashMap<>();
+            item1.put("Name", item.getName());
+            int id = idImagen(item.getName());
+            item1.put("Img", id);
+            maplist.add(item1);
+        }
+
+        Item_List_Activity.GridAdapter adapter = new Item_List_Activity.GridAdapter(this);
+        itemsGrid.setAdapter(adapter);
 
     }
 
     public void tier() {
+        ItemList = BaseDatos.recuperaItemsTier();
 
+        maplist.clear();
+
+        for (Item item : ItemList) {
+            HashMap<String, Object> item1 = new HashMap<>();
+            item1.put("Name", item.getName());
+            int id = idImagen(item.getName());
+            item1.put("Img", id);
+            maplist.add(item1);
+        }
+
+        Item_List_Activity.GridAdapter adapter = new Item_List_Activity.GridAdapter(this);
+        itemsGrid.setAdapter(adapter);
     }
 
-    public void coste() {
 
-    }
 
     public int idImagen(String Name){
         switch(Name) {

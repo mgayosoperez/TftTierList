@@ -1,6 +1,7 @@
 package com.example.tfttierlist.View;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.tfttierlist.Core.Item;
@@ -11,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,7 +27,11 @@ public class Item_Info_Activity extends AppCompatActivity {
     private List<Item> ItemList = new ArrayList<>();
     private Sqlito BaseDatos;
 
+    private String NombreObjetoReceta1;
+    private String NombreObjetoReceta2;
     private TextView tvDescription;
+    private TextView tvItemName;
+    private TextView tvItemTier;
     private ImageView imgObjetoPpal;
     private ImageView imgObjetoReceta1;
     private ImageView imgObjetoReceta2;
@@ -36,18 +42,37 @@ public class Item_Info_Activity extends AppCompatActivity {
         setContentView(R.layout.item_info_layout);
 
         this.BaseDatos = new Sqlito(this.getApplicationContext());
-        ItemList = BaseDatos.recuperaItems();
+        ItemList = BaseDatos.recuperaItemsAlfabeticamente();
 
         //Inicializar variables
-        tvDescription = findViewById(R.id.tvItemDescription);
+        tvDescription = findViewById(R.id.tvItemDescripcion);
+        tvItemName = findViewById(R.id.tvItemName);
+        tvItemTier = findViewById(R.id.tvItemTier);
         imgObjetoPpal = findViewById(R.id.imageViewItem);
         imgObjetoReceta1 = findViewById(R.id.imageViewItemRecipe1);
         imgObjetoReceta2 = findViewById(R.id.imageViewItemRecipe2);
+
+        Bundle datos = this.getIntent().getExtras();
+        String NombreObjeto = datos.getString("Name");
+        mostrarDatosObjeto(NombreObjeto);
+
+        imgObjetoReceta1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarDatosObjeto(NombreObjetoReceta1);
+            }
+        });
+        imgObjetoReceta2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarDatosObjeto(NombreObjetoReceta2);
+            }
+        });
         imgObjetoReceta1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 Context context = getApplicationContext();
-                CharSequence text = "name";
+                CharSequence text = NombreObjetoReceta1;
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context,text,duration);
                 toast.show();
@@ -59,28 +84,34 @@ public class Item_Info_Activity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 Context context = getApplicationContext();
-                CharSequence text = "name";
+                CharSequence text = NombreObjetoReceta2;
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context,text,duration);
                 toast.show();
                 return true;
             }
         });
-        Bundle datos = this.getIntent().getExtras();
-        String NombreObjeto = datos.getString("Name");
-        mostrarDatosObjeto(NombreObjeto);
     }
 
     public void mostrarDatosObjeto(String Name) {
         Item aux = new Item();
 
-        for (Item itemsito : ItemList) {
+
+        for(Item itemsito : ItemList) {
             if (itemsito.getName().equals(Name)) {
-                imagenItem1(Name);
+                imagenItem1(itemsito.getName());
+                imagenItem2(itemsito.getItem1());
+                imagenItem3(itemsito.getItem2());
+                NombreObjetoReceta1 = itemsito.getItem1();
+                NombreObjetoReceta2 = itemsito.getItem2();
+                tvItemName.setText(itemsito.getName());
+                tvItemTier.setText(itemsito.getTier());
                 tvDescription.setText(itemsito.getDescription());
+
             }
         }
     }
+
 
     public void imagenItem1(String Name) {
         switch (Name) {
@@ -254,47 +285,47 @@ public class Item_Info_Activity extends AppCompatActivity {
     }
 
     public void imagenItem2(String Name) {
-        switch (Name){
-            case "Spatula":
-                imgObjetoReceta1.setImageResource(R.drawable.spatula);
-                break;
-            case "Needlessly Large Rod":
-                imgObjetoReceta1.setImageResource(R.drawable.needlesslylargerod);
-                break;
-            case "Tear of the Goddess":
-                imgObjetoReceta1.setImageResource(R.drawable.tearofthegoddess);
-                break;
-            case "B.F. Sword":
-                imgObjetoReceta1.setImageResource(R.drawable.bfsword);
-                break;
-            case "Recurve Bow":
-                imgObjetoReceta1.setImageResource(R.drawable.recurvebow);
-                break;
-            case "Giants Belt":
-                imgObjetoReceta1.setImageResource(R.drawable.giantsbelt);
-                break;
-            case "Negatron Cloak":
-                imgObjetoReceta1.setImageResource(R.drawable.negatroncloak);
-                break;
-            case "Sparring Gloves":
-                imgObjetoReceta1.setImageResource(R.drawable.sparringgloves);
-                break;
-            case "Chain Vest":
-                imgObjetoReceta1.setImageResource(R.drawable.chainvest);
-                break;
-            case "Force of Nature":
-                imgObjetoReceta1.setImageResource(R.drawable.forceofnature);
-                break;
-            case "Berserker Axe":
-                imgObjetoReceta1.setImageResource(R.drawable.berserkeraxe);
-                break;
-            case "Blade of the Ruined King":
-                imgObjetoReceta1.setImageResource(R.drawable.bladeoftheruinedking);
-                break;
-            case "Frozen Mallet":
-                imgObjetoReceta1.setImageResource(R.drawable.frozenmallet);
-                break;
-            case "Inferno Cinder":
+                switch (Name){
+                    case "Spatula":
+                        imgObjetoReceta1.setImageResource(R.drawable.spatula);
+                        break;
+                    case "Needlessly Large Rod":
+                        imgObjetoReceta1.setImageResource(R.drawable.needlesslylargerod);
+                        break;
+                    case "Tear of the Goddess":
+                        imgObjetoReceta1.setImageResource(R.drawable.tearofthegoddess);
+                        break;
+                    case "B.F. Sword":
+                        imgObjetoReceta1.setImageResource(R.drawable.bfsword);
+                        break;
+                    case "Recurve Bow":
+                        imgObjetoReceta1.setImageResource(R.drawable.recurvebow);
+                        break;
+                    case "Giants Belt":
+                        imgObjetoReceta1.setImageResource(R.drawable.giantsbelt);
+                        break;
+                    case "Negatron Cloak":
+                        imgObjetoReceta1.setImageResource(R.drawable.negatroncloak);
+                        break;
+                    case "Sparring Gloves":
+                        imgObjetoReceta1.setImageResource(R.drawable.sparringgloves);
+                        break;
+                    case "Chain Vest":
+                        imgObjetoReceta1.setImageResource(R.drawable.chainvest);
+                        break;
+                    case "Force of Nature":
+                        imgObjetoReceta1.setImageResource(R.drawable.forceofnature);
+                        break;
+                    case "Berserker Axe":
+                        imgObjetoReceta1.setImageResource(R.drawable.berserkeraxe);
+                        break;
+                    case "Blade of the Ruined King":
+                        imgObjetoReceta1.setImageResource(R.drawable.bladeoftheruinedking);
+                        break;
+                    case "Frozen Mallet":
+                        imgObjetoReceta1.setImageResource(R.drawable.frozenmallet);
+                        break;
+                    case "Inferno Cinder":
                 imgObjetoReceta1.setImageResource(R.drawable.infernocinder);
                 break;
             case "Talisman of Light":
@@ -592,6 +623,7 @@ public class Item_Info_Activity extends AppCompatActivity {
                 imgObjetoReceta2.setImageResource(R.drawable.lanada);
                 break;
         }
+
     }
 
 

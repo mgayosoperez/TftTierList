@@ -3,8 +3,8 @@ package com.example.tfttierlist.Core;
 import android.content.ContentValues;
 
 public class Item {
-    private static final String NAMEO = "name";
     private static final String ITEM_TABLE = "item";
+    private static final String NAMEO = "name";
     private static final String OBJETO_PRI = "objeto1";
     private static final String OBJETO_SEC = "objeto2";
     private static final String DESCRICION = "description";

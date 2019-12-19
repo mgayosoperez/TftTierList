@@ -54,22 +54,11 @@ public class Champ_List_Activity extends AppCompatActivity {
         this.BaseDatos = new Sqlito(this.getApplicationContext());
         ChampionList = BaseDatos.recuperaTodoAlfabetico();
 
-        maplist.clear();
+       alfabetico();
+       GridAdapter adapter = new GridAdapter(this);
+       champGrid.setAdapter(adapter);
 
-        for (Champion champ : ChampionList) {
-            HashMap<String, Object> item1 = new HashMap<>();
-
-            item1.put("Name", champ.getName());
-            int id = idImagen(champ.getName());
-            item1.put("Img", id);
-            maplist.add(item1);
-        }
-
-        GridAdapter adapter = new GridAdapter(this);
-        champGrid.setAdapter(adapter);
-
-
-        this.registerForContextMenu(champGrid);
+       this.registerForContextMenu(champGrid);
     }
 
 
@@ -79,7 +68,7 @@ public class Champ_List_Activity extends AppCompatActivity {
         super.onCreateContextMenu(menu, v, menuInfo);
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.context_menu, menu);
+        inflater.inflate(R.menu.champ_context_menu, menu);
     }
 
     public boolean onContextItemSelected(MenuItem item) {
@@ -108,8 +97,7 @@ public class Champ_List_Activity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        this.getMenuInflater().inflate(R.menu.actions_menu, menu);
-
+        this.getMenuInflater().inflate(R.menu.champ_options_menu, menu);
         return true;
     }
 
