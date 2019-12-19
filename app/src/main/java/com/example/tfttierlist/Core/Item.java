@@ -1,6 +1,14 @@
 package com.example.tfttierlist.Core;
 
+import android.content.ContentValues;
+
 public class Item {
+    private static final String ITEM_TABLE = "item";
+    private static final String OBJETO_PRI = "objeto1";
+    private static final String OBJETO_SEC = "objeto2";
+    private static final String DESCRICION = "description";
+    private static final String TIERO = "tier";
+
     private String Name;
     private String Item1;
     private String Item2;
@@ -51,5 +59,16 @@ public class Item {
 
     public void setTier(String tier) {
         Tier = tier;
+    }
+
+    public ContentValues toContentValues(){
+        ContentValues values = new ContentValues();
+        values.put(ITEM_TABLE,Name);
+        values.put(OBJETO_PRI,Item1);
+        values.put(OBJETO_SEC,Item2);
+        values.put(DESCRICION,Description);
+        values.put(TIERO,Tier);
+
+        return values;
     }
 }
