@@ -16,6 +16,9 @@ public class Item {
     private String Description;
     private String Tier;
 
+    public Item (){
+
+    }
     public Item(String name, String item1, String item2, String description, String tier) {
         Name = name;
         Description = description;
