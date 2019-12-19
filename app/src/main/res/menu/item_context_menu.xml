@@ -4,6 +4,5 @@
         android:title="Ordenar alfabéticamente"></item>
     <item android:id="@+id/OrdenarObjetoTier"
         android:title="Ordenar por Tier"></item>
-    <item android:id="@+id/OrdenarObjetoCoste"
-        android:title="Odenar por Coste"></item>
+
 </menu>
