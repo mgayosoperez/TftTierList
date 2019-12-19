@@ -16,6 +16,7 @@ public class Sqlito extends SQLiteOpenHelper{
     private static String NOMBRE = "TFTierList";
     private static int VERSION = 1;
 
+    //Tags for Champ Table
     private static final String CHAMP_TABLE = "champion";
     private static final String NAME = "name";
     private static final String ORIGIN = "origin";
@@ -35,7 +36,7 @@ public class Sqlito extends SQLiteOpenHelper{
     private static final String CRITRATE = "critrate";
     private static final String RANGE = "range";
 
-
+    //Tags for Item Table
     private static final String NAMEO = "name";
     private static final String ITEM_TABLE = "item";
     private static final String OBJETO_PRI = "objeto1";
@@ -48,6 +49,7 @@ public class Sqlito extends SQLiteOpenHelper{
         super( c, NOMBRE, null, VERSION );
     }
 
+    //Create Tables
     @Override
     public void onCreate(SQLiteDatabase db)
     {
@@ -91,6 +93,7 @@ public class Sqlito extends SQLiteOpenHelper{
         mockData(db);
     }
 
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
@@ -110,9 +113,12 @@ public class Sqlito extends SQLiteOpenHelper{
         this.onCreate( db );
     }
 
-    public long saveChamp (Champion Champ){
-        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        return sqLiteDatabase.insert(CHAMP_TABLE,null,Champ.toContentValues());
+    public long mockChamp (SQLiteDatabase db, Champion champ){
+        return db.insert(CHAMP_TABLE, null, champ.toContentValues());
+    }
+
+    public long mockItem (SQLiteDatabase db, Item item){
+        return db.insert(ITEM_TABLE, null, item.toContentValues());
     }
 
     public void mockData(SQLiteDatabase sqLiteDatabase){
@@ -227,14 +233,6 @@ public class Sqlito extends SQLiteOpenHelper{
         mockItem(sqLiteDatabase, new Item("Titanic Hydra","Recurve Bow","Giants Belt","Basic Attacks deal an additional 3% of the wearers Maximum Health as magic damage to the target and adjacent enemies behind them.","D"));
 
 
-    }
-
-    public long mockChamp (SQLiteDatabase db, Champion champ){
-        return db.insert(CHAMP_TABLE, null, champ.toContentValues());
-    }
-
-    public long mockItem (SQLiteDatabase db, Item item){
-        return db.insert(ITEM_TABLE, null, item.toContentValues());
     }
 
     public List<Item> recuperaItemsAlfabeticamente(){

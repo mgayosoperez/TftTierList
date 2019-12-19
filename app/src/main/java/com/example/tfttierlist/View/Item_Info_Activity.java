@@ -1,5 +1,6 @@
 package com.example.tfttierlist.View;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tfttierlist.R;
 
@@ -66,7 +68,29 @@ public class Item_Info_Activity extends AppCompatActivity {
                 mostrarDatosObjeto(NombreObjetoReceta2);
             }
         });
+        imgObjetoReceta1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Context context = getApplicationContext();
+                CharSequence text = NombreObjetoReceta1;
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context,text,duration);
+                toast.show();
+                return true;
+            }
+        });
 
+        imgObjetoReceta2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Context context = getApplicationContext();
+                CharSequence text = NombreObjetoReceta2;
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context,text,duration);
+                toast.show();
+                return true;
+            }
+        });
     }
 
     public void mostrarDatosObjeto(String Name) {

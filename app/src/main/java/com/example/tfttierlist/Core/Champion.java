@@ -201,6 +201,7 @@ public class Champion {
     public void setRange(String range) {
         Range = range;
     }
+
     public ContentValues toContentValues(){
         ContentValues values = new ContentValues();
         values.put(NAME,Name);
