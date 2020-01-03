@@ -18,8 +18,16 @@
             android:label="@string/title_activity_item__info_"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".View.Comp_List_Activity"
+            android:label="@string/title_activity_comp__info_"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".View.Champ_Info_Activity"
             android:label="@string/title_activity_champ__info_"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.Champ_Comp_Activity"
+            android:label="@string/title_activity_champ__comp_"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".View.Champ_List_Activity">
             <intent-filter>

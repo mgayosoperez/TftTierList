@@ -1,5 +1,6 @@
 package com.example.tfttierlist.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.tfttierlist.Core.Champion;
@@ -8,6 +9,8 @@ import com.example.tfttierlist.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +19,7 @@ import java.util.List;
 
 public class Champ_Info_Activity extends AppCompatActivity {
     List<Champion> ChampList = new ArrayList<>();
+    Button btn;
 
     private Sqlito BaseDatos;
 
@@ -48,6 +52,7 @@ public class Champ_Info_Activity extends AppCompatActivity {
 
 
         //Inicializar las variables
+        btn = findViewById(R.id.btnComparar);
         etChampName = findViewById(R.id.twChampName);
         etDescription = findViewById(R.id.etDescription);
         etOrigin = findViewById(R.id.etOrigin);
@@ -64,11 +69,23 @@ public class Champ_Info_Activity extends AppCompatActivity {
         etRange = findViewById(R.id.etRange);
         image = findViewById(R.id.imageViewItem);
 
+
+
         Champion aux = new Champion();
         Bundle datos = this.getIntent().getExtras();
-        String NombreCampeon = datos.getString("Name");
+        final String NombreCampeon = datos.getString("Name");
+        btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                compararCampeon(NombreCampeon);
+            }
+        });
         mostrarDatosCampeon(NombreCampeon);
 
+    }
+    public void compararCampeon(String Name) {
+        Intent intent = new Intent(this, Comp_List_Activity.class);
+        intent.putExtra("Name", Name);
+        this.startActivityForResult(intent, 11);
     }
 
     public void mostrarDatosCampeon(String Name){
