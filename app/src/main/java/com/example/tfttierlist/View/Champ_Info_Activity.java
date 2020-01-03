@@ -267,6 +267,16 @@ public class Champ_Info_Activity extends AppCompatActivity {
                 break;
             case "Veigar":
                 image.setImageResource(R.drawable.veigar);
+                break;
+            case "Khazix":
+                image.setImageResource(R.drawable.khazix);
+                break;
+            case "Renekton":
+                image.setImageResource(R.drawable.renekton);
+                break;
+            case "Ornn":
+                image.setImageResource(R.drawable.ornn);
+                break;
         }
         return true;
     }
