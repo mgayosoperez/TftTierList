@@ -52,7 +52,7 @@ public class Champ_Info_Activity extends AppCompatActivity {
     ImageView originClassImage1;
     ImageView originClassImage2;
     ImageView originClassImage3;
-    private Sqlito BaseDatos;
+
     private List<Origin> OriginList;
     private Origin theOrigin1;
     private Origin theOrigin2;
