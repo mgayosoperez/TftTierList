@@ -3,5 +3,10 @@
     <string name="title_activity_champ__info_">Champ_Info_Activity</string>
     <string name="title_activity_item__info_">Item_Info_Activity</string>
     <string name="title_activity_item_info_activity">Item_info_activity</string>
+
     <string name="title_activity_origin_class_">OriginClass_Activity</string>
+
+    <string name="title_activity_comp__info_">Comp_List_Activity</string>
+    <string name="title_activity_champ__comp_" >Champ_Comp_Activity</string>
+
 </resources>

@@ -11,12 +11,24 @@ import com.example.tfttierlist.R;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+
+
+import android.widget.Button;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Champ_Info_Activity extends AppCompatActivity {
+
+    List<Champion> ChampList = new ArrayList<>();
+    Button btn;
+
+    private Sqlito BaseDatos;
+
+
     TextView etChampName;
     TextView etTier;
     TextView etDescription;
@@ -46,6 +58,7 @@ public class Champ_Info_Activity extends AppCompatActivity {
     private Origin theOrigin2;
     private Origin theOrigin3;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +69,7 @@ public class Champ_Info_Activity extends AppCompatActivity {
 
 
         //Inicializar las variables
+        btn = findViewById(R.id.btnComparar);
         etChampName = findViewById(R.id.twChampName);
         etTier = findViewById(R.id.tvChampTier);
         etDescription = findViewById(R.id.etDescription);
@@ -74,8 +88,6 @@ public class Champ_Info_Activity extends AppCompatActivity {
         originClassImage2 = findViewById(R.id.oriClassImg2);
         originClassImage3 = findViewById(R.id.oriClassImg3);
 
-
-
         Bundle datos = this.getIntent().getExtras();
         Champion ChampionToShow = (Champion) datos.getSerializable("Champ");
         mostrarDatosCampeon(ChampionToShow);
@@ -83,6 +95,18 @@ public class Champ_Info_Activity extends AppCompatActivity {
         theOrigin1 = searchOrigin(ChampOrigin1);
         theOrigin2 = searchOrigin(ChampOrigin2);
         theOrigin3 = searchOrigin(ChampOrigin3);
+
+
+        Champion aux = new Champion();
+        Bundle datos2 = this.getIntent().getExtras();
+        final String NombreCampeon = datos.getString("Name");
+        btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                compararCampeon(NombreCampeon);
+            }
+        });
+        mostrarDatosCampeon(NombreCampeon);
+
 
         originClassImage1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +127,11 @@ public class Champ_Info_Activity extends AppCompatActivity {
                 showOriginClass(theOrigin3);
             }
         });
+    }
+    public void compararCampeon(String Name) {
+        Intent intent = new Intent(this, Comp_List_Activity.class);
+        intent.putExtra("Name", Name);
+        this.startActivityForResult(intent, 11);
     }
 
 
@@ -142,6 +171,9 @@ public class Champ_Info_Activity extends AppCompatActivity {
         etAtkSpd.setText(champ.getAtkSpd());
         etCritRate.setText(champ.getCritRate());
         etRange.setText(champ.getRange());
+    }
+    public void mostrarDatosCampeon(String Name){
+        //No se
     }
 
 
