@@ -1,27 +1,24 @@
 package com.example.tfttierlist.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.tfttierlist.Core.Champion;
+import com.example.tfttierlist.Core.Origin;
 import com.example.tfttierlist.Core.Sqlito;
 import com.example.tfttierlist.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Champ_Info_Activity extends AppCompatActivity {
-    List<Champion> ChampList = new ArrayList<>();
-
-    private Sqlito BaseDatos;
-
     TextView etChampName;
-    TextView etOrigin;
-    TextView etClass;
+    TextView etTier;
     TextView etDescription;
     TextView etCost;
     TextView etHealth;
@@ -34,23 +31,34 @@ public class Champ_Info_Activity extends AppCompatActivity {
     TextView etCritRate;
     TextView etRange;
 
+    private String ChampOrigin1;
+    private String ChampOrigin2;
+    private String ChampOrigin3;
+    private String OrClass;
+
     ImageView image;
-
-
+    ImageView originClassImage1;
+    ImageView originClassImage2;
+    ImageView originClassImage3;
+    private Sqlito BaseDatos;
+    private List<Origin> OriginList;
+    private Origin theOrigin1;
+    private Origin theOrigin2;
+    private Origin theOrigin3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.champ_info_layout);
-        this.BaseDatos = new Sqlito( this.getApplicationContext() );
-        ChampList = BaseDatos.recuperaTodoAlfabetico();
+
+        this.BaseDatos = new Sqlito(this.getApplicationContext());
+        OriginList = BaseDatos.recuperaOrigenes();
 
 
         //Inicializar las variables
         etChampName = findViewById(R.id.twChampName);
+        etTier = findViewById(R.id.tvChampTier);
         etDescription = findViewById(R.id.etDescription);
-        etOrigin = findViewById(R.id.etOrigin);
-        etClass = findViewById(R.id.etClass);
         etCost = findViewById(R.id.etCost);
         etHealth = findViewById(R.id.etHealth);
         etMana = findViewById(R.id.etMana);
@@ -62,37 +70,80 @@ public class Champ_Info_Activity extends AppCompatActivity {
         etCritRate = findViewById(R.id.etCritRate);
         etRange = findViewById(R.id.etRange);
         image = findViewById(R.id.imageViewItem);
+        originClassImage1 = findViewById(R.id.oriClassImg1);
+        originClassImage2 = findViewById(R.id.oriClassImg2);
+        originClassImage3 = findViewById(R.id.oriClassImg3);
 
-        Champion aux = new Champion();
+
+
         Bundle datos = this.getIntent().getExtras();
-        String NombreCampeon = datos.getString("Name");
-        mostrarDatosCampeon(NombreCampeon);
+        Champion ChampionToShow = (Champion) datos.getSerializable("Champ");
+        mostrarDatosCampeon(ChampionToShow);
 
+        theOrigin1 = searchOrigin(ChampOrigin1);
+        theOrigin2 = searchOrigin(ChampOrigin2);
+        theOrigin3 = searchOrigin(ChampOrigin3);
+
+        originClassImage1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showOriginClass(theOrigin1);
+
+            }
+        });
+        originClassImage2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showOriginClass(theOrigin2);
+            }
+        });
+        originClassImage3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showOriginClass(theOrigin3);
+            }
+        });
     }
 
-    public void mostrarDatosCampeon(String Name){
-        Champion aux = new Champion();
 
-        for(Champion champ : ChampList){
-            if (champ.getName().equals(Name)){
-                imagenCampeon(Name);
-                etDescription.setText(champ.getDescription());
-                etChampName.setText(champ.getName());
-                etOrigin.setText(champ.getOrigin());
-                etClass.setText(champ.getChampClass());
-                etCost.setText(champ.getCost());
-                etHealth.setText(champ.getHealth());
-                etMana.setText(champ.getMana());
-                etArmor.setText(champ.getArmor());
-                etMR.setText(champ.getMR());
-                etDPS.setText(champ.getMR());
-                etDamage.setText(champ.getDamage());
-                etAtkSpd.setText(champ.getAtkSpd());
-                etCritRate.setText(champ.getCritRate());
-                etRange.setText(champ.getRange());
+    public void showOriginClass (Origin champOrigin){
+        Intent intent = new Intent(this, OriginClass_Activity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Origin", champOrigin);
+        intent.putExtras(bundle);
+        this.startActivityForResult(intent, 11);
+    }
+
+    public Origin searchOrigin (String Name){
+        for(Origin aux : OriginList){
+            if(aux.getName().equals(Name)){
+                return aux;
             }
         }
+        return new Origin();
     }
+
+    public void mostrarDatosCampeon(Champion champ){
+        ChampOrigin1 = champ.getOrigin();
+        ChampOrigin2 = champ.getChampClass();
+        ChampOrigin3 = champ.getOriginClass();
+
+        imagenCampeon(champ.getName());
+        etTier.setText(champ.getTier());
+        etDescription.setText(champ.getDescription());
+        etChampName.setText(champ.getName());
+        etCost.setText(champ.getCost());
+        etHealth.setText(champ.getHealth());
+        etMana.setText(champ.getMana());
+        etArmor.setText(champ.getArmor());
+        etMR.setText(champ.getMR());
+        etDPS.setText(champ.getMR());
+        etDamage.setText(champ.getDamage());
+        etAtkSpd.setText(champ.getAtkSpd());
+        etCritRate.setText(champ.getCritRate());
+        etRange.setText(champ.getRange());
+    }
+
 
     public boolean imagenCampeon (String Name) {
         switch(Name) {

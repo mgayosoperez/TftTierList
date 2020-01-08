@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".View.OriginClass_Activity"
+            android:label="@string/title_activity_origin_class_"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".View.Item_Info_Activity"
             android:label="@string/title_activity_item_info_activity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".View.Item_List_Activity"
             android:label="@string/title_activity_item__info_"

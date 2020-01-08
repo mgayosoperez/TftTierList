@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#00050505"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -25,6 +30,8 @@
                     android:id="@+id/imageViewItem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="7dp"
                     app:srcCompat="@drawable/aatrox" />
             </LinearLayout>
 
@@ -38,46 +45,69 @@
                     android:id="@+id/twChampName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
                     android:gravity="center"
                     android:text=" "
                     android:textAlignment="center"
-                    android:textSize="18sp" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/twOrigin"
+                <ImageButton
+                    android:id="@+id/favorite_button"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="#00ffffff"
+                    android:src="@android:drawable/btn_star" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Origin and Class"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp"
+                        tools:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textAlignment="center"
-                    android:text="Origin"
-                    android:textSize="14sp" />
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/etOrigin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textSize="12sp"></TextView>
+                    <ImageView
+                        android:id="@+id/oriClassImg1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/cloud" />
 
-                <TextView
-                    android:id="@+id/twClass"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:text="Class"
+                    <ImageView
+                        android:id="@+id/oriClassImg2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        app:srcCompat="@drawable/cloud" />
 
-                    android:textSize="14sp" />
+                    <ImageView
+                        android:id="@+id/oriClassImg3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        app:srcCompat="@drawable/cloud" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/etClass"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textSize="12sp"></TextView>
             </LinearLayout>
+
 
         </LinearLayout>
 
@@ -99,64 +129,88 @@
                     android:id="@+id/twDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Description" />
+                    android:text="Description"
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/etDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp" />
+                    android:textSize="14sp"
+                    android:textColor="#FFFFFF"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginRight="20dp"
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:text="Tier"
+                        android:textColor="#FFFFFF"/>
+
+                    <TextView
+                        android:id="@+id/tvChampTier"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical">
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:id="@+id/twCost"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
-                        android:text="Cost" />
+                        android:text="Cost"
+                        android:textColor="#FFFFFF"/>
 
                     <TextView
                         android:id="@+id/etCost"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical"
+
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/twHealth"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
                         android:text="Health"
-                        android:layout_marginRight="15dp"/>
+                        android:textColor="#FFFFFF"/>
 
                     <TextView
                         android:id="@+id/etHealth"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        />
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical"
+
                     android:orientation="horizontal">
 
                     <TextView
@@ -164,18 +218,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
-                        android:text="Mana" />
+                        android:text="Mana"
+                        android:textColor="#FFFFFF"/>
 
                     <TextView
                         android:id="@+id/etMana"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical"
+
                     android:orientation="horizontal">
 
                     <TextView
@@ -183,18 +239,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
-                        android:text="Armor" />
+                        android:text="Armor"
+                        android:textColor="#FFFFFF"/>
 
                     <TextView
                         android:id="@+id/etArmor"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical"
+
                     android:orientation="horizontal">
 
                     <TextView
@@ -202,18 +260,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
-                        android:text="MR" />
+                        android:text="MR"
+                        android:textColor="#FFFFFF"/>
 
                     <TextView
                         android:id="@+id/etMR"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical"
+
                     android:orientation="horizontal">
 
                     <TextView
@@ -221,18 +281,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
-                        android:text="DPS" />
+                        android:text="DPS"
+                        android:textColor="#FFFFFF"/>
 
                     <TextView
                         android:id="@+id/etDPS"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical"
+
                     android:orientation="horizontal">
 
                     <TextView
@@ -240,18 +302,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
-                        android:text="Damage" />
+                        android:text="Damage"
+                        android:textColor="#FFFFFF"/>
 
                     <TextView
                         android:id="@+id/etDamage"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical"
+
                     android:orientation="horizontal">
 
                     <TextView
@@ -259,18 +323,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
-                        android:text="Atk Spd" />
+                        android:text="Atk Spd"
+                        android:textColor="#FFFFFF"/>
 
                     <TextView
                         android:id="@+id/etAtkSpd"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical"
+
                     android:orientation="horizontal">
 
                     <TextView
@@ -278,18 +344,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
-                        android:text="Crit Rate" />
+                        android:text="Crit Rate"
+                        android:textColor="#FFFFFF"/>
 
                     <TextView
                         android:id="@+id/etCritRate"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical"
+
                     android:orientation="horizontal">
 
                     <TextView
@@ -297,17 +365,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
-                        android:text="Range" />
+                        android:text="Range"
+                        android:textColor="#FFFFFF" />
 
                     <TextView
                         android:id="@+id/etRange"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
+
     </LinearLayout>
 
 

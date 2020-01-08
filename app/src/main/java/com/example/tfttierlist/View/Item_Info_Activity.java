@@ -1,19 +1,15 @@
 package com.example.tfttierlist.View;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.tfttierlist.Core.Item;
 import com.example.tfttierlist.Core.Sqlito;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +32,7 @@ public class Item_Info_Activity extends AppCompatActivity {
     private ImageView imgObjetoReceta1;
     private ImageView imgObjetoReceta2;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,20 +49,21 @@ public class Item_Info_Activity extends AppCompatActivity {
         imgObjetoReceta1 = findViewById(R.id.imageViewItemRecipe1);
         imgObjetoReceta2 = findViewById(R.id.imageViewItemRecipe2);
 
+
         Bundle datos = this.getIntent().getExtras();
-        String NombreObjeto = datos.getString("Name");
-        mostrarDatosObjeto(NombreObjeto);
+        Item ItemToShow = (Item) datos.getSerializable("Item");
+        mostrarDatosObjeto(ItemToShow);
 
         imgObjetoReceta1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mostrarDatosObjeto(NombreObjetoReceta1);
+                mostrarDatosObjetoNombre(NombreObjetoReceta1);
             }
         });
         imgObjetoReceta2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mostrarDatosObjeto(NombreObjetoReceta2);
+                mostrarDatosObjetoNombre(NombreObjetoReceta2);
             }
         });
         imgObjetoReceta1.setOnLongClickListener(new View.OnLongClickListener() {
@@ -79,7 +77,6 @@ public class Item_Info_Activity extends AppCompatActivity {
                 return true;
             }
         });
-
         imgObjetoReceta2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -92,11 +89,18 @@ public class Item_Info_Activity extends AppCompatActivity {
             }
         });
     }
+    public void mostrarDatosObjeto(Item itemsito) {
+          imagenItem1(itemsito.getName());
+          imagenItem2(itemsito.getItem1());
+          imagenItem3(itemsito.getItem2());
+          NombreObjetoReceta1 = itemsito.getItem1();
+          NombreObjetoReceta2 = itemsito.getItem2();
+          tvItemName.setText(itemsito.getName());
+          tvItemTier.setText(itemsito.getTier());
+          tvDescription.setText(itemsito.getDescription());
+    }
 
-    public void mostrarDatosObjeto(String Name) {
-        Item aux = new Item();
-
-
+    public void mostrarDatosObjetoNombre(String Name) {
         for(Item itemsito : ItemList) {
             if (itemsito.getName().equals(Name)) {
                 imagenItem1(itemsito.getName());
@@ -107,10 +111,10 @@ public class Item_Info_Activity extends AppCompatActivity {
                 tvItemName.setText(itemsito.getName());
                 tvItemTier.setText(itemsito.getTier());
                 tvDescription.setText(itemsito.getDescription());
-
             }
         }
     }
+
 
 
     public void imagenItem1(String Name) {

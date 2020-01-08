@@ -44,6 +44,11 @@ public class Sqlito extends SQLiteOpenHelper{
     private static final String DESCRICION = "description";
     private static final String TIERO = "tier";
 
+    //Tags for Origin Table
+    private static final String ORIGIN_TABLE = "origin";
+    private static final String ORINAME = "name";
+    private static final String ORIDESCRIPTION = "description";
+
 
     public Sqlito(Context c){
         super( c, NOMBRE, null, VERSION );
@@ -83,6 +88,10 @@ public class Sqlito extends SQLiteOpenHelper{
                     + DESCRICION +" TEXT NOT NULL,"
                     + TIERO +" TEXT NOT NULL)");
 
+            db.execSQL("CREATE TABLE " + ORIGIN_TABLE + "("
+                    + ORINAME + " TEXT PRIMARY KEY,"
+                    + ORIDESCRIPTION +" TEXT NOT NULL)");
+
             db.setTransactionSuccessful();
         } catch(SQLException exc) {
             Log.e(LOG_TAG, "ERROR al crear la base de datos: " + exc.getMessage() );
@@ -102,7 +111,7 @@ public class Sqlito extends SQLiteOpenHelper{
 
             db.execSQL( "DROP TABLE IF EXISTS " + CHAMP_TABLE );
             db.execSQL("DROP TABLE IF EXISTS " + ITEM_TABLE);
-
+            db.execSQL( "DROP TABLE IF EXISTS " + ORIGIN_TABLE );
             db.setTransactionSuccessful();
         } catch(SQLException exc) {
             Log.e(LOG_TAG, "eliminando la base de datos: " + exc.getMessage() );
@@ -119,6 +128,10 @@ public class Sqlito extends SQLiteOpenHelper{
 
     public long mockItem (SQLiteDatabase db, Item item){
         return db.insert(ITEM_TABLE, null, item.toContentValues());
+    }
+
+    public long mockOrigin (SQLiteDatabase db, Origin origin){
+        return db.insert(ORIGIN_TABLE, null, origin.toContentValues());
     }
 
     public void mockData(SQLiteDatabase sqLiteDatabase){
@@ -232,6 +245,32 @@ public class Sqlito extends SQLiteOpenHelper{
         mockItem(sqLiteDatabase, new Item("Thornmail","Chain Vest","Chain Vest","When the wearer is hit by a Basic Attack, they reflect 100% of the mitigated damage as magic damage.","D"));
         mockItem(sqLiteDatabase, new Item("Titanic Hydra","Recurve Bow","Giants Belt","Basic Attacks deal an additional 3% of the wearers Maximum Health as magic damage to the target and adjacent enemies behind them.","D"));
 
+
+        mockOrigin(sqLiteDatabase, new Origin("Glacial","Basic Attacks from Glacials have a chance to stun their target for 1.5 seconds. 20/35/50 Chance to Stun."));
+        mockOrigin(sqLiteDatabase, new Origin("Poison","Poison champions apply Neurotoxin when they deal damage, increasing the targets mana cost by 50%."));
+        mockOrigin(sqLiteDatabase, new Origin("Ocean","All allies restore mana every 4 seconds. 15/30/60 +Mana"));
+        mockOrigin(sqLiteDatabase, new Origin("Shadow","Shadow units deal increased damage for 4 seconds at combat start, refreshed on takedown. +70% Increased Damage, Self Takedown +140% Increased Damage, Any Shadow Takedown"));
+        mockOrigin(sqLiteDatabase, new Origin("Cloud","All allies gain dodge chance. +20%/+25%/+35% Dodge Chance"));
+        mockOrigin(sqLiteDatabase, new Origin("Crystal","Crystal champions have a maximum amount of damage they can take from a single hit. 100/60 Max Damage"));
+        mockOrigin(sqLiteDatabase, new Origin("Inferno","Inferno spell damage burns the ground beneath the target, dealing a percent of that spells pre-mitigation damage as magic damage over 4 seconds. +70% Damage & 1 Hex/+120% Damage & 3 Hexes/+180% Damage & 5 Hexes"));
+        mockOrigin(sqLiteDatabase, new Origin("Light","When a Light champion dies, all other Light champions gain Attack Speed and are healed for 25% of the champions Maximum Health. +15%/+25%/+35% Attack Speed"));
+        mockOrigin(sqLiteDatabase, new Origin("Steel","Steel champions gain damage immunity for a few seconds when they are reduced below 50% health. 2/3/4 Seconds of Immunity2 Seconds of Immunity"));
+        mockOrigin(sqLiteDatabase, new Origin("Woodland","At the start of combat, a random Woodland champion makes a copy of themselves."));
+        mockOrigin(sqLiteDatabase, new Origin("Desert","Reduces each enemys armor."));
+        mockOrigin(sqLiteDatabase, new Origin("Mountain","At the start of combat, a random ally gains a 1500 Stoneshield."));
+        mockOrigin(sqLiteDatabase, new Origin("Alchemist", "Innate: Alchemists ignore collision and never stop moving."));
+        mockOrigin(sqLiteDatabase, new Origin("Avatar", "An Avatars Origin Element is counted twice for Trait bonuses."));
+        mockOrigin(sqLiteDatabase, new Origin("Assassin", "Innate: At the start of combat, Assassins leap to the farthest enemy. Assassins gain bonus Critical Strike Damage and Chance. +75%/+150% Critical Strike Damage & +10%/+20% Critical Strike Chance"));
+        mockOrigin(sqLiteDatabase, new Origin("Mage", "Mages have a chance on cast to instead Doublecast. 50%/100% Chance"));
+        mockOrigin(sqLiteDatabase, new Origin("Mystic", "All allies gain increased Magic Resistance. 40/120 Magic Resistance"));
+        mockOrigin(sqLiteDatabase, new Origin("Predator", "Predators instantly kill enemies they damage who are below 25% health."));
+        mockOrigin(sqLiteDatabase, new Origin("Berserker", "Innate: At the start of combat, Berserkers leap to the nearest enemy. Berserkers have a 40% chance to hit all units in a cone in front of them with their attacks. 40%/100% Chance & +0/+25 Attack Damage"));
+        mockOrigin(sqLiteDatabase, new Origin("Blademaster", "Blademaster Basic Attacks have a 40% chance to trigger additional attacks against their target. These additional attacks deal damage like Basic Attacks and trigger on-hit effects. 1/2/3 Extra Attack"));
+        mockOrigin(sqLiteDatabase, new Origin("Ranger", "Every 3 seconds, Rangers have a chance to double their Attack Speed for 3 seconds. 35%/80%/100% Chance to x2/x2/x2.5 Attack Speed bonus"));
+        mockOrigin(sqLiteDatabase, new Origin("Soulbound", "The first Soulbound unit to die in a round will instead enter the Spirit Realm, becoming untargetable and continuing to fight as long as another Soulbound unit is alive."));
+        mockOrigin(sqLiteDatabase, new Origin("Summoner", "Summoned units have increased health and duration. +30%/+120% increase"));
+        mockOrigin(sqLiteDatabase, new Origin("Warden", "Wardens gain increased total Armor. +150%/+300%/+450% Armor"));
+        mockOrigin(sqLiteDatabase, new Origin("Druid", "Druids regenerate 40 health each second."));
 
     }
 
@@ -422,5 +461,33 @@ public class Sqlito extends SQLiteOpenHelper{
         CURSOR.close();
         return TORET;
     }
+
+    public List<Origin> recuperaOrigenes(){
+        final List<Origin> TORET = new ArrayList<>();
+        final SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor CURSOR = DB.query(ORIGIN_TABLE,
+                null,
+                null,
+                null,
+                null,
+                null,
+                "1" );
+
+        if ( CURSOR.moveToFirst() ) {
+            do {
+
+                String name = CURSOR.getString(CURSOR.getColumnIndexOrThrow(ORINAME));
+                String description = CURSOR.getString(CURSOR.getColumnIndexOrThrow(ORIDESCRIPTION));
+
+                TORET.add(new Origin(name,description));
+
+
+            } while( CURSOR.moveToNext() );
+        }
+
+        CURSOR.close();
+        return TORET;
+    }
+
 }
 

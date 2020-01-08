@@ -3,7 +3,9 @@ package com.example.tfttierlist.Core;
 
 import android.content.ContentValues;
 
-public class Champion {
+import java.io.Serializable;
+
+public class Champion implements Serializable {
     private static final String CHAMP_TABLE = "champ";
     private static final String NAME = "name";
     private static final String ORIGIN = "origin";

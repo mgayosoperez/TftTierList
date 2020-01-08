@@ -155,8 +155,16 @@ public class Champ_List_Activity extends AppCompatActivity {
     }
 
     public void nuevoCampeon(String Name) {
+        Champion champ = new Champion();
+        for(Champion aux : ChampionList) {
+            if (aux.getName().equals(Name)) {
+                champ = aux;
+            }
+        }
         Intent intent = new Intent(this, Champ_Info_Activity.class);
-        intent.putExtra("Name", Name);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Champ", champ);
+        intent.putExtras(bundle);
         this.startActivityForResult(intent, 11);
     }
 
@@ -203,8 +211,6 @@ public class Champ_List_Activity extends AppCompatActivity {
     }
 
     public int idImagen(String Name) {
-
-
         switch(Name) {
             case "Singed":
                 return R.drawable.singed;

@@ -125,8 +125,16 @@ public class Item_List_Activity extends AppCompatActivity {
     }
 
     public void verItem(String Name) {
+        Item TheItem = new Item();
+        for(Item itemsito : ItemList) {
+            if (itemsito.getName().equals(Name)) {
+                TheItem = itemsito;
+            }
+        }
         Intent intent = new Intent(this, Item_Info_Activity.class);
-        intent.putExtra("Name", Name);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Item", TheItem);
+        intent.putExtras(bundle);
         this.startActivityForResult(intent, 11);
     }
 
