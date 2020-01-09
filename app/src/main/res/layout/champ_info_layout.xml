@@ -383,13 +383,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center">
+
             <Button
+                android:id="@+id/btnComparar"
                 android:layout_width="200dp"
                 android:layout_height="70dp"
+                android:background="#191970"
                 android:text="Comparar"
-                android:background="@color/colorPrimaryDark"
-                android:textColor="@color/cardview_light_background"
-                android:id="@+id/btnComparar">
+                android:textColor="@color/cardview_light_background">
 
             </Button>
         </LinearLayout>

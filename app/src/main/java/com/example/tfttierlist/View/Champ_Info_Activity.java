@@ -9,12 +9,14 @@ import com.example.tfttierlist.Core.Sqlito;
 import com.example.tfttierlist.R;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.view.View;
 
 
 import android.widget.Button;
 
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,9 +25,8 @@ import java.util.List;
 
 public class Champ_Info_Activity extends AppCompatActivity {
 
-    List<Champion> ChampList = new ArrayList<>();
     Button btn;
-
+    private List<Champion> ChampList = new ArrayList<>();
     private Sqlito BaseDatos;
 
 
@@ -53,10 +54,13 @@ public class Champ_Info_Activity extends AppCompatActivity {
     ImageView originClassImage2;
     ImageView originClassImage3;
 
-    private List<Origin> OriginList;
+    private List<Origin> OriginList = new ArrayList<>();
     private Origin theOrigin1;
     private Origin theOrigin2;
     private Origin theOrigin3;
+
+    private ImageButton Star;
+    private boolean isEnable = false;
 
 
     @Override
@@ -88,6 +92,7 @@ public class Champ_Info_Activity extends AppCompatActivity {
         originClassImage2 = findViewById(R.id.oriClassImg2);
         originClassImage3 = findViewById(R.id.oriClassImg3);
 
+
         Bundle datos = this.getIntent().getExtras();
         final Champion ChampionToShow = (Champion) datos.getSerializable("Champ");
         mostrarDatosCampeon(ChampionToShow);
@@ -96,8 +101,23 @@ public class Champ_Info_Activity extends AppCompatActivity {
         theOrigin2 = searchOrigin(ChampOrigin2);
         theOrigin3 = searchOrigin(ChampOrigin3);
 
+        Star = findViewById(R.id.favorite_button);
+        if(ChampionToShow.isFavorite().equals("1")){
+            Star.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),android.R.drawable.btn_star_big_on));
+        }
+        Star.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isEnable){
+                    Star.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),android.R.drawable.btn_star_big_off));
+                    BaseDatos.updateFavorite(ChampionToShow.getName(),"0");
+                }else{
+                    Star.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),android.R.drawable.btn_star_big_on));
+                    BaseDatos.updateFavorite(ChampionToShow.getName(),"1");
+                }isEnable = !isEnable;
+            }
+        });
 
-        Champion aux = new Champion();
         Bundle datos2 = this.getIntent().getExtras();
         final String NombreCampeon = datos.getString("Name");
         btn.setOnClickListener(new View.OnClickListener() {
@@ -160,7 +180,11 @@ public class Champ_Info_Activity extends AppCompatActivity {
         ChampOrigin3 = champ.getOriginClass();
 
         imagenCampeon(champ.getName());
-        etTier.setText(champ.getTier());
+        if (champ.getTier().equals("1")){
+            etTier.setText("S");
+        }else{
+            etTier.setText(champ.getTier());
+        }
         etDescription.setText(champ.getDescription());
         etChampName.setText(champ.getName());
         etCost.setText(champ.getCost());
@@ -173,9 +197,33 @@ public class Champ_Info_Activity extends AppCompatActivity {
         etAtkSpd.setText(champ.getAtkSpd());
         etCritRate.setText(champ.getCritRate());
         etRange.setText(champ.getRange());
+
     }
+
     public void mostrarDatosCampeon(String Name){
-        //No se
+        for(Champion champ : ChampList){
+            if (champ.getName().equals(Name)){
+                imagenCampeon(Name);
+                etDescription.setText(champ.getDescription());
+                etChampName.setText(champ.getName());
+
+                etCost.setText(champ.getCost());
+                etHealth.setText(champ.getHealth());
+                etMana.setText(champ.getMana());
+                etArmor.setText(champ.getArmor());
+                etMR.setText(champ.getMR());
+                etDPS.setText(champ.getMR());
+                etDamage.setText(champ.getDamage());
+                etAtkSpd.setText(champ.getAtkSpd());
+                etCritRate.setText(champ.getCritRate());
+                etRange.setText(champ.getRange());
+                if (champ.getTier().equals("1")){
+                    etTier.setText("S");
+                }else{
+                    etTier.setText(champ.getTier());
+                }
+            }
+        }
     }
 
 

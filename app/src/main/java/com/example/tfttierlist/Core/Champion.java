@@ -24,6 +24,8 @@ public class Champion implements Serializable {
     private static final String ATKSPD = "atkspd";
     private static final String CRITRATE = "critrate";
     private static final String RANGE = "range";
+    private static final String FAVORITE = "favorite";
+
 
     private String Name;
     private String Origin;
@@ -42,13 +44,14 @@ public class Champion implements Serializable {
     private String AtkSpd;
     private String CritRate;
     private String Range;
+    private String Favorite;
 
     public Champion() {
     }
 
     public Champion(String Name, String Origin, String ChampClass, String OriginClass,
                     String Description, String Tier, String Cost, String Health, String Mana, String InicialMana, String Armor, String MR, String DPS,
-                    String Damage, String AtkSpd, String CritRate, String Range) {
+                    String Damage, String AtkSpd, String CritRate, String Range, String Favorite) {
 
         this.Name = Name;
         this.Origin = Origin;
@@ -67,6 +70,7 @@ public class Champion implements Serializable {
         this.AtkSpd = AtkSpd;
         this.CritRate = CritRate;
         this.Range = Range;
+        this.Favorite = Favorite;
 
     }
 
@@ -204,6 +208,14 @@ public class Champion implements Serializable {
         Range = range;
     }
 
+    public String isFavorite(){
+        return Favorite;
+    }
+
+    public void setFavorite(String favorite) {
+        Favorite = favorite;
+    }
+
     public ContentValues toContentValues(){
         ContentValues values = new ContentValues();
         values.put(NAME,Name);
@@ -223,6 +235,7 @@ public class Champion implements Serializable {
         values.put(ATKSPD,AtkSpd);
         values.put(CRITRATE,CritRate);
         values.put(RANGE,Range);
+        values.put(FAVORITE,Favorite);
 
         return values;
     }

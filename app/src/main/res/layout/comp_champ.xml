@@ -127,7 +127,7 @@
                         android:id="@+id/liCost"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical">
+                       >
 
                         <TextView
                             android:id="@+id/twCost1"
@@ -147,7 +147,6 @@
                         android:id="@+id/liHea"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -168,7 +167,6 @@
                         android:id="@+id/liMana"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -188,7 +186,6 @@
                         android:id="@+id/liArmor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -208,7 +205,6 @@
                         android:id="@+id/liMr"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -228,7 +224,6 @@
                         android:id="@+id/liDPS"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -248,7 +243,6 @@
                         android:id="@+id/liDamage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -268,7 +262,6 @@
                         android:id="@+id/liAtkSpd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -288,7 +281,6 @@
                         android:id="@+id/liCritial"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -308,7 +300,6 @@
                         android:id="@+id/liRange"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -447,13 +438,12 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
+                    android:gravity="left"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical">
+                        android:layout_height="wrap_content">
 
                         <TextView
                             android:id="@+id/twCost"
@@ -472,27 +462,24 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/twHealth"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Health"
-                            android:layout_marginRight="15dp"/>
+                            android:layout_marginRight="15dp"
+                            android:text="Health" />
 
                         <TextView
                             android:id="@+id/etHealth"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            />
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -511,7 +498,6 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -530,7 +516,6 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -549,7 +534,6 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -568,7 +552,6 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -587,7 +570,6 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -606,7 +588,6 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -625,7 +606,6 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
                         android:orientation="horizontal">
 
                         <TextView

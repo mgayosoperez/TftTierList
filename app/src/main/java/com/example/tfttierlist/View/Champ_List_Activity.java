@@ -15,7 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,24 +37,27 @@ public class Champ_List_Activity extends AppCompatActivity {
     private ImageView img;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
 
 
-        champGrid = (GridView) findViewById(R.id.champsGrid);
+       champGrid = (GridView)findViewById(R.id.champsGrid);
 
-        champGrid.setOnItemClickListener(new GridView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                nuevoCampeon(maplist.get(position).get("Name").toString());
-            }
-        });
+       champGrid.setOnItemClickListener(new GridView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               nuevoCampeon(maplist.get(position).get("Name").toString());
+           }
+       });
 
-        this.BaseDatos = new Sqlito(this.getApplicationContext());
-        ChampionList = BaseDatos.recuperaTodoAlfabetico();
+       this.BaseDatos = new Sqlito(this.getApplicationContext());
+       ChampionList = BaseDatos.recuperaTodoAlfabetico();
+
+
 
        alfabetico();
        GridAdapter adapter = new GridAdapter(this);
@@ -152,6 +157,12 @@ public class Champ_List_Activity extends AppCompatActivity {
 
             return v;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        alfabetico();
     }
 
     public void nuevoCampeon(String Name) {
