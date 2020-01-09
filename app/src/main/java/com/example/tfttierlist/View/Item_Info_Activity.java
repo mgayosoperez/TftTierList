@@ -99,7 +99,9 @@ public class Item_Info_Activity extends AppCompatActivity {
         NombreObjetoReceta1 = itemsito.getItem1();
           NombreObjetoReceta2 = itemsito.getItem2();
           tvItemName.setText(itemsito.getName());
-          tvItemTier.setText(itemsito.getTier());
+        if(itemsito.getTier().equals("1")){
+            tvItemTier.setText("S");
+        }else tvItemTier.setText(itemsito.getTier());
           tvDescription.setText(itemsito.getDescription());
     }
 

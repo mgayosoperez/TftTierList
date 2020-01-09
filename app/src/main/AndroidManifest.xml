@@ -11,28 +11,29 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".View.OriginClass_Activity"
-            android:label="@string/title_activity_origin_class_"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme"
+            ></activity>
         <activity
             android:name=".View.Item_Info_Activity"
-            android:label="@string/title_activity_item_info_activity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".View.Item_List_Activity"
-            android:label="@string/title_activity_item__info_"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".View.Comp_List_Activity"
-            android:label="@string/title_activity_comp__info_"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".View.Champ_Info_Activity"
-            android:label="@string/title_activity_champ__info_"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".View.Champ_Comp_Activity"
-            android:label="@string/title_activity_champ__comp_"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme" />
         <activity android:name=".View.Champ_List_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

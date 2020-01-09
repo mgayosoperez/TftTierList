@@ -1,17 +1,21 @@
 package com.example.tfttierlist.View;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.tfttierlist.Core.Item;
 import com.example.tfttierlist.Core.Sqlito;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.tfttierlist.R;
@@ -33,6 +38,8 @@ public class Item_List_Activity extends AppCompatActivity {
     private ArrayList<HashMap<String, Object>> maplist = new ArrayList<>();
     private Sqlito BaseDatos;
     private List<Item> ItemList;
+    private List<String> SearchList;
+    private int opc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +88,104 @@ public class Item_List_Activity extends AppCompatActivity {
         return toret;
 
     }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.getMenuInflater().inflate(R.menu.item_options_menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        boolean toret = false;
+        switch (item.getItemId()) {
+            case R.id.SearchItem:
+               Busqueda();
+               break;
+        }
+        return toret;
+    }
+
+    public void Busqueda (){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.MyDialogTheme);
+        final SearchView SVITEM = new SearchView(this);
+        this.opc = 0;
+        builder.setTitle("Search Champ");
+        builder.setView(SVITEM);
+
+        builder.setPositiveButton("Search", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String champChain = SVITEM.getQuery().toString();
+                SearchList = BaseDatos.searchItems(champChain);
+                mostrarBusqueda();
+            }
+        });
+        GridAdapter adapter = new GridAdapter(this);
+        itemsGrid.setAdapter(adapter);
+        builder.show();
+    }
+
+    public void verItem(String Name) {
+        Item TheItem = new Item();
+        for(Item itemsito : ItemList) {
+            if (itemsito.getName().equals(Name)) {
+                TheItem = itemsito;
+            }
+        }
+        Intent intent = new Intent(this, Item_Info_Activity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Item", TheItem);
+        intent.putExtras(bundle);
+        this.startActivityForResult(intent, 11);
+    }
+    public void mostrarBusqueda() {
+        maplist.clear();
+
+        for (String str : SearchList) {
+            HashMap<String, Object> item1 = new HashMap<>();
+            item1.put("Name", str);
+            String imagename = str.toLowerCase().replace(" ","");
+            int id = getResources().getIdentifier(imagename,"drawable", this.getPackageName());
+            item1.put("Img", id);
+            maplist.add(item1);
+        }
+    }
+
+    public void alfabetico() {
+        ItemList = BaseDatos.recuperaItemsAlfabeticamente();
+
+        maplist.clear();
+
+        for (Item itemsito : ItemList) {
+            HashMap<String, Object> item1 = new HashMap<>();
+            item1.put("Name", itemsito.getName());
+            String imagename = itemsito.getName().toLowerCase().replace(" ","");
+            int id = getResources().getIdentifier(imagename,"drawable", this.getPackageName());
+            item1.put("Img", id);
+            maplist.add(item1);
+        }
+
+        Item_List_Activity.GridAdapter adapter = new Item_List_Activity.GridAdapter(this);
+        itemsGrid.setAdapter(adapter);
+
+    }
+
+    public void tier() {
+        ItemList = BaseDatos.recuperaItemsTier();
+
+        maplist.clear();
+
+        for (Item itemsito : ItemList) {
+            HashMap<String, Object> item1 = new HashMap<>();
+            item1.put("Name", itemsito.getName());
+            String imagename = itemsito.getName().toLowerCase().replace(" ","");
+            int id = getResources().getIdentifier(imagename,"drawable", this.getPackageName());
+            item1.put("Img", id);
+            maplist.add(item1);
+        }
+
+        Item_List_Activity.GridAdapter adapter = new Item_List_Activity.GridAdapter(this);
+        itemsGrid.setAdapter(adapter);
+    }
 
     public class GridAdapter extends BaseAdapter {
         private Context mContext;
@@ -123,59 +227,5 @@ public class Item_List_Activity extends AppCompatActivity {
             return v;
         }
     }
-
-    public void verItem(String Name) {
-        Item TheItem = new Item();
-        for(Item itemsito : ItemList) {
-            if (itemsito.getName().equals(Name)) {
-                TheItem = itemsito;
-            }
-        }
-        Intent intent = new Intent(this, Item_Info_Activity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("Item", TheItem);
-        intent.putExtras(bundle);
-        this.startActivityForResult(intent, 11);
-    }
-
-    public void alfabetico() {
-        ItemList = BaseDatos.recuperaItemsAlfabeticamente();
-
-        maplist.clear();
-
-        for (Item itemsito : ItemList) {
-            HashMap<String, Object> item1 = new HashMap<>();
-            item1.put("Name", itemsito.getName());
-            String imagename = itemsito.getName().toLowerCase().replace(" ","");
-            int id = getResources().getIdentifier(imagename,"drawable", this.getPackageName());
-            item1.put("Img", id);
-            maplist.add(item1);
-        }
-
-        Item_List_Activity.GridAdapter adapter = new Item_List_Activity.GridAdapter(this);
-        itemsGrid.setAdapter(adapter);
-
-    }
-
-    public void tier() {
-        ItemList = BaseDatos.recuperaItemsTier();
-
-        maplist.clear();
-
-        for (Item itemsito : ItemList) {
-            HashMap<String, Object> item1 = new HashMap<>();
-            item1.put("Name", itemsito.getName());
-            String imagename = itemsito.getName().toLowerCase().replace(" ","");
-            int id = getResources().getIdentifier(imagename,"drawable", this.getPackageName());
-            item1.put("Img", id);
-            maplist.add(item1);
-        }
-
-        Item_List_Activity.GridAdapter adapter = new Item_List_Activity.GridAdapter(this);
-        itemsGrid.setAdapter(adapter);
-    }
-
-
-
 
 }

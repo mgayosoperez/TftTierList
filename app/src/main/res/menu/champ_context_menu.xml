@@ -8,5 +8,8 @@
         android:title="Ordenar por Tier"></item>
     <item android:id="@+id/OrdenarPorCoste"
         android:title="Odenar por Coste"></item>
+    <item
+        android:id="@+id/VerFavoritos"
+        android:title="Ver Favoritos" />
 
 </menu>

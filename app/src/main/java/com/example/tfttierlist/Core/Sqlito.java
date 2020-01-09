@@ -500,8 +500,6 @@ public class Sqlito extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(FAVORITE,Favorite);
-        Log.d("BDA0",Name);
-        Log.d("BDA0",Favorite);
 
         ContentValues cv = new ContentValues();
         cv.put(FAVORITE,Favorite);
@@ -519,6 +517,65 @@ public class Sqlito extends SQLiteOpenHelper{
         c.close();
         db.close();
     }
+
+    public List<String> showFavoriteChampions(){
+        final List<String> TORET = new ArrayList<>();
+        final SQLiteDatabase DB = this.getReadableDatabase();
+
+        Cursor c =  DB.rawQuery("SELECT * FROM "+ CHAMP_TABLE + " WHERE " + FAVORITE+ " = ?",new String[]{"1"});
+        if (c.moveToFirst()){
+            do{
+                String Name = c.getString(c.getColumnIndexOrThrow(NAME));
+                TORET.add(Name);
+            }while (c.moveToNext());
+        }
+        c.close();
+        DB.close();
+
+        return TORET;
+    }
+
+
+    public List<String> searchChamps(String champName){
+        final List<String> TORET = new ArrayList<>();
+        final SQLiteDatabase DB = this.getReadableDatabase();
+
+        Cursor c =  DB.rawQuery("SELECT * FROM "+ CHAMP_TABLE + " WHERE " + NAME+ " LIKE ?"
+                        + " OR " + ORIGIN + " LIKE ?"
+                        + " OR " + ORIGINCLASS + " LIKE ?"
+                        + " OR " + CHAMPCLASS + " LIKE ?"
+                        + " OR " + COST + " LIKE ?"
+                        ,new String[]{"%"+champName+"%","%"+champName+"%","%"+champName+"%","%"+champName+"%","%"+champName+"%"});
+        if (c.moveToFirst()){
+            do{
+                String Name = c.getString(c.getColumnIndexOrThrow(NAME));
+                TORET.add(Name);
+            }while (c.moveToNext());
+        }
+        c.close();
+        DB.close();
+
+        return TORET;
+    }
+
+    public List<String> searchItems(String itemName){
+        final List<String> TORET = new ArrayList<>();
+        final SQLiteDatabase DB = this.getReadableDatabase();
+
+        Cursor c =  DB.rawQuery("SELECT * FROM "+ CHAMP_TABLE + " WHERE " + NAME+ " LIKE ?",new String[]{"%"+itemName+"%"});
+        if (c.moveToFirst()){
+            do{
+                String Name = c.getString(c.getColumnIndexOrThrow(NAME));
+                TORET.add(Name);
+            }while (c.moveToNext());
+        }
+        c.close();
+        DB.close();
+
+        return TORET;
+    }
+
+
 
 }
 
