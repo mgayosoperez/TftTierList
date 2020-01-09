@@ -59,6 +59,11 @@ public class Champ_Info_Activity extends AppCompatActivity {
     private Origin theOrigin2;
     private Origin theOrigin3;
 
+    private ImageView OriClassImg1;
+    private ImageView OriClassImg2;
+    private ImageView OriClassImg3;
+
+
     private ImageButton Star;
     private boolean isEnable = false;
 
@@ -91,6 +96,9 @@ public class Champ_Info_Activity extends AppCompatActivity {
         originClassImage1 = findViewById(R.id.oriClassImg1);
         originClassImage2 = findViewById(R.id.oriClassImg2);
         originClassImage3 = findViewById(R.id.oriClassImg3);
+        OriClassImg1 = findViewById(R.id.oriClassImg1);
+        OriClassImg2 = findViewById(R.id.oriClassImg2);
+        OriClassImg3 = findViewById(R.id.oriClassImg3);
 
 
         Bundle datos = this.getIntent().getExtras();
@@ -100,6 +108,21 @@ public class Champ_Info_Activity extends AppCompatActivity {
         theOrigin1 = searchOrigin(ChampOrigin1);
         theOrigin2 = searchOrigin(ChampOrigin2);
         theOrigin3 = searchOrigin(ChampOrigin3);
+
+        String imagename1 = theOrigin1.getName().toLowerCase();
+        OriClassImg1.setImageResource(getResources().getIdentifier(imagename1,"drawable", this.getPackageName()));
+        String imagename2 = theOrigin2.getName().toLowerCase();
+        if(theOrigin3.getName().equals("default")){
+            OriClassImg2.setImageResource(getResources().getIdentifier("lanada3232","drawable", this.getPackageName()));
+            OriClassImg3.setImageResource(getResources().getIdentifier(imagename2,"drawable", this.getPackageName()));
+        }else{
+            OriClassImg2.setImageResource(getResources().getIdentifier(imagename2,"drawable", this.getPackageName()));
+            String imagename3 = theOrigin3.getName().toLowerCase();
+            OriClassImg3.setImageResource(getResources().getIdentifier(imagename3,"drawable", this.getPackageName()));
+        }
+
+
+
 
         Star = findViewById(R.id.favorite_button);
         if(ChampionToShow.isFavorite().equals("1")){
@@ -171,7 +194,7 @@ public class Champ_Info_Activity extends AppCompatActivity {
                 return aux;
             }
         }
-        return new Origin();
+        return new Origin("default","");
     }
 
     public void mostrarDatosCampeon(Champion champ){
@@ -179,7 +202,8 @@ public class Champ_Info_Activity extends AppCompatActivity {
         ChampOrigin2 = champ.getChampClass();
         ChampOrigin3 = champ.getOriginClass();
 
-        imagenCampeon(champ.getName());
+        String imagename = champ.getName().toLowerCase().replace(" ","");
+        image.setImageResource(getResources().getIdentifier(imagename,"drawable", this.getPackageName()));
         if (champ.getTier().equals("1")){
             etTier.setText("S");
         }else{
@@ -203,7 +227,8 @@ public class Champ_Info_Activity extends AppCompatActivity {
     public void mostrarDatosCampeon(String Name){
         for(Champion champ : ChampList){
             if (champ.getName().equals(Name)){
-                imagenCampeon(Name);
+                String imagename = champ.getName().toLowerCase().replace(" ","");
+                image.setImageResource(getResources().getIdentifier(imagename,"drawable", this.getPackageName()));
                 etDescription.setText(champ.getDescription());
                 etChampName.setText(champ.getName());
 
@@ -227,173 +252,6 @@ public class Champ_Info_Activity extends AppCompatActivity {
     }
 
 
-    public boolean imagenCampeon (String Name) {
-        switch(Name) {
-            case "Singed":
-                int id = R.drawable.singed;
-                image.setImageResource(id);
-                break;
-            case "Olaf":
-                image.setImageResource(R.drawable.olaf);
-                break;
-            case "Nocturne":
-                image.setImageResource(R.drawable.nocturne);
-                break;
-            case "Nami":
-                image.setImageResource(R.drawable.nami);
-                break;
-            case "Lux":
-                image.setImageResource(R.drawable.lux);
-                break;
-            case "Vladimir":
-                image.setImageResource(R.drawable.vladimir);
-                break;
-            case "Yasuo":
-                image.setImageResource(R.drawable.yasuo);
-                break;
-            case "Sivir":
-                image.setImageResource(R.drawable.sivir);
-                break;
-            case "Nautilus":
-                image.setImageResource(R.drawable.nautilus);
-                break;
-            case "Maokai":
-                image.setImageResource(R.drawable.maokai);
-                break;
-            case "Ashe":
-                image.setImageResource(R.drawable.ashe);
-                break;
-            case "Master Yi":
-                image.setImageResource(R.drawable.masteryi);
-                break;
-            case "Zed":
-                image.setImageResource(R.drawable.zed);
-                break;
-            case "Annie":
-                image.setImageResource(R.drawable.annie);
-                break;
-            case "Brand":
-                image.setImageResource(R.drawable.brand);
-                break;
-            case "Janna":
-                image.setImageResource(R.drawable.janna);
-                break;
-            case "Kindred":
-                image.setImageResource(R.drawable.kindred);
-                break;
-            case "Malphite":
-                image.setImageResource(R.drawable.malphite);
-                break;
-            case "Qiyana":
-                image.setImageResource(R.drawable.qiyana);
-                break;
-            case "Taric":
-                image.setImageResource(R.drawable.taric);
-                break;
-            case "Skarner":
-                image.setImageResource(R.drawable.skarner);
-                break;
-            case "Volibear":
-                image.setImageResource(R.drawable.volibear);
-                break;
-            case "Yorick":
-                image.setImageResource(R.drawable.yorick);
-                break;
-            case "Senna":
-                image.setImageResource(R.drawable.senna);
-                break;
-            case "Lucian":
-                image.setImageResource(R.drawable.lucian);
-                break;
-            case "Dr Mundo":
-                image.setImageResource(R.drawable.drmundo);
-                break;
-            case "Ezreal":
-                image.setImageResource(R.drawable.ezreal);
-                break;
-            case "KogMaw":
-                image.setImageResource(R.drawable.kogmaw);
-                break;
-            case "LeBlanc":
-                image.setImageResource(R.drawable.leblanc);
-                break;
-            case "Malzahar":
-                image.setImageResource(R.drawable.malzahar);
-                break;
-            case "RekSai":
-                image.setImageResource(R.drawable.reksai);
-                break;
-            case "Soraka":
-                image.setImageResource(R.drawable.soraka);
-                break;
-            case "Syndra":
-                image.setImageResource(R.drawable.syndra);
-                break;
-            case "Thresh":
-                image.setImageResource(R.drawable.thresh);
-                break;
-            case "Twitch":
-                image.setImageResource(R.drawable.twitch);
-                break;
-            case "Zyra":
-                image.setImageResource(R.drawable.zyra);
-                break;
-            case "Amumu":
-                image.setImageResource(R.drawable.amumu);
-                break;
-            case "Aatrox":
-                image.setImageResource(R.drawable.aatrox);
-                break;
-            case "Azir":
-                image.setImageResource(R.drawable.azir);
-                break;
-            case "Diana":
-                image.setImageResource(R.drawable.diana);
-                break;
-            case "Ivern":
-                image.setImageResource(R.drawable.ivern);
-                break;
-            case "Sion":
-                image.setImageResource(R.drawable.sion);
-                break;
-            case "Varus":
-                image.setImageResource(R.drawable.varus);
-                break;
-            case "Braum":
-                image.setImageResource(R.drawable.braum);
-                break;
-            case "Jax":
-                image.setImageResource(R.drawable.jax);
-                break;
-            case "Nasus":
-                image.setImageResource(R.drawable.nasus);
-                break;
-            case "Neeko":
-                image.setImageResource(R.drawable.neeko);
-                break;
-            case "Vayne":
-                image.setImageResource(R.drawable.vayne);
-                break;
-            case "Warwick":
-                image.setImageResource(R.drawable.warwick);
-                break;
-            case "Taliyah":
-                image.setImageResource(R.drawable.taliyah);
-                break;
-            case "Veigar":
-                image.setImageResource(R.drawable.veigar);
-                break;
-            case "Khazix":
-                image.setImageResource(R.drawable.khazix);
-                break;
-            case "Renekton":
-                image.setImageResource(R.drawable.renekton);
-                break;
-            case "Ornn":
-                image.setImageResource(R.drawable.ornn);
-                break;
-        }
-        return true;
-    }
+
 
 }
