@@ -89,7 +89,7 @@ public class Champ_Info_Activity extends AppCompatActivity {
         originClassImage3 = findViewById(R.id.oriClassImg3);
 
         Bundle datos = this.getIntent().getExtras();
-        Champion ChampionToShow = (Champion) datos.getSerializable("Champ");
+        final Champion ChampionToShow = (Champion) datos.getSerializable("Champ");
         mostrarDatosCampeon(ChampionToShow);
 
         theOrigin1 = searchOrigin(ChampOrigin1);
@@ -102,7 +102,7 @@ public class Champ_Info_Activity extends AppCompatActivity {
         final String NombreCampeon = datos.getString("Name");
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                compararCampeon(NombreCampeon);
+                compararCampeon(ChampionToShow);
             }
         });
         mostrarDatosCampeon(NombreCampeon);
@@ -128,9 +128,11 @@ public class Champ_Info_Activity extends AppCompatActivity {
             }
         });
     }
-    public void compararCampeon(String Name) {
+    public void compararCampeon(Champion champ) {
         Intent intent = new Intent(this, Comp_List_Activity.class);
-        intent.putExtra("Name", Name);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Champ", champ);
+        intent.putExtras(bundle);
         this.startActivityForResult(intent, 11);
     }
 

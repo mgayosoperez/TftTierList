@@ -39,6 +39,8 @@ public class Comp_List_Activity extends AppCompatActivity {
 
         final Bundle datos = this.getIntent().getExtras();
         final String NombreCampeon = datos.getString("Name");
+        final Champion ChampionToShow = (Champion) datos.getSerializable("Champ");
+
 
         this.BaseDatos = new Sqlito(this.getApplicationContext());
         ChampionList = BaseDatos.recuperaTodoAlfabetico();
@@ -52,7 +54,7 @@ public class Comp_List_Activity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-                campeonComparar(maplist.get(position).get("Name").toString(),NombreCampeon);
+                campeonComparar(maplist.get(position).get("Name").toString(),ChampionToShow);
             }
         });
     }
@@ -188,10 +190,12 @@ public class Comp_List_Activity extends AppCompatActivity {
     }
 
 
-    public void campeonComparar(String Name,String Name2) {
+    public void campeonComparar(String Name,Champion champ) {
         Intent intent = new Intent(this, Champ_Comp_Activity.class);
         intent.putExtra("Name1", Name);
-        intent.putExtra("Name2", Name2);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Champ", champ);
+        intent.putExtras(bundle);
         this.startActivityForResult(intent, 11);
     }
 

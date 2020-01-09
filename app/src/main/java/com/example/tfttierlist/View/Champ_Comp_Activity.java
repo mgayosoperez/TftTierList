@@ -104,9 +104,10 @@ public class Champ_Comp_Activity extends AppCompatActivity {
         Champion aux = new Champion();
         Bundle datos = this.getIntent().getExtras();
         String NombreCampeon = datos.getString("Name1");
-        String BNombreCampeon = datos.getString("Name2");
-        mostrarDatosCampeon(NombreCampeon,BNombreCampeon);
-        Log.d("myTag",BNombreCampeon);
+        Champion ChampionToShow = (Champion) datos.getSerializable("Champ");
+
+        mostrarDatosCampeon(NombreCampeon,ChampionToShow.getName());
+        Log.d("myTag",ChampionToShow.getName());
         Log.d("myTag",NombreCampeon);
 
     }
