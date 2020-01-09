@@ -1,5 +1,6 @@
 package com.example.tfttierlist.View;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -19,6 +20,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -158,18 +160,75 @@ public class Champ_Info_Activity extends AppCompatActivity {
 
             }
         });
-        originClassImage2.setOnClickListener(new View.OnClickListener() {
+        if(!theOrigin3.getName().equals("default")){
+            originClassImage2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showOriginClass(theOrigin2);
+                }
+            });
+            originClassImage3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showOriginClass(theOrigin3);
+                }
+            });
+        }else {
+            originClassImage3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showOriginClass(theOrigin2);
+                }
+            });
+        }
+        originClassImage1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
-                showOriginClass(theOrigin2);
+            public boolean onLongClick(View v) {
+                Context context = getApplicationContext();
+                CharSequence text = theOrigin1.getName();
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context,text,duration);
+                toast.show();
+                return true;
             }
         });
-        originClassImage3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showOriginClass(theOrigin3);
-            }
-        });
+
+        if(!theOrigin3.getName().equals("default")){
+            originClassImage2.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Context context = getApplicationContext();
+                    CharSequence text = theOrigin2.getName();
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context,text,duration);
+                    toast.show();
+                    return true;
+                }
+            });
+            originClassImage3.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Context context = getApplicationContext();
+                    CharSequence text = theOrigin3.getName();
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context,text,duration);
+                    toast.show();
+                    return true;
+                }
+            });
+        }else {
+            originClassImage3.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Context context = getApplicationContext();
+                    CharSequence text = theOrigin2.getName();
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context,text,duration);
+                    toast.show();
+                    return true;
+                }
+            });
+        }
     }
     public void compararCampeon(Champion champ) {
         Intent intent = new Intent(this, Comp_List_Activity.class);
