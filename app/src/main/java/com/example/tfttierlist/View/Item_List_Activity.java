@@ -108,14 +108,14 @@ public class Item_List_Activity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.MyDialogTheme);
         final SearchView SVITEM = new SearchView(this);
         this.opc = 0;
-        builder.setTitle("Search Champ");
+        builder.setTitle("Search Item");
         builder.setView(SVITEM);
 
         builder.setPositiveButton("Search", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String champChain = SVITEM.getQuery().toString();
-                SearchList = BaseDatos.searchItems(champChain);
+                String ItemChain = SVITEM.getQuery().toString();
+                SearchList = BaseDatos.searchItems(ItemChain);
                 mostrarBusqueda();
             }
         });

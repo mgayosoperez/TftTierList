@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/OrdenarObjetoAlfa"
-        android:title="Ordenar alfabéticamente"></item>
+    <item
+        android:id="@+id/OrdenarObjetoAlfa"
+        android:title="Alphabetical Order"></item>
     <item android:id="@+id/OrdenarObjetoTier"
         android:title="Ordenar por Tier"></item>
 

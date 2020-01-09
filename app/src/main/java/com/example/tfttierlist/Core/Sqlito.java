@@ -562,7 +562,7 @@ public class Sqlito extends SQLiteOpenHelper{
         final List<String> TORET = new ArrayList<>();
         final SQLiteDatabase DB = this.getReadableDatabase();
 
-        Cursor c =  DB.rawQuery("SELECT * FROM "+ CHAMP_TABLE + " WHERE " + NAME+ " LIKE ?",new String[]{"%"+itemName+"%"});
+        Cursor c =  DB.rawQuery("SELECT * FROM "+ ITEM_TABLE + " WHERE " + NAME+ " LIKE ?",new String[]{"%"+itemName+"%"});
         if (c.moveToFirst()){
             do{
                 String Name = c.getString(c.getColumnIndexOrThrow(NAME));

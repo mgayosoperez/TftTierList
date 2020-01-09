@@ -3,8 +3,8 @@
 
     <item
         android:id="@+id/buscarCampeon"
-        android:title="Buscar" />
+        android:title="Search" />
     <item
         android:id="@+id/verObjetos"
-        android:title="Ver Objetos" />
+        android:title="Show Objects" />
 </menu>

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            >
+            android:layout_marginBottom="25dp">
 
             <ImageView
                 android:id="@+id/imageViewItem"
@@ -27,17 +27,13 @@
                 app:srcCompat="@drawable/aatrox" />
 
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="50dp">
+            android:layout_marginBottom="50dp"
+
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -47,46 +43,61 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="0.25"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginRight="10dp"
-                        android:text="Name:" />
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tvItemName"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:textSize="12sp" />
-
+                        android:layout_marginBottom="20dp"
+                        android:gravity="center"
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
+                <View
+                    android:layout_width="200dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="3dp"
+                    android:background="#FF0000FF" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
                     android:layout_weight="0.25"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="25dp"
                         android:layout_marginRight="10dp"
-                        android:text="Tier:" />
+                        android:text="Tier :"
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tvItemTier"
                         android:layout_width="wrap_content"
-                        android:layout_marginLeft="25dp"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp" />
+                        android:layout_marginLeft="25dp"
+                        android:textSize="28sp" />
 
                 </LinearLayout>
+
+                <View
+                    android:layout_width="200dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:background="#FF0000FF" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -95,42 +106,50 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="25dp"
-                        android:text="Description:" />
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center"
+                        android:text="Description"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tvItemDescripcion"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:textSize="12sp" />
+                        android:layout_marginHorizontal="25dp"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
-
-
             </LinearLayout>
-
-
         </LinearLayout>
+
+        <View
+            android:layout_width="350dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="#FF0000FF" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <TextView
-                android:textAlignment="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
                 android:text="Recipe"
-                android:layout_marginBottom="50dp"></TextView>
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold"></TextView>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imageViewItemRecipe1"
@@ -151,7 +170,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="vertical"/>
+            android:orientation="vertical" />
 
     </LinearLayout>
 

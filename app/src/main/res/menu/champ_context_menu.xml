@@ -2,14 +2,17 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/OrdenarAlfa"
-        android:title="Ordenar alfabéticamente"></item>
-    <item android:id="@+id/OrdenarPorTier"
-        android:title="Ordenar por Tier"></item>
-    <item android:id="@+id/OrdenarPorCoste"
-        android:title="Odenar por Coste"></item>
+    <item
+        android:id="@+id/OrdenarAlfa"
+        android:title="Alphabetical Order"></item>
+    <item
+        android:id="@+id/OrdenarPorTier"
+        android:title="Tier Order"></item>
+    <item
+        android:id="@+id/OrdenarPorCoste"
+        android:title="Cost Order"></item>
     <item
         android:id="@+id/VerFavoritos"
-        android:title="Ver Favoritos" />
+        android:title="Show Favorites" />
 
 </menu>
